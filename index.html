@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en" data-marker="dec20260930intro1">
+<head>
+<meta charset="UTF-8" />
+<meta name="mrj-build" content="dec71-20261007-merge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>MRJ Decodables — Books 71–100</title>
+<style>
+:root{--bg:#070d18;--card:#101a2e;--text:#f4f7ff;--muted:#a9b7d6;--hl:#ffd84a;--ok:#3ecf8e}
+*{box-sizing:border-box}
+html,body{height:100%;overflow:hidden}
+body{margin:0;font-family:ui-rounded,"Nunito","Avenir Next",system-ui,sans-serif;background:#070d18;color:var(--text);height:100%;overflow:hidden}
+body.student-desk{display:flex;flex-direction:column;height:100vh;height:100dvh;max-height:100dvh}
+.app{width:100%;max-width:none;margin:0;padding:8px 16px 0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex:0 0 auto}
+.app>.stage{flex:1 1 auto;min-height:0}
+#libStage,#introStage,#workStage,#signStage{overflow:auto}
+h1{font-size:1rem;margin:0}
+button{border:0;border-radius:14px;padding:11px;font-weight:800;color:#fff;background:#24324f;cursor:pointer}
+button.active{background:linear-gradient(135deg,#4d7dff,#7a5cff)}
+button:disabled{opacity:.38;cursor:not-allowed}
+.stage{background:var(--card);border-radius:22px;overflow:hidden}
+.art{position:relative;background:#050a12;height:100%;min-height:0;max-height:none}
+.art img,.art video{width:100%;height:100%;object-fit:contain;position:absolute;inset:0}
+.sentence{font-size:clamp(1.7rem,2.5vw,3rem);font-weight:900;line-height:1.3;text-align:center;padding:8px 16px 4px;min-height:0}
+.sentence .w{display:inline-block;padding:.02em .08em;border-radius:.18em;cursor:pointer}
+.sentence .w.on{background:#ffd84a;color:#1a1400;box-shadow:0 0 0 3px #ffe27a}
+.sentence .w.done{outline:3px solid var(--ok);background:rgba(62,207,142,.18)}
+.langline{text-align:center;color:#ffd84a;font-weight:800;padding:0 14px 10px;font-size:1.15rem}
+.status{text-align:center;color:var(--muted);font-size:.84rem;padding:0 12px 10px}
+.nav{display:flex;gap:8px;padding:0 12px 12px}
+.nav button{flex:1}
+.library{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px;align-content:start}
+.card{display:flex;gap:12px;align-items:center;background:#1b2740;border-radius:16px;padding:10px;color:#fff;text-align:left;width:100%}
+.card img{width:64px;height:86px;object-fit:cover;border-radius:8px}
+.card.lock{opacity:.55}
+.g-lbl{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:800;margin-top:10px}
+.g-en{font-size:clamp(1.5rem,6vw,2.1rem);font-weight:900;line-height:1.28;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);margin:6px 0}
+.bar{position:relative;flex:0 0 auto;background:rgba(7,13,24,.94);padding:8px 16px calc(8px + env(safe-area-inset-bottom));z-index:5}
+.bar-row{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;max-width:none;width:100%;margin:0}
+.bar-row button{font-size:clamp(.95rem,1.25vw,1.2rem);padding:12px 6px}
+.hidden{display:none!important}
+.panel{padding:14px}
+.onelet{min-height:58vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.onelet .en{font-size:7.2rem;font-weight:900;line-height:1}
+.onelet .cu{font-size:5.2rem;font-weight:900;color:#ffd84a;margin-top:8px}
+.onelet .hint{color:var(--muted);margin-top:14px;font-weight:800}
+.sadface{font-size:6.4rem;line-height:1;margin-top:8px}
+.word-chip{display:inline-block;margin:4px 5px;padding:10px 12px;border-radius:14px;background:#1b2740;font-weight:900;font-size:1.45rem;text-align:center;min-width:2.2em}
+.word-chip.good{background:#1f6b48}.word-chip.ok{background:#6b5a1f}.word-chip.needs_work,.word-chip.invalid{background:#6b1f2c}
+.word-chip .wsub{display:block;font-size:.72rem;color:#ffd84a;font-weight:800}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:14px 0}
+.tile{min-width:48px;font-size:1.6rem;font-weight:900;padding:12px 14px;border-radius:14px;background:#2a3b61}
+.az{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin:12px 0}
+.az button{padding:10px 0;font-size:1.15rem}
+.built{min-height:2.2em;font-size:1.55rem;font-weight:900;text-align:center;letter-spacing:.02em;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;align-items:center}.chip{background:#3a4f7a;border-radius:12px;padding:8px 12px;font-size:1.35rem}.tile.used{opacity:.28}.spacekey{grid-column:span 3}
+.tpl{font-size:clamp(1.5rem,6vw,2.2rem);font-weight:900;text-align:center;line-height:1.7;padding:8px}
+.tpl .given{color:#ffd84a}
+.tpl .blank{display:inline-block;min-width:.72em;border-bottom:3px solid #fff;margin:0 1px;text-align:center}
+.tpl .blank.on{border-bottom-color:#3ecf8e}
+.tpl .gap{display:inline-block;width:.42em}
+.wscore{display:inline-block;margin:4px;padding:6px 10px;border-radius:12px;font-weight:900}
+.wscore.good{background:#1f6b48}.wscore.ok{background:#6b5a1f}.wscore.needs_work,.wscore.invalid{background:#6b1f2c}
+.pass{font-size:2rem;font-weight:900;text-align:center;padding:20px 8px}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+select{width:100%;padding:10px;border-radius:12px;border:0;background:#1b2740;color:#fff;font-weight:800}
+.scene{position:relative;min-height:58vh;overflow:hidden;border-radius:18px}
+.carpet{position:absolute;inset:0;background:linear-gradient(#1a1030,#3a1020);}
+.carpet:before{content:"";position:absolute;left:18%;right:18%;top:0;bottom:0;background:repeating-linear-gradient(180deg,#b0122a 0 28px,#8c0e22 28px 32px);box-shadow:0 0 40px #ff4d6d}
+.flash{position:absolute;width:18px;height:18px;border-radius:50%;background:#fff;opacity:0;animation:pop 1.4s infinite}
+@keyframes pop{0%,70%{opacity:0;transform:scale(.4)}80%{opacity:1;transform:scale(1.4)}100%{opacity:0}}
+.starword{position:absolute;left:50%;top:110%;transform:translateX(-50%);font-size:4.4rem;font-weight:900;color:#ffe27a;text-shadow:0 0 18px #ffd84a;animation:walk 2.6s ease forwards}
+@keyframes walk{to{top:38%}}
+.ropes{position:absolute;left:10%;right:10%;top:22%;height:8px;background:#d4af37}
+.cops{min-height:58vh;background:radial-gradient(circle at 50% 20%,#2a406e,#101a2e);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px}
+.faces{font-size:4.2rem}
+.zero{font-size:6rem;font-weight:900;color:#ffd84a;animation:pulse 1.2s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.08)}}
+.speaker{width:100%;aspect-ratio:3/4;border-radius:20px;background:#0b1220;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
+.speaker img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.speaker .label{position:absolute;bottom:12px;font-weight:900;text-shadow:0 2px 8px #000}
+.repeat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
+.repeat button{font-size:1.15rem}
+.carpetVid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
+.letterOut{position:absolute;left:50%;top:34%;transform:translate(-50%,-20%) scale(.2);opacity:0;font-size:5.4rem;font-weight:900;color:#ffe27a;text-shadow:0 0 22px #ffd84a;pointer-events:none}
+.letterOut.show{animation:stepout 2.2s ease forwards}
+@keyframes stepout{to{transform:translate(-50%,80%) scale(1);opacity:1;top:52%}}
+.say-controls{display:flex;gap:12px;justify-content:center;margin:14px 0 8px}
+.say-controls button{width:72px;height:72px;border-radius:50%;font-size:2rem;padding:0}
+.btn-rec{background:#c0392b}
+.btn-stop{background:#4b5568}
+.rec-bars{display:flex;gap:4px;justify-content:center;height:28px;align-items:flex-end;margin:8px 0}
+.rec-bars i{width:8px;height:8px;background:#3ecf8e;border-radius:3px}
+.spd button.active,.repeat button.active{background:linear-gradient(135deg,#4d7dff,#7a5cff)}
+.tile.punct{min-width:36px;background:#5a3b1b}
+.loadbar{padding:0 12px 10px}
+.loadbar-track{height:10px;background:#1b2740;border-radius:8px;overflow:hidden}
+#loadbarFill{height:100%;width:0;background:linear-gradient(90deg,#4d7dff,#3ecf8e);transition:width .18s ease;border-radius:8px}
+#loadbarLbl{text-align:center;font-size:.72rem;color:var(--muted);margin-top:6px;font-weight:800}
+.catchLine{position:absolute;left:0;right:0;top:10%;text-align:center;font-size:clamp(1.35rem,5.2vw,1.95rem);font-weight:900;color:#ffe27a;text-shadow:0 0 14px #000,0 3px 10px #000;z-index:2;pointer-events:none;line-height:1.2;letter-spacing:.02em;animation:pulse 1.1s ease-in-out infinite}
+.catchLine .bigq{font-size:clamp(4.2rem,20vw,7rem);display:inline-block;line-height:.75;vertical-align:middle;color:#fff;text-shadow:0 0 22px #ffd84a}
+.sheriffBan{text-align:center;font-weight:900;margin:0 0 12px;line-height:1.12}
+.sheriffBan .hey{font-size:2.4rem;color:#ffd84a;text-shadow:0 0 12px #ff9f1c}
+.sheriffBan .lb{font-size:clamp(2.2rem,9vw,3.2rem);color:#ff5c7a;text-shadow:0 0 18px #ff4d6d;margin:4px 0}
+.sheriffBan .ask{font-size:clamp(1.05rem,4.2vw,1.35rem);color:var(--muted);margin-top:6px}
+.me{color:#ff6b6b;font-weight:900;font-size:1.2em}
+.nervousWord{font-size:clamp(3.2rem,15vw,5.8rem);font-weight:900;text-align:center;color:#ffe27a;text-shadow:0 0 20px #ffd84a;animation:shake .45s ease-in-out infinite}
+.nervousLine{font-size:clamp(1.5rem,5.5vw,2rem);font-weight:900;text-align:center;margin-top:16px}
+@keyframes shake{0%,100%{transform:translateX(0) rotate(0)}25%{transform:translateX(-4px) rotate(-1.2deg)}75%{transform:translateX(4px) rotate(1.2deg)}}
+.who{font-size:clamp(2rem,4.2vh,3.2rem);font-weight:900;text-align:center;margin:6px 0 14px}
+.name-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px}
+.name-grid button{font-size:clamp(1.05rem,1.7vw,1.5rem);padding:14px 4px}
+.name-form{display:flex;flex-direction:column;gap:10px;margin-top:14px;max-width:420px}
+.name-form input{width:100%;padding:14px 16px;border-radius:14px;border:0;background:#1b2740;color:#fff;font-weight:800;font-size:1.15rem}
+.name-form button{min-width:96px}
+.sign-err{min-height:1.2em;color:#ffb4b4;font-weight:800}
+#workStage.dict-fit{overflow:hidden;padding:8px 12px;height:100%}
+#workStage.dict-fit #workBody{height:100%;min-height:0}
+.dict-layout{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);gap:14px;height:100%;min-height:0;align-items:center}
+.dict-main{min-height:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
+#workStage.dict-fit .speaker{width:100%;height:min(26vh,200px);aspect-ratio:auto;border-radius:16px}
+#workStage.dict-fit .speaker img{object-fit:cover;object-position:top center}
+#workStage.dict-fit .speaker .label{font-size:.8rem;bottom:6px}
+#workStage.dict-fit .tpl{font-size:clamp(1.05rem,2.3vh,1.55rem);line-height:1.25;padding:2px}
+#workStage.dict-fit .az{grid-template-columns:repeat(14,minmax(0,1fr));gap:4px;margin:4px 0}
+#workStage.dict-fit .az button{padding:5px 0;font-size:clamp(.8rem,1.5vh,1rem)}
+#workStage.dict-fit .tiles{margin:4px 0;gap:6px}
+#workStage.dict-fit .tile{min-width:0;font-size:clamp(.95rem,1.8vh,1.2rem);padding:7px 8px}
+#workStage.dict-fit .g-lbl{margin-top:2px}
+#workStage.dict-fit .repeat{margin:2px 0}
+#workStage.dict-fit .repeat.spd{grid-template-columns:repeat(6,minmax(0,1fr))}
+#workStage.dict-fit .repeat button{font-size:.9rem;padding:7px 4px}
+#workStage.dict-fit .choice{margin:0}
+#workStage.dict-fit #clearWord{padding:7px}
+.passed-mark{color:#3ecf8e;font-weight:900;font-size:1.5rem;line-height:1}
+#bookStage{
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:minmax(0,1.22fr) minmax(320px,.88fr);
+  grid-template-rows:1fr auto auto auto auto 1fr;
+  grid-template-areas:
+    "pic ."
+    "pic sentence"
+    "pic lang"
+    "pic status"
+    "pic nav"
+    "pic .";
+  column-gap:8px;
+  align-items:stretch;
+}
+#bookStage.hidden{display:none!important}
+#bookStage .art{grid-area:pic;height:100%;align-self:stretch}
+#bookStage .sentence{grid-area:sentence}
+#bookStage .langline{grid-area:lang}
+#bookStage .status{grid-area:status}
+#bookStage .nav{
+  grid-area:nav;
+  display:grid;
+  grid-template-columns:1.25fr 1.1fr 1.25fr;
+  gap:12px;
+  padding:8px 18px 14px;
+}
+body.student-desk #bookStage:not(.hidden) #prev,
+body.student-desk #bookStage:not(.hidden) #next{
+  display:block!important;
+  font-size:clamp(2.8rem,7.2vh,4.8rem);
+  line-height:1;
+  min-height:clamp(84px,14vh,136px);
+  padding:0;
+}
+body.student-desk #bookStage #play{
+  font-size:clamp(1.15rem,2.5vh,1.85rem);
+  min-height:clamp(84px,14vh,136px);
+}
+</style>
+</head>
+<body class="student-desk">
+<!-- STUDENT-DESK-ARROWS-20260929 -->
+<!-- ORDER-LISTEN-READ-SONG-20260930 -->
+<div class="app">
+  <header>
+    <div>
+      <h1 id="bookTitle">MRJ Decodables</h1>
+      <div id="modeBadge" style="font-size:.75rem;color:var(--muted)">Library</div>
+    </div>
+    <select id="langPick" style="max-width:42%;margin:0 6px"></select>
+    <button id="btnLibrary">📚 Books</button>
+    <button id="btnSwitch" type="button">Switch</button>
+  </header>
+  <div id="signStage" hidden></div>
+  <div id="libStage" class="stage panel hidden">
+    <div class="library" id="libList"></div>
+  </div>
+  <div id="introStage" class="stage panel hidden">
+    <div id="introBody"></div>
+    <button id="introGo" style="width:100%;margin-top:16px">Next</button>
+  </div>
+  <div id="bookStage" class="stage hidden">
+    <div class="art" id="art"></div>
+    <div class="sentence" id="sentence"></div>
+    <div class="langline" id="langLine"></div>
+    <div class="status" id="status"></div>
+    <div class="nav">
+      <button id="prev">◀</button>
+      <button id="play">▶ Listen</button>
+      <button id="next">▶</button>
+    </div>
+  </div>
+  <div id="workStage" class="stage panel hidden">
+    <div id="workBody"></div>
+  </div>
+</div>
+<div class="bar">
+  <div class="bar-row">
+    <button id="mListen">Listen</button>
+    <button id="mRead">Read</button>
+    <button id="mSong">Song</button>
+    <button id="mDict">Dictation</button>
+    <button id="mSay">Say</button>
+  </div>
+</div>
+<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/ort/ort.all.min.js"></script>
+<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/engine.js"></script>
+<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/audio.js"></script>
+<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/grade-browser.js"></script>
+<link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
+<script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
+<script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
+<script src="decodable-progress.js?v=dec71-20261007-merge"></script>
+<script>
+const TEST=false;
+const MRJ_BUILD='dec71-20261007-merge';
+const ASSET_V='dec20261008split'';
+const PROGRAM='decodable';
+const SAVE_THROTTLE_MS=17000;
+const STUDENT_KEY='mrj-dec-student';
+const PIN_KEY='mrj-dec-pin';
+const AUTH_URL='https://script.google.com/macros/s/AKfycbwtJTUO3gbcMrlAwsn1feWxyp7Rw2cxpfe1bOT9v2rxmQHa2Tlc6pFNWAjU6ZAdlD6kFQ/exec';
+const SCORE_URL='https://script.google.com/macros/s/AKfycbwIBPzcmJYkJP-uURVzyt8_7iF3mzGBTCp-omNA2sF3Hk5oGusHfOlPyhEnDl2XAJu82w/exec';
+const BASE=(function(){
+  const p=location.pathname;
+  if(/\.html?$/i.test(p)) return p.replace(/[^/]+$/,'');
+  return p.endsWith('/')?p:p+'/';
+})();
+const LISTEN_RATE=0.8;
+const LISTEN_LOOPS=3;
+const GRADE_PATH='/api/grade';
+(function bounceToMicHost(){
+  const h=location.hostname;
+  const loop=h==='127.0.0.1'||h==='localhost';
+  if(location.protocol==='http:' && !loop && location.port==='8765'){
+    location.replace('https://'+h+':8768'+location.pathname+location.search);
+  }
+})();
+const $=id=>document.getElementById(id);
+const asset=p=>BASE+'assets/'+String(p||'').replace(/^assets\//,'')+'?v='+ASSET_V;
+const SAVE='mrj_dec_progress_v4';
+let packLoadState='pending';
+let saveQueuePending=false;
+let saveTimer=0;
+let lastSaveAt=0;
+let loadRetryTimer=0;
+let loadRetryMs=5000;
+let packUsedAuthApi=false;
+const MAX_BOOKS=20;
+const SPEAK_DEFAULT=50;
+const SAY_MAX_TRIES=5;
+const DICT_N=5;
+const DICT_PASS=80;
+const COUSIN_META={no_latin_script:['ko','ja','zh-Hans','hi','ar'],latin_letters:{vi:'aăâbcdđeêghiklmnoôơpqrstuưvxy',es:'abcdefghijklmnñopqrstuvwxyz','pt-BR':'abcdefghijklmnopqrstuvwxyz',fr:'abcdefghijklmnopqrstuvwxyz',de:'abcdefghijklmnopqrstuvwxyzäöüß',id:'abcdefghijklmnopqrstuvwxyz',tr:'abcçdefgğhıijklmnoöprsştuüvyz',it:'abcdefghijklmnopqrstuvwxyz',pl:'aąbcćdeęfghijklłmnńoóprsśtuwyzźż'}};
+const SOUND_HINT={a:'/æ/ · sat',m:'/m/ · mat',s:'/s/ · sat',t:'/t/ · sat',p:'/p/ · tap',i:'/ɪ/ · pit',n:'/n/ · ant',f:'/f/ · fan',o:'/ɑ/ · pot',d:'/d/ · dad',c:'/k/ · cat',u:'/ʌ/ · sun',g:'/g/ · dog',v:'/v/ · van',b:'/b/ · bug',e:'/ɛ/ · bed',k:'/k/ · kid',h:'/h/ · hot',r:'/r/ · rat',l:'/l/ · log',w:'/w/ · web',j:'/dʒ/ · jam',y:'/j/ · yes',x:'/ks/ · fox'};
+const LETTER_KIND={a:'short_vowel',e:'short_vowel',i:'short_vowel',o:'short_vowel',u:'short_vowel',c:'hard_consonant'};
+function letterKind(L){ return LETTER_KIND[String(L||'').toLowerCase()]||'consonant'; }
+function letterTitle(L){
+  const U=String(L||'').toUpperCase();
+  const k=letterKind(L);
+  if(k==='short_vowel') return 'The short vowel '+U;
+  if(k==='long_vowel') return 'The long vowel '+U;
+  if(k==='hard_consonant') return 'The hard consonant '+U;
+  if(k==='soft_consonant') return 'The soft consonant '+U;
+  return 'The consonant '+U;
+}
+function soundLine(id){
+  const fromLetters=(NEW_LETTERS[id]||[]).map(L=>letterTitle(L).replace(/^The /,'')).join(' · ');
+  if(fromLetters) return fromLetters;
+  const b=(lib&&lib.books||[]).find(x=>x.id===id);
+  return (b&&b.sound)||'';
+}
+const NEW_LETTERS={mlr_dec_001:['a','m','s','t'],mlr_dec_002:['p'],mlr_dec_003:['i'],mlr_dec_004:['n'],mlr_dec_005:['f'],mlr_dec_006:['o'],mlr_dec_007:['d'],mlr_dec_008:['c'],mlr_dec_009:['u'],mlr_dec_010:['g'],mlr_dec_011:['b'],mlr_dec_012:['e'],mlr_dec_013:['k'],mlr_dec_014:['h'],mlr_dec_015:['r'],mlr_dec_016:['l'],mlr_dec_017:['w'],mlr_dec_018:['j'],mlr_dec_019:['y'],mlr_dec_020:['x']};
+const SOUND_CARD={
+  mlr_dec_021:{show:'QU', sub:'', hint:'/kw/ · squid', mouth:'qu', say:'qu'},
+  mlr_dec_022:{show:'V', sub:'', hint:'/v/ · van', mouth:'v', say:'v'},
+  mlr_dec_023:{show:'Z', sub:'', hint:'/z/ · zip', mouth:'z', say:'z'},
+  mlr_dec_024:{show:'S', sub:'cats · dogs', hint:'/s/ and /z/', mouth:'s', say:'s'},
+  mlr_dec_025:{show:'FF LL SS ZZ', sub:'', hint:'double letters', mouth:'ff', say:'ff'},
+  mlr_dec_026:{show:'ALL', sub:'', hint:'ball · call', mouth:'all', say:'all'},
+  mlr_dec_027:{show:'CK', sub:'', hint:'/k/ · duck', mouth:'ck', say:'ck'},
+  mlr_dec_028:{show:'L blends', sub:'bl · cl · fl · gl · pl', hint:'blend with L', mouth:'lblends', say:'lblends'},
+  mlr_dec_029:{show:'R blends', sub:'br · cr · dr · fr · gr · pr · tr', hint:'blend with R', mouth:'rblends', say:'rblends'},
+  mlr_dec_030:{show:'S blends', sub:'st · sp · sn · sm · sk · sl', hint:'blend with S', mouth:'sblends', say:'sblends'},
+  mlr_dec_031:{show:'End blends', sub:'nd · nt · mp · ft', hint:'blend at the end', mouth:'endblends', say:'endblends'},
+  mlr_dec_032:{show:'SH', sub:'', hint:'/ʃ/ · ship', mouth:'sh', say:'sh'},
+  mlr_dec_033:{show:'CH', sub:'', hint:'/tʃ/ · chip', mouth:'ch', say:'ch'},
+  mlr_dec_034:{show:'TH', sub:'thin', hint:'/θ/ · thin', mouth:'th', say:'th'},
+  mlr_dec_035:{show:'TH', sub:'this', hint:'/ð/ · this', mouth:'dh', say:'dh'},
+  mlr_dec_036:{show:'WH', sub:'', hint:'/w/ · whip', mouth:'wh', say:'wh'},
+  mlr_dec_037:{show:'NG', sub:'', hint:'/ŋ/ · song', mouth:'ng', say:'ng'},
+  mlr_dec_038:{show:'NK', sub:'', hint:'/ŋk/ · bank', mouth:'nk', say:'nk'},
+  mlr_dec_039:{show:'TCH', sub:'', hint:'/tʃ/ · match', mouth:'tch', say:'tch'},
+  mlr_dec_040:{show:'DGE', sub:'', hint:'/dʒ/ · bridge', mouth:'dge', say:'dge'},
+  mlr_dec_041:{show:'PH', sub:'', hint:'/f/ · phone', mouth:'', say:'ph'},
+  mlr_dec_042:{show:'A_E', sub:'cake', hint:'long A', mouth:'', say:'ae'},
+  mlr_dec_043:{show:'I_E', sub:'bike', hint:'long I', mouth:'', say:'ie'},
+  mlr_dec_044:{show:'O_E', sub:'home', hint:'long O', mouth:'', say:'oe'},
+  mlr_dec_045:{show:'U_E', sub:'cube', hint:'long U', mouth:'', say:'ue'},
+  mlr_dec_046:{show:'E_E', sub:'these', hint:'long E', mouth:'', say:'ee'},
+  mlr_dec_047:{show:'ED', sub:'jumped · played · wanted', hint:'/t/ /d/ /id/', mouth:'', say:'ed'},
+  mlr_dec_048:{show:'ING', sub:'', hint:'/ɪŋ/ · singing', mouth:'', say:'ing'},
+  mlr_dec_049:{show:'CE', sub:'', hint:'/s/ · ice', mouth:'', say:'ce'},
+  mlr_dec_050:{show:'GE', sub:'', hint:'/dʒ/ · page', mouth:'', say:'ge'},
+  mlr_dec_051:{show:'AR', sub:'', hint:'/ɑr/ · car', mouth:'', say:'ar'},
+  mlr_dec_052:{show:'OR', sub:'', hint:'/ɔr/ · for', mouth:'', say:'or'},
+  mlr_dec_053:{show:'ER', sub:'', hint:'/ər/ · her', mouth:'', say:'er'},
+  mlr_dec_054:{show:'IR', sub:'', hint:'/ər/ · bird', mouth:'', say:'ir'},
+  mlr_dec_055:{show:'UR', sub:'', hint:'/ər/ · turn', mouth:'', say:'ur'},
+  mlr_dec_056:{show:'OPEN', sub:'go · me · we · he', hint:'open syllable', mouth:'', say:'open'},
+  mlr_dec_057:{show:'Y', sub:'my', hint:'/aɪ/', mouth:'', say:'yi'},
+  mlr_dec_058:{show:'Y', sub:'happy', hint:'/i/', mouth:'', say:'ye'},
+  mlr_dec_059:{show:'LE', sub:'', hint:'/əl/ · little', mouth:'', say:'le'},
+  mlr_dec_060:{show:'OLD', sub:'ild · ind · ost', hint:'kind · most', mouth:'', say:'old'},
+  mlr_dec_061:{show:'AI / AY', sub:'', hint:'rain · day', mouth:'', say:'ai'},
+  mlr_dec_062:{show:'EE', sub:'', hint:'/i/ · see', mouth:'', say:'ee2'},
+  mlr_dec_063:{show:'EA', sub:'eat', hint:'/i/ · eat', mouth:'', say:'ea'},
+  mlr_dec_064:{show:'IGH', sub:'', hint:'/aɪ/ · night', mouth:'', say:'igh'},
+  mlr_dec_065:{show:'OA', sub:'', hint:'/oʊ/ · boat', mouth:'', say:'oa'},
+  mlr_dec_066:{show:'OO', sub:'moon', hint:'/u/ · moon', mouth:'', say:'oo'},
+  mlr_dec_067:{show:'OO', sub:'book', hint:'/ʊ/ · book', mouth:'', say:'oo2'},
+  mlr_dec_068:{show:'OU / OW', sub:'cow', hint:'/aʊ/', mouth:'', say:'ou'},
+  mlr_dec_069:{show:'OI / OY', sub:'', hint:'/ɔɪ/ · boy', mouth:'', say:'oi'},
+  mlr_dec_070:{show:'AU / AW', sub:'', hint:'/ɔ/ · saw', mouth:'', say:'au'},
+  mlr_dec_071:{show:'SCHWA', sub:'about · panda', hint:'lazy vowel', mouth:'', say:'schwa'},
+  mlr_dec_072:{show:'EY', sub:'they', hint:'long A', mouth:'', say:'ey'},
+  mlr_dec_073:{show:'EA', sub:'bread', hint:'short E', mouth:'', say:'ea2'},
+  mlr_dec_074:{show:'OW', sub:'snow', hint:'long O', mouth:'', say:'ow'},
+  mlr_dec_075:{show:'EW', sub:'new', hint:'/u/ · new', mouth:'', say:'ew'},
+  mlr_dec_076:{show:'AIR', sub:'hair · care', hint:'air', mouth:'', say:'air'},
+  mlr_dec_077:{show:'EAR', sub:'hear', hint:'ear', mouth:'', say:'ear'},
+  mlr_dec_078:{show:'KN', sub:'know', hint:'silent K', mouth:'', say:'kn'},
+  mlr_dec_079:{show:'WR', sub:'write', hint:'silent W', mouth:'', say:'wr'},
+  mlr_dec_080:{show:'MB', sub:'lamb', hint:'silent B', mouth:'', say:'mb'},
+  mlr_dec_081:{show:'T', sub:'listen', hint:'silent T', mouth:'', say:'sil_t'},
+  mlr_dec_082:{show:'C', sub:'city', hint:'soft C', mouth:'', say:'softc'},
+  mlr_dec_083:{show:'G', sub:'giant', hint:'soft G', mouth:'', say:'softg'},
+  mlr_dec_084:{show:'CH', sub:'school', hint:'/k/', mouth:'', say:'chk'},
+  mlr_dec_085:{show:'O', sub:'son · love', hint:'/uh/', mouth:'', say:'ouh'},
+  mlr_dec_086:{show:'TION', sub:'action', hint:'/shun/', mouth:'', say:'tion'},
+  mlr_dec_087:{show:'SION', sub:'vision', hint:'/zhun/', mouth:'', say:'sion'},
+  mlr_dec_088:{show:'TURE', sub:'nature', hint:'/cher/', mouth:'', say:'ture'},
+  mlr_dec_089:{show:'IE', sub:'field', hint:'long E', mouth:'', say:'iee'},
+  mlr_dec_090:{show:'IE', sub:'pie', hint:'long I', mouth:'', say:'iei'},
+  mlr_dec_091:{show:'UI', sub:'fruit', hint:'/oo/', mouth:'', say:'ui'},
+  mlr_dec_092:{show:'GN', sub:'sign', hint:'silent G', mouth:'', say:'gn'},
+  mlr_dec_093:{show:'H', sub:'ghost', hint:'silent H', mouth:'', say:'sil_h'},
+  mlr_dec_094:{show:'SC', sub:'science', hint:'/s/', mouth:'', say:'sc'},
+  mlr_dec_095:{show:'TI', sub:'special', hint:'/sh/', mouth:'', say:'ti'},
+  mlr_dec_096:{show:'AGE', sub:'village', hint:'/ij/', mouth:'', say:'age'},
+  mlr_dec_097:{show:'OUS', sub:'famous', hint:'/us/', mouth:'', say:'ous'},
+  mlr_dec_098:{show:'Y', sub:'gym', hint:'short I', mouth:'', say:'yi2'},
+  mlr_dec_099:{show:'GH', sub:'laugh', hint:'/f/', mouth:'', say:'gh'},
+  mlr_dec_100:{show:'EIGH', sub:'eight · weigh', hint:'long A', mouth:'', say:'eigh'}
+
+};
+const TAUGHT={mlr_dec_001:['a','m','s','t'],mlr_dec_002:['a','m','s','t','p'],mlr_dec_003:['a','m','s','t','p','i'],mlr_dec_004:['a','m','s','t','p','i','n'],mlr_dec_005:['a','m','s','t','p','i','n','f'],mlr_dec_006:['a','m','s','t','p','i','n','f','o'],mlr_dec_007:['a','m','s','t','p','i','n','f','o','d'],mlr_dec_008:['a','m','s','t','p','i','n','f','o','d','c'],mlr_dec_009:['a','m','s','t','p','i','n','f','o','d','c','u'],mlr_dec_010:['a','m','s','t','p','i','n','f','o','d','c','u','g']};
+let lib=null, i18n=null, pack=null, pageIndex=0, mode='library', audio=null, listenGen=0, hlRaf=0;
+let introStep='mode', cousinIdx=0;
+let introDone=false;      // sound + famous + any pre-video finished -> Listen opens
+let preVideoDone=false;   // this book's start video (lawbreaker chase) played through
+let tapped=new Set(), heardListen=new Set(), heardSong=new Set();
+let sheriffOk=false;
+let clipDone=false, showLang=true, lang='ko';
+let dictBuilt=[], dictQueue=[], dictIdx=0, dictRight=0, dictRate=0.8;
+let speakRec=null, sayPage=0, micCtx=null, lastYouBlob=null, lastTestBook=null;
+let sayTries=0, sayBest=0, sayAdvanceTimer=0;
+
+function blankProg(){ return (window.MRJDecodableProgress && MRJDecodableProgress.blankProg) ? MRJDecodableProgress.blankProg() : {passed:false,listen:false,song:false,read:false,dictation:false,speak:false,readPages:{},difficulty:null,dictScore:null,speakPages:{}}; }
+function studentIdKey(){
+  const name=studentName();
+  if(window.MRJDecodableProgress && MRJDecodableProgress.studentIdKeyFromName){
+    return MRJDecodableProgress.studentIdKeyFromName(name);
+  }
+  if(!name) return '';
+  return name.trim().toLowerCase().replace(/\s+/g,' ');
+}
+function saveStorageKey(){
+  const idk=studentIdKey();
+  if(window.MRJDecodableProgress && MRJDecodableProgress.studentSaveKey){
+    return MRJDecodableProgress.studentSaveKey(idk);
+  }
+  return idk ? (SAVE+':'+idk) : '';
+}
+function readJsonKey(key){
+  try{ return JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){ return {}; }
+}
+function loadAll(){
+  const sk=saveStorageKey();
+  if(!sk) return {};
+  return readJsonKey(sk);
+}
+function saveAll(p){
+  const sk=saveStorageKey();
+  if(!sk) return;
+  localStorage.setItem(sk, JSON.stringify(p));
+}
+function bookProg(id){
+  const all=loadAll();
+  const name=studentName();
+  const bag=(all.byStudent&&name&&all.byStudent[name])||{};
+  return Object.assign(blankProg(), bag[id]||{});
+}
+function setBookProg(id, patch){
+  const all=loadAll();
+  const name=studentName()||'_';
+  all.byStudent=all.byStudent||{};
+  all.byStudent[name]=all.byStudent[name]||{};
+  all.byStudent[name][id]=Object.assign(blankProg(), all.byStudent[name][id]||{}, patch);
+  saveAll(all);
+  saveSheetProgress();
+}
+function settings(){ return Object.assign({parentLock:false,showLang:true,lang:'ko'}, loadAll()._settings||{}); }
+function setSettings(patch){ const all=loadAll(); all._settings=Object.assign(settings(), patch); saveAll(all); }
+function bookOrder(){ return (lib.books||[]).slice(0, MAX_BOOKS).map(b=>b.id); }
+function unlocked(id){ return bookOrder().includes(id); }
+function studentName(){
+  try {
+    if (window.MRJ_AUTH && MRJ_AUTH.student()) return String(MRJ_AUTH.student()).trim();
+    return String(localStorage.getItem(STUDENT_KEY)||'').trim();
+  } catch(e) { return ''; }
+}
+function studentPin(){ try{ return String(localStorage.getItem(PIN_KEY)||'').replace(/\D/g,'').slice(0,4); }catch(e){ return ''; } }
+function progressBlob(){
+  const name=studentName();
+  const idk=studentIdKey();
+  if(window.MRJDecodableProgress && MRJDecodableProgress.progressBlobFromStorage){
+    return MRJDecodableProgress.progressBlobFromStorage(function(k){ return localStorage.getItem(k); }, idk, name);
+  }
+  const all=loadAll();
+  const books=(all.byStudent&&all.byStudent[name])||{};
+  return JSON.stringify({v:1, books:books});
+}
+function applySheetProgress(raw){
+  const name=studentName();
+  if(!name) return {needsSave:false};
+  const parsed=(window.MRJDecodableProgress && MRJDecodableProgress.parseProgressJson)
+    ? MRJDecodableProgress.parseProgressJson(raw)
+    : {books:{},parseOk:false};
+  const serverBooks=parsed.books||{};
+  const all=loadAll();
+  all.byStudent=all.byStudent||{};
+  const localBooks=(all.byStudent&&all.byStudent[name])||{};
+  const merged=(window.MRJDecodableProgress && MRJDecodableProgress.mergeDecodableBooks)
+    ? MRJDecodableProgress.mergeDecodableBooks(localBooks, serverBooks)
+    : Object.assign({}, localBooks, serverBooks);
+  all.byStudent[name]=merged;
+  saveAll(all);
+  const needsSave=(window.MRJDecodableProgress && MRJDecodableProgress.needsSaveAfterMerge)
+    ? MRJDecodableProgress.needsSaveAfterMerge(merged, serverBooks)
+    : false;
+  return {needsSave:needsSave, merged:merged, serverBooks:serverBooks};
+}
+function sheetPost(url, body){
+  return fetch(url,{
+    method:'POST',
+    headers:{'Content-Type':'text/plain;charset=utf-8'},
+    body:JSON.stringify(body)
+  }).then(function(r){ return r.json(); }).catch(function(){ return null; });
+}
+function packSaveAllowed(){
+  if(packLoadState!=='loaded') return false;
+  if(packUsedAuthApi && window.MRJ_AUTH && typeof MRJ_AUTH.packReady==='function'){
+    return MRJ_AUTH.packReady(PROGRAM);
+  }
+  return true;
+}
+function flushRemoteSave(force){
+  if(!packSaveAllowed()) return;
+  const name=studentName();
+  const token=window.MRJ_AUTH && MRJ_AUTH.token();
+  if(!name || !token) return;
+  const now=Date.now();
+  if(!force && now-lastSaveAt<SAVE_THROTTLE_MS){
+    if(!saveTimer){
+      saveTimer=setTimeout(function(){ saveTimer=0; flushRemoteSave(true); }, SAVE_THROTTLE_MS-(now-lastSaveAt));
+    }
+    return;
+  }
+  if(saveTimer){ clearTimeout(saveTimer); saveTimer=0; }
+  lastSaveAt=now;
+  saveQueuePending=false;
+  const json=progressBlob();
+  if(packUsedAuthApi && window.MRJ_AUTH && typeof MRJ_AUTH.savePack==='function'){
+    MRJ_AUTH.savePack(PROGRAM, json);
+    return;
+  }
+  sheetPost(AUTH_URL, {action:'save_pack', id:name, token:token, program:PROGRAM, progress_json:json});
+}
+function saveSheetProgress(){
+  const name=studentName();
+  const token=window.MRJ_AUTH && MRJ_AUTH.token();
+  if(!name || !token) return;
+  if(packLoadState!=='loaded'){
+    saveQueuePending=true;
+    return;
+  }
+  flushRemoteSave(false);
+}
+function loadPackFromServer(){
+  const id=studentName();
+  const token=window.MRJ_AUTH && MRJ_AUTH.token();
+  if(!id || !token) return Promise.resolve({ok:false, error:'bad_token'});
+  if(window.MRJ_AUTH && typeof MRJ_AUTH.loadPack==='function'){
+    packUsedAuthApi=true;
+    return MRJ_AUTH.loadPack(PROGRAM);
+  }
+  packUsedAuthApi=false;
+  return sheetPost(AUTH_URL, {action:'load_pack', id:id, token:token, program:PROGRAM}).then(function(res){
+    if(!res) return {ok:false, error:'network'};
+    if(res.ok===false) return res;
+    return {
+      ok:true,
+      found:!!res.found,
+      progress_json:res.progress_json!=null?String(res.progress_json):''
+    };
+  });
+}
+function schedulePackLoadRetry(){
+  if(loadRetryTimer) return;
+  loadRetryTimer=setTimeout(function(){
+    loadRetryTimer=0;
+    runPackLoad();
+    loadRetryMs=Math.min(loadRetryMs*2, 120000);
+  }, loadRetryMs);
+}
+function runPackLoad(){
+  packLoadState='pending';
+  loadPackFromServer().then(function(res){
+    if(!res || !res.ok){
+      packLoadState='failed';
+      schedulePackLoadRetry();
+      if(studentName()) showLib();
+      return;
+    }
+    loadRetryMs=5000;
+    packLoadState='loaded';
+    const serverJson=res.found?(res.progress_json||''):'';
+    const applied=applySheetProgress(serverJson);
+    if(applied && applied.needsSave) flushRemoteSave(true);
+    else if(saveQueuePending) flushRemoteSave(false);
+    if(studentName()) showLib();
+  });
+}
+function reportProgress(bookId, itemId, completed, scorePct){
+  const name=studentName();
+  if(!name || !bookId || !itemId) return;
+  const event={
+    event_id:'dec-'+bookId+'-'+itemId+'-'+Date.now().toString(36),
+    event_kind:'decodable_progress',
+    source:'decodable',
+    app_name:'MRJ Decodables',
+    curriculum_program:'decodable',
+    book_title:bookId,
+    item_id:itemId,
+    item_type:'section',
+    completed:completed===true,
+    metadata_json:JSON.stringify({student:name, section:itemId})
+  };
+  if(scorePct!=null && isFinite(+scorePct)) event.score_pct=Math.round(+scorePct);
+  sheetPost(SCORE_URL, {
+    student_email:'unknown',
+    student_name:name,
+    session_id:'decodable-'+name,
+    events:[event]
+  });
+  saveSheetProgress();
+}
+function speakScorePct(){
+  const sp=bookProg(pack.book_id).speakPages||{};
+  const vals=Object.keys(sp).map(k=>+sp[k]).filter(n=>isFinite(n));
+  if(!vals.length) return null;
+  return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
+}
+function syncModeLocks(){
+  const bp=pack?bookProg(pack.book_id):null;
+  $('mListen').disabled=!(bp && introDone);   // Listen stays dead until the start is done
+  $('mRead').disabled=!(bp && bp.listen);
+  $('mSong').disabled=!(bp && bp.listen && bp.read);
+  $('mDict').disabled=!(bp && bp.listen && bp.read && bp.song);
+  $('mSay').disabled=!(bp && bp.listen && bp.read && bp.song && bp.dictation);
+}
+function showSign(){ return; }
+function gloss(lem){ return ((pack&&pack.glossary&&pack.glossary.entries)||[]).find(x=>x.lemma===lem); }
+function sayTarget(text){
+  const words=String(text||'').match(/[A-Za-z']+/g)||[];
+  if(words.length===1){
+    const w=words[0];
+    return w+', '+w+', '+w;
+  }
+  return text;
+}
+function tokens(s){ return String(s||'').toLowerCase().replace(/[^a-z'\\s]/g,' ').split(/\s+/).filter(Boolean); }
+function page(){ return pack.pages[pageIndex]; }
+function pageTr(){ const b=i18n.books[pack.book_id]; return (b && b.l1[lang] && b.l1[lang][pageIndex]) || ''; }
+
+function stopWordHighlight(){ if(hlRaf){ cancelAnimationFrame(hlRaf); hlRaf=0; } }
+function syncWordHighlight(a, gen){
+  stopWordHighlight();
+  const apply=()=>{
+    if(gen!==listenGen || audio!==a) return;
+    const els=[...$('sentence').querySelectorAll('.w')];
+    const n=els.length;
+    if(!n) return;
+    const d=a.duration;
+    let idx=0;
+    if(d && isFinite(d) && d>0){
+      const frac=Math.max(0, Math.min(0.999999, (a.currentTime||0)/d));
+      idx=Math.min(n-1, Math.floor(frac*n));
+    }
+    for(let i=0;i<n;i++) els[i].classList.toggle('on', i===idx);
+  };
+  const tick=()=>{
+    if(gen!==listenGen || audio!==a) return;
+    apply();
+    if(!a.paused && !a.ended) hlRaf=requestAnimationFrame(tick);
+  };
+  a.ontimeupdate=apply;
+  a.onloadedmetadata=apply;
+  apply();
+  hlRaf=requestAnimationFrame(tick);
+}
+function stopA(){
+  stopWordHighlight();
+  if(audio){ try{audio.pause();}catch(e){} audio.onended=null; audio.ontimeupdate=null; audio.onloadedmetadata=null; audio=null; }
+}
+function playPath(path, onend, rate){
+  stopA();
+  if(!path){
+    const st=$('status');
+    if(st) st.textContent='This page has no sound yet.';
+    return;
+  }
+  const a=new Audio(asset(path)); audio=a;
+  a.playbackRate = (rate==null?1:rate);
+  a.onended=()=>{ if(audio===a && onend) onend(); };
+  if(mode==='listen' || mode==='song') syncWordHighlight(a, listenGen);
+  a.play().catch(()=>{});
+}
+function playTimes(path, n, rate){
+  let left=Math.max(1, n|0);
+  const once=()=>{ if(left<=0) return; left--; playPath(path, once, rate); };
+  once();
+}
+function playWord(lem, onend){
+  playPath('books/'+pack.book_id+'/audio/words/'+lem+'.mp3', onend, 1);
+}
+
+async function boot(){
+  lib=await (await fetch(BASE+'assets/decodable_library.json?v='+ASSET_V)).json();
+  i18n=await (await fetch(BASE+'assets/decodable_i18n.json?v='+ASSET_V)).json();
+  lang=settings().lang||i18n.default||'ko';
+  showLang=settings().showLang!==false;
+  $('langPick').innerHTML=i18n.languages.map(l=>`<option value="${l.code}" ${l.code===lang?'selected':''}>${l.name}</option>`).join('');
+  $('langPick').onchange=e=>{
+    lang=e.target.value;
+    setSettings({lang});
+    if(!studentName() || mode==='sign'){ return; }
+    if(mode==='library' || !pack) showLib();
+    else if(mode==='intro') showIntro();
+    else if(mode==='listen'||mode==='song'||mode==='read') renderPage();
+    else if(mode==='dictation') startDictation();
+    else if(mode==='speak') renderSay();
+  };
+  $('btnLibrary').onclick=()=>{ if(studentName()) showLib(); };
+  $('btnSwitch').onclick=()=>{
+    localStorage.removeItem(STUDENT_KEY);
+    if (window.MRJ_AUTH && MRJ_AUTH.signOut) MRJ_AUTH.signOut();
+  };
+  $('mListen').onclick=()=>setMode('listen');
+  $('mSong').onclick=()=>setMode('song');
+  $('mRead').onclick=()=>setMode('read');
+  $('mDict').onclick=()=>setMode('dictation');
+  $('mSay').onclick=()=>setMode('speak');
+  try{
+    if(window.MRJPronounce){
+      MRJPronounce.setBase('https://mrjkorea.github.io/mrj-decodable-try/pronounce/');
+      MRJPronounce.load().then(()=>{pronounceLoaded=true;}).catch(()=>{});
+    }
+  }catch(e){}
+  $('prev').onclick=()=>go(-1);
+  $('next').onclick=()=>go(1);
+  $('play').onclick=()=>playPage(true);
+  $('introGo').onclick=()=>introAdvance();
+  window.addEventListener('pagehide', function(){ flushRemoteSave(true); });
+  window.addEventListener('mrj-auth-ready', function(ev){
+    const id=(ev.detail && ev.detail.id) || studentName();
+    if(!id) return;
+    localStorage.setItem(STUDENT_KEY, id);
+    runPackLoad();
+  });
+}
+function hideAll(){ ['signStage','libStage','introStage','bookStage','workStage'].forEach(id=>$(id).classList.add('hidden')); }
+function showLib(){
+  if(!studentName()) return;
+  if(pack && pack.book_id) lastTestBook=pack.book_id;
+  mode='library'; pack=null; stopA(); hideAll();
+  $('libStage').classList.remove('hidden');
+  $('bookTitle').textContent='MRJ Decodables';
+  const band=$('bandLink');
+  if(!$('bandLink')){
+    const back=document.createElement('a');
+    back.id='bandLink';
+    back.href='https://mrjkorea.github.io/mrj-decodable-try-61/';
+    back.target='_blank';
+    back.rel='noopener';
+    back.textContent='Books 61-80';
+    back.style.cssText='display:block;text-align:center;font-weight:900;margin:0 0 8px;color:#ffd84a';
+    $('libList').before(back);
+  }
+  $('modeBadge').textContent='Books 81-100'
+  const nextId=bookOrder().find(id=>unlocked(id) && !bookProg(id).passed)||'';
+  $('libList').innerHTML=bookOrder().map(id=>{
+    const b=lib.books.find(x=>x.id===id);
+    const open=unlocked(b.id), done=!!bookProg(b.id).passed;
+    const flag=done?'<span class="passed-mark">✓</span>':(b.id===nextId?'Next':'🔒 Pass the book before this');
+    return `<button class="card${open?'':' lock'}${done?' is-passed':''}" data-id="${b.id}" ${open?'':'disabled'}>
+      <img src="${asset(b.cover)}" alt="">
+      <div><b>${b.title}</b>
+      <div style="color:#a9b7d6;font-size:.85rem">${b.level} · ${soundLine(b.id)}</div>
+      <div class="card-flag" style="font-size:.95rem;margin-top:4px;font-weight:900">${flag}</div></div></button>`;
+  }).join('');
+  document.querySelectorAll('.card').forEach(el=>{ if(!el.disabled) el.onclick=()=>openBook(el.dataset.id); });
+  syncModeLocks();
+}
+async function openBook(id){
+  if(!studentName()) return;
+  if(!unlocked(id)) return;
+  pack=await (await fetch(BASE+'assets/align_'+id+'.json?v='+ASSET_V)).json();
+  pageIndex=0; tapped=new Set(); heardListen=new Set(); heardSong=new Set(); clipDone=false; sheriffOk=false;
+  const bp=bookProg(pack.book_id);
+  if(bp.readPages){ Object.keys(bp.readPages).forEach(k=>{ if(bp.readPages[k]){ const n=tokens((pack.pages[+k]||{}).text).length; for(let i=0;i<n;i++) tapped.add((+k)+':'+i); } }); }
+  $('bookTitle').textContent=pack.title;
+  introStep = 'cousin';
+  cousinIdx=0;
+  introDone=false;
+  preVideoDone=false;
+  showIntro();
+}
+
+function cousinLetters(){ return NEW_LETTERS[pack.book_id]||[]; }
+function cousinGlyph(letter){
+  const L=String(letter||'').toLowerCase();
+  if(!L) return '';
+  if((COUSIN_META.no_latin_script||[]).includes(lang)) return '';
+  const alpha=(COUSIN_META.latin_letters||{})[lang]||'';
+  return alpha.includes(L)?L:'';
+}
+
+function showIntro(){
+  mode='intro'; stopA(); hideAll();
+  $('introStage').classList.remove('hidden');
+  $('introGo').classList.remove('hidden');
+  syncModeLocks();
+  const famous=(pack.famous||[])[0]||'';
+  if(introStep==='cousin'){
+    const letters=cousinLetters();
+    const card=SOUND_CARD[pack.book_id];
+    if(card){
+      $('modeBadge').textContent=card.show;
+      const sub=card.sub?`<div class="hint">${card.sub}</div>`:'';
+      $('introBody').innerHTML=`<div class="onelet">
+        <div class="g-lbl">Main sound</div>
+        <div class="en" style="font-size:clamp(2.4rem,10vw,4.2rem)">${card.show}</div>
+        ${card.mouth?`<img src="${asset('decodable/mouth/'+card.mouth+'.svg')}" alt="Mouth diagram for ${card.show}" style="max-height:160px;width:auto;object-fit:contain;margin:10px auto;display:block">`:''}
+        ${sub}
+        <div class="hint">${card.hint||''}</div>
+      </div>`;
+      playPath('decodable/letter_names/'+card.say+'.mp3', null, 1);
+      $('introGo').textContent='Next';
+      return;
+    }
+    if(!letters.length){ introStep='famous-card'; showIntro(); return; }
+    const L=letters[cousinIdx];
+    const cu=cousinGlyph(L);
+    $('modeBadge').textContent=letterTitle(L);
+    const cousinBlock=cu
+      ? `<div class="g-lbl">Cousin in ${lang}</div><div class="cu">${cu}</div>`
+      : '';
+    $('introBody').innerHTML=`<div class="onelet">
+      <div class="g-lbl">${letterTitle(L)}</div>
+      <div class="en">${L.toUpperCase()}</div>
+      <img src="${asset('decodable/mouth/'+L+'.svg')}" alt="Mouth diagram for ${L.toUpperCase()}" style="max-height:160px;width:auto;object-fit:contain;margin:10px auto;display:block">
+      <div style="font-size:.65rem;color:var(--muted);margin-bottom:6px">Mouth picture: Wikimedia / IPA (CC BY-SA)</div>
+      ${cousinBlock}
+      <div class="hint">${SOUND_HINT[L]||''}</div>
+    </div>`;
+    playPath('decodable/letter_names/'+L+'.mp3', null, 1);
+    $('introGo').textContent = cousinIdx<letters.length-1 ? 'Next letter' : 'Next';
+    return;
+  }
+  if(introStep==='famous-card'){
+    if(!famous){ introStep='famous'; showIntro(); return; }
+    $('modeBadge').textContent='Famous word';
+    const word=String(famous).toLowerCase();
+    const label=word==='a'?'a  ·  uh':word;
+    $('introBody').innerHTML=`<div class="onelet">
+      <div class="g-lbl">Famous word</div>
+      <div class="en" style="font-size:4.2rem">${label}</div>
+      <div class="hint">Next: the red carpet.</div>
+    </div>`;
+    $('introGo').textContent='See the word';
+    return;
+  }
+  if(introStep==='famous'){
+    if(!famous){ setMode('listen'); return; }
+    $('modeBadge').textContent='Famous word';
+    const word=String(famous).toLowerCase();
+    const clips={};
+    const crowds={};
+    clips[word]='decodable/famous_carpet/famous_'+word+'_steps_out.mp4';
+    crowds[word]='decodable/famous_carpet/famous_'+word+'_crowd10.mp3';
+    const label=word==='a'?'uh':word;
+    const vid=asset(clips[word]||'decodable/famous_carpet/base_limo_door.mp4');
+    $('introBody').innerHTML=`<div class="scene" id="famousScene">
+      <video class="carpetVid" id="carpetVid" src="${vid}" autoplay muted playsinline webkit-playsinline></video>
+    </div>
+    <div class="g-lbl">Famous word</div>
+    <div style="color:var(--muted);font-weight:800">The crowd shouts <b>${label}</b>. Tap to hear it again.</div>`;
+    const scream=()=>{ if(crowds[word]) playPath(crowds[word], null, 1); };
+    const v=$('carpetVid');
+    if(v){
+      v.muted=true;
+      v.volume=0;
+      const kick=()=>v.play().catch(()=>{});
+      v.onloadedmetadata=kick;
+      kick();
+      v.ontimeupdate=()=>{ if(v.currentTime>=6.2 && !v._yelled){ v._yelled=true; scream(); } };
+      v.onclick=()=>{ v.currentTime=6.3; kick(); scream(); };
+    }
+    const scene=$('famousScene');
+    if(scene) scene.onclick=()=>{ if(v){ v.currentTime=6.3; v.play().catch(()=>{}); } scream(); };
+    $('introGo').textContent='Next';
+    return;
+  }
+  if(introStep==='chase'){
+    $('modeBadge').textContent='Chase';
+    const vid=asset('decodable/lawbreaker/chase.mp4');
+    $('introBody').innerHTML=`<div class="scene" id="chaseScene">
+      <video class="carpetVid" id="chaseVid" src="${vid}" autoplay playsinline webkit-playsinline></video>
+      <div class="catchLine">Can you catch the lawbreaker<span class="bigq">?</span></div>
+    </div>
+    <div class="g-lbl">Police chase</div>`;
+    $('introGo').textContent='Start Listen';
+    const v=$('chaseVid');
+    if(v){
+      v.volume=1;
+      const kick=()=>v.play().catch(()=>{});
+      v.onloadedmetadata=kick;
+      kick();
+      v.onended=()=>{ if(v.currentTime>0.5) preVideoDone=true; if(introStep==='chase'){ introDone=true; setMode('listen'); } };
+    }
+    return;
+  }
+  setMode('listen');
+}
+function chooseDiff(d){ setBookProg(pack.book_id,{difficulty:d}); startDictation(); }
+function introAdvance(){
+  if(introStep==='cousin'){
+    if(cousinIdx<cousinLetters().length-1){ cousinIdx++; showIntro(); return; }
+    introStep='famous-card'; showIntro(); return;
+  }
+  if(introStep==='famous-card'){
+    const fw=String((pack.famous||[])[0]||'').toLowerCase();
+    if(fw){ introStep='famous'; showIntro(); return; }
+    introStep='chase'; showIntro(); return;   // no famous word in this book -> go on, never skip to Listen
+  }
+  if(introStep==='famous'){
+    if((pack.law_breaker||[]).length){ introStep='chase'; showIntro(); return; }
+    introDone=true;   // no start video in this book -> the start is finished
+    setMode('listen'); return;
+  }
+  if(introStep==='chase'){
+    const v=$('chaseVid');
+    if(v){
+      const law=(pack.law_breaker||[]).length>0;
+      if(law && !preVideoDone) return;   // the start video must play through first
+      if(v.paused && !v.ended && !preVideoDone && v.currentTime<0.4){
+        v.muted=false; v.volume=1; v.play().catch(()=>{});
+        return;
+      }
+    }
+    introDone=true;
+    setMode('listen'); return;
+  }
+  setMode('listen');
+}
+
+function canEnter(m){
+  if(!pack) return false;
+  const bp=bookProg(pack.book_id);
+  if(m==='listen') return introDone;
+  if(m==='read') return !!bp.listen;
+  if(m==='song') return !!(bp.listen && bp.read);
+  if(m==='dictation') return !!(bp.listen && bp.read && bp.song);
+  if(m==='speak') return !!(bp.listen && bp.read && bp.song && bp.dictation);
+  if(m==='pass') return !!(bp.listen && bp.read && bp.song && bp.dictation && bp.speak);
+  return false;
+}
+function setMode(m){
+  if(!pack) return;
+  if(m!=='intro' && m!=='mode'){
+    // Listen (and everything after it) stays shut until the start is finished.
+    if(!introDone){
+      $('status').textContent='Finish the sound and the famous word first.';
+      showIntro();
+      return;
+    }
+    // The start is finished: never bounce back into the intro (that would relock Listen).
+    if(!canEnter(m)){
+      const bp=bookProg(pack.book_id);
+      if(!bp.listen) m='listen';
+      else if(!bp.read) m='read';
+      else if(!bp.song) m='song';
+      else if(!bp.dictation) m='dictation';
+      else if(!bp.speak) m='speak';
+      else m='pass';
+    }
+  } else if(!canEnter(m)){
+    m = introDone ? 'listen' : 'intro';
+  }
+  mode=m; stopA(); listenGen++; hideAll(); clipDone=false;
+  $('workStage').classList.remove('dict-fit');
+  $('modeBadge').textContent=m+' · '+(soundLine(pack.book_id)||pack.sound||'');
+  $('mListen').classList.toggle('active', m==='listen');
+  $('mSong').classList.toggle('active', m==='song');
+  $('mRead').classList.toggle('active', m==='read');
+  $('mDict').classList.toggle('active', m==='dictation');
+  $('mSay').classList.toggle('active', m==='speak');
+  syncModeLocks();
+  if(m==='listen-end'){ $('workStage').classList.remove('hidden'); renderListenEnd(); }
+  else if(m==='dictation'){ if(needsSheriff()){ showSheriff(); return; } $('workStage').classList.remove('hidden'); startDictation(); }
+  else if(m==='speak'){ $('workStage').classList.remove('hidden'); startSpeak(); }
+  else if(m==='pass'){ $('workStage').classList.remove('hidden'); renderPass(); }
+  else { $('bookStage').classList.remove('hidden'); renderPage(); }
+}
+function allTapped(){
+  if(mode!=='read') return true;
+  if((bookProg(pack.book_id).readPages||{})[pageIndex]) return true;
+  const n=tokens(page().text).length;
+  for(let i=0;i<n;i++){ if(!tapped.has(pageIndex+':'+i)) return false; }
+  return n>0;
+}
+function arrowsFree(){
+  if(!pack) return false;
+  if(mode!=='listen' && mode!=='song' && mode!=='read') return false;
+  const bp=bookProg(pack.book_id);
+  return !!(bp.listen && bp.song && bp.read);
+}
+function syncArrows(){
+  const prev=$('prev'), next=$('next');
+  prev.classList.remove('hidden');
+  next.classList.remove('hidden');
+  prev.textContent='◀';
+  next.textContent='▶';
+  prev.disabled=pageIndex<=0;
+  next.disabled=nextLocked();
+}
+function nextLocked(){
+  if(arrowsFree()) return false;
+  if(mode==='read') return !allTapped();
+  if(mode==='listen') return !(clipDone || heardListen.has(pageIndex));
+  if(mode==='song') return !(clipDone || heardSong.has(pageIndex));
+  return false;
+}
+function go(d){
+  if(d<0){
+    if(pageIndex<=0) return;
+  } else if(nextLocked()){
+    $('status').textContent = mode==='read' ? 'Tap every word first.' : (mode==='listen' ? 'Listen to this page 3 times first.' : 'Listen to the end of this page first.');
+    return;
+  }
+  const nxt=pageIndex+d;
+  if(nxt<0) return;
+  listenGen++;
+  stopA();
+  if(nxt>=pack.pages.length){
+    if(mode==='listen'){ setBookProg(pack.book_id,{listen:true}); reportProgress(pack.book_id,'listen',true); pageIndex=0; setMode('read'); return; }
+    if(mode==='read'){ setBookProg(pack.book_id,{read:true}); reportProgress(pack.book_id,'read',true); pageIndex=0; setMode('song'); return; }
+    if(mode==='song'){ setBookProg(pack.book_id,{song:true}); reportProgress(pack.book_id,'song',true); setMode('dictation'); return; }
+    return;
+  }
+  pageIndex=nxt; clipDone=false; renderPage();
+}
+function renderListenEnd(){
+  $('workBody').innerHTML=`<div class="pass">Listen finished</div>
+    <div style="text-align:center;color:var(--muted);font-weight:800">Now the singing section.</div>
+    <button id="goSong" style="width:100%;margin-top:18px;background:linear-gradient(135deg,#4d7dff,#7a5cff)">🎵 Sing this book</button>`;
+  $('goSong').onclick=()=>{ pageIndex=0; setMode('song'); };
+}
+function renderPage(){
+  const p=page();
+  const vid=p.has_video && p.video;
+  $('art').innerHTML=vid
+    ? `<video src="${asset(p.video)}" poster="${asset(p.image)}" autoplay muted loop playsinline></video>`
+    : `<img src="${asset(p.image)}" alt="">`;
+  const parts=p.text.split(/(\s+)/);
+  let wi=0;
+  $('sentence').innerHTML=parts.map(w=>{
+    if(!w.trim()) return w;
+    const lemma=w.replace(/[^A-Za-z']/g,'').toLowerCase();
+    const done=mode==='read' && (tapped.has(pageIndex+':'+wi) || (bookProg(pack.book_id).readPages||{})[pageIndex]);
+    const html=`<span class="w${done?' done':''}" data-lem="${lemma}" data-i="${wi}">${w}</span>`;
+    wi++; return html;
+  }).join('');
+  $('sentence').querySelectorAll('.w').forEach(el=>el.onclick=()=>onWordTap(el));
+  $('langLine').textContent = showLang ? pageTr() : '';
+  $('langLine').classList.toggle('hidden', !showLang || !pageTr());
+  let need='';
+  if(mode==='read') need=allTapped()?'All words tapped.':'Tap every word.';
+  if(mode==='listen'||mode==='song') need=(clipDone|| (mode==='listen'?heardListen:heardSong).has(pageIndex))?'Page heard.':'Play to the end.';
+  $('status').textContent=`${pageIndex+1} / ${pack.pages.length}`+(need?' · '+need:'');
+  $('play').classList.remove('hidden');
+  $('play').textContent = mode==='song' ? '▶ Song' : '▶ Listen';
+  syncArrows();
+  if(mode==='listen' || mode==='song') playPage(false);
+}
+function playPage(manual){
+  const p=page();
+  const path = mode==='song' ? p.song_audio : p.audio;
+  clipDone=false; $('next').disabled=nextLocked();
+  const rate = mode==='listen' ? LISTEN_RATE : 1;
+  const gen=++listenGen;
+  const startPage=pageIndex;
+  const startMode=mode;
+  if(mode==='listen'){
+    let loop=0;
+    const playOnce=()=>{
+      if(gen!==listenGen || pageIndex!==startPage || mode!=='listen') return;
+      loop++;
+      $('status').textContent=`Listen ${loop} / ${LISTEN_LOOPS}`;
+      playPath(path, ()=>{
+        if(gen!==listenGen || pageIndex!==startPage || mode!=='listen') return;
+        if(loop<LISTEN_LOOPS){ playOnce(); return; }
+        clipDone=true;
+        heardListen.add(pageIndex);
+        document.querySelectorAll('.w').forEach(e=>e.classList.remove('on'));
+        $('next').disabled=nextLocked();
+        $('status').textContent=`${pageIndex+1} / ${pack.pages.length} · Page heard.`;
+        if(manual) return;
+        go(1);
+      }, rate);
+    };
+    playOnce();
+    return;
+  }
+  playPath(path, ()=>{
+    if(gen!==listenGen || pageIndex!==startPage || mode!==startMode) return;
+    clipDone=true;
+    if(mode==='song') heardSong.add(pageIndex);
+    document.querySelectorAll('.w').forEach(e=>e.classList.remove('on'));
+    $('next').disabled=nextLocked();
+    $('status').textContent=`${pageIndex+1} / ${pack.pages.length} · Page heard.`;
+    if(manual) return;
+    go(1);
+  }, rate);
+}
+function onWordTap(el){
+  const lem=el.dataset.lem, i=+el.dataset.i;
+  document.querySelectorAll('.w').forEach(w=>w.classList.remove('on'));
+  if(mode==='read'){
+    const wasDone=!!(bookProg(pack.book_id).readPages||{})[pageIndex];
+    el.classList.add('on');
+    tapped.add(pageIndex+':'+i); el.classList.add('done');
+    if(allTapped()){
+      const rp=Object.assign({}, bookProg(pack.book_id).readPages||{});
+      rp[pageIndex]=true; setBookProg(pack.book_id,{readPages:rp});
+      playWord(lem, ()=>{ if(mode==='read' && !wasDone) go(1); });
+      return;
+    }
+  }
+  playWord(lem);
+}
+
+function tileWord(el){ try{ return decodeURIComponent(el.dataset.word||''); }catch(e){ return el.dataset.word||''; } }
+function unique(a){ return [...new Set(a)]; }
+function dictLettersOf(s){ return String(s||'').replace(/[^A-Za-z]/g,'').split(''); }
+function renderEasyTpl(text, filled){
+  let i=0;
+  return dictEasyTokens(text).map(tok=>{
+    if(/[A-Za-z]/.test(tok)){
+      const v=filled[i++]||'';
+      const safe=String(v||'___').replace(/&/g,'&amp;').replace(/</g,'&lt;');
+      return `<span class="blank${v?' on':''}">${safe}</span>`;
+    }
+    const safe=String(tok).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return `<span class="given">${safe}</span>`;
+  }).join(' ');
+}
+function renderDictTpl(text, filled){
+  let i=0;
+  return [...String(text||'')].map(ch=>{
+    if(/[A-Za-z]/.test(ch)){
+      const v=filled[i++]||'';
+      return `<span class="blank${v?' on':''}">${v||'_'}</span>`;
+    }
+    if(ch===' ') return `<span class="gap"></span>`;
+    const safe=String(ch).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+    return `<span class="given">${safe}</span>`;
+  }).join('');
+}
+function dictNorm(s){ return String(s||'').toLowerCase().replace(/[^a-z\s]/g,' ').replace(/\s+/g,' ').trim(); }
+function dictWordsOf(s){ return dictNorm(s).split(' ').filter(Boolean); }
+function dictEasyTokens(s){
+  const out=[];
+  const re=/[A-Za-z']+|[,.!?;:]+|[“”"…]+/g;
+  let m; const src=String(s||'');
+  while((m=re.exec(src))) out.push(m[0]);
+  return out;
+}
+function dictEasyJoin(arr){
+  return (arr||[]).reduce((s,t)=> /[,.!?;:”"…]/.test(t) ? s+t : (s?s+' ':'')+t, '');
+}
+function dictDisplayWords(s){ return dictEasyTokens(s).filter(w=>/[A-Za-z]/.test(w)); }
+function shuffle(a){ const b=a.slice(); for(let i=b.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [b[i],b[j]]=[b[j],b[i]]; } return b; }
+function dictSpeaker(){
+  const raw=((pack.voices||{}).dictation_label)||'Harper';
+  const names={Harper:'Miss Harper',Coach:'Coach Ray',Grandma:'Grandma June',Grandpa:'Grandpa Walt',Maya:'Maya',Leo:'Leo',Cowboy:'Cowboy',Nia:'Nia',Pirate:'Pirate',Car:'the Car'};
+  const name=names[raw]||raw;
+  const face=raw==='Harper'
+    ? `<img src="${asset('decodable/harper.png')}" alt="Miss Harper">`
+    : raw==='Coach'
+    ? `<img src="${asset('decodable/coach.png')}" alt="Coach Ray">`
+    : raw==='Grandma'
+    ? `<img src="${asset('decodable/grandma.png')}" alt="Grandma June">`
+    : raw==='Grandpa'
+    ? `<img src="${asset('decodable/grandpa.png')}" alt="Grandpa Walt">`
+    : raw==='Nia'
+    ? `<img src="${asset('decodable/nia.png')}" alt="Nia">`
+    : raw==='Car'
+    ? `<img src="${asset('decodable/car.png')}" alt="the Car">`
+    : raw==='Pirate'
+    ? `<img src="${asset('decodable/pirate.png')}" alt="Pirate">`
+    : `<div class="label" style="font-size:2rem;margin-bottom:6px">${name}</div>`;
+  return `<div class="speaker">${face}<div class="label">${name} · says the sentence</div></div>`;
+}
+function dictItems(){
+  const locked=(pack.dictation&&pack.dictation.items)||[];
+  if(locked.length>=DICT_N) return locked.slice(0,DICT_N);
+  const prefer=pack.pages.filter(p=>dictWordsOf(p.text).length>=2);
+  const pool=prefer.length?prefer:pack.pages;
+  return pool.slice(0,DICT_N).map(p=>({page_id:p.page_id,text:p.text,audio:p.audio}));
+}
+function fillerWords(targetTokens){
+  const have=new Set(targetTokens.map(w=>w.toLowerCase()));
+  const bank=unique(pack.pages.flatMap(p=>dictDisplayWords(p.text))).filter(w=>!have.has(w.toLowerCase()));
+  return shuffle(bank).slice(0,3);
+}
+function lawWord(){
+  const w=(pack&&pack.law_breaker&&pack.law_breaker[0])||'';
+  return String(w).trim().toLowerCase();
+}
+function needsSheriff(){ return !!lawWord() && !sheriffOk; }
+function showSheriff(){
+  mode='sheriff'; stopA(); hideAll();
+  $('workStage').classList.remove('hidden');
+  $('modeBadge').textContent='Sheriff';
+  $('mListen').classList.remove('active');
+  $('mSong').classList.remove('active');
+  $('mRead').classList.remove('active');
+  $('mDict').classList.add('active');
+  $('mSay').classList.remove('active');
+  const vid=asset('decodable/lawbreaker/sheriff.mp4');
+  $('workBody').innerHTML=`<div class="sheriffBan">
+      <div class="hey">Hey</div>
+      <div class="lb">Lawbreaker!</div>
+      <div class="ask">Hey Lawbreaker, what's your name?</div>
+    </div>
+    <div class="scene" style="min-height:46vh">
+      <video class="carpetVid" id="sheriffVid" src="${vid}" playsinline webkit-playsinline></video>
+    </div>
+    <div class="g-lbl">Sheriff</div>
+    <input id="sheriffName" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false" enterkeyhint="go" style="width:100%;padding:14px;border-radius:14px;border:0;font-size:1.5rem;font-weight:900;text-align:center;background:#1b2740;color:#fff">
+    <button id="sheriffGo" style="width:100%;margin-top:10px">That's my name</button>
+    <div id="sheriffMsg" class="status"></div>`;
+  const v=$('sheriffVid');
+  if(v){ v.volume=1; v.play().catch(()=>playPath('decodable/lawbreaker/ask.mp3', null, 1)); }
+  const go=()=>checkSheriff();
+  $('sheriffGo').onclick=go;
+  $('sheriffName').onkeydown=e=>{ if(e.key==='Enter'){ e.preventDefault(); go(); } };
+  setTimeout(()=>{ const i=$('sheriffName'); if(i) i.focus(); }, 300);
+}
+function checkSheriff(){
+  const typed=String(($('sheriffName')||{}).value||'').trim().toLowerCase().replace(/[^a-z]/g,'');
+  const want=lawWord().replace(/[^a-z]/g,'');
+  if(!typed) return;
+  if(typed===want){ sheriffOk=true; playNervousThenJail(); return; }
+  const msg=$('sheriffMsg'); if(msg) msg.innerHTML="Don't lie to <span class=\"me\">me</span>.";
+  const inp=$('sheriffName'); if(inp){ inp.value=''; inp.focus(); }
+  const v=$('sheriffVid'); if(v){ try{v.pause();}catch(e){} }
+  playPath('decodable/lawbreaker/dont_lie.mp3', ()=>{
+    const vv=$('sheriffVid');
+    if(vv){ vv.currentTime=0; vv.play().catch(()=>{}); }
+  }, 1);
+}
+function playNervousThenJail(){
+  mode='nervous'; stopA(); hideAll();
+  $('workStage').classList.remove('hidden');
+  $('modeBadge').textContent='Lawbreaker';
+  const word=lawWord();
+  const safe=String(word).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+  const vid=asset('decodable/lawbreaker/end_'+word+'.mp4');
+  $('workBody').innerHTML=`<div class="scene" style="min-height:52vh">
+      <video class="carpetVid" id="nervVid" src="${vid}" autoplay playsinline webkit-playsinline></video>
+    </div>
+    <div class="nervousWord">${safe}</div>
+    <div class="nervousLine">I am ${safe}.</div>`;
+  const v=$('nervVid');
+  const done=()=>{ if(mode==='nervous') setMode('dictation'); };
+  if(!v){ done(); return; }
+  v.onended=done;
+  v.onerror=()=>{
+    if(mode!=='nervous') return;
+    playPath('decodable/lawbreaker/nervous_'+word+'.mp3', ()=>{ if(mode==='nervous') playJailVideo(); }, 1);
+  };
+  v.play().catch(()=>{
+    if($('nervSkip')) return;
+    $('workBody').insertAdjacentHTML('beforeend','<button id="nervSkip" style="width:100%;margin-top:10px">Next</button>');
+    $('nervSkip').onclick=done;
+  });
+}
+function playJailVideo(){
+  mode='jail'; stopA(); hideAll();
+  $('workStage').classList.remove('hidden');
+  $('modeBadge').textContent='Jail';
+  const word=lawWord();
+  const vid=asset('decodable/lawbreaker/jail_'+word+'.mp4');
+  $('workBody').innerHTML=`<div class="scene" style="min-height:52vh">
+      <video class="carpetVid" id="jailVid" src="${vid}" playsinline webkit-playsinline></video>
+    </div>`;
+  const v=$('jailVid');
+  const done=()=>{ if(mode==='jail') setMode('dictation'); };
+  if(!v){ done(); return; }
+  v.onended=done;
+  const kick=()=>v.play().catch(()=>{
+    if($('jailSkip')) return;
+    $('workBody').insertAdjacentHTML('beforeend','<button id="jailSkip" style="width:100%;margin-top:10px">Next</button>');
+    $('jailSkip').onclick=done;
+  });
+  kick();
+}
+function startDictation(){
+  $('workStage').classList.add('dict-fit');
+  if(!bookProg(pack.book_id).difficulty){
+    $('workBody').innerHTML=`<div class="g-lbl">Dictation</div>
+      <div style="font-weight:800;margin:10px 0 16px">Easy = put the words in order. Hard = type the letters. Punctuation is already there.</div>
+      <div class="choice"><button id="pickEasy">Easy</button><button id="pickHard">Hard</button></div>`;
+    $('pickEasy').onclick=()=>chooseDiff('easy');
+    $('pickHard').onclick=()=>chooseDiff('hard');
+    return;
+  }
+  dictQueue=dictItems(); dictIdx=0; dictRight=0; nextDict();
+}
+function markDict(ok){
+  if(ok) dictRight++;
+  dictIdx++;
+  setTimeout(nextDict, 380);
+}
+function paintBuiltEasy(){
+  const el=$('built');
+  if(!dictBuilt.length){ el.textContent='…'; return; }
+  el.innerHTML=dictBuilt.map((w,i)=>`<span class="chip" data-i="${i}">${w}</span>`).join('');
+  el.querySelectorAll('.chip').forEach(ch=>ch.onclick=()=>{
+    const i=+ch.dataset.i;
+    const word=dictBuilt[i];
+    dictBuilt.splice(i,1);
+    const tile=[...document.querySelectorAll('.tile')].find(b=>b.classList.contains('used') && tileWord(b)===word);
+    if(tile) tile.classList.remove('used');
+    paintBuiltEasy();
+  });
+}
+function paintSpeedBtns(){
+  [['spd100',1],['spd80',0.8],['spd50',0.5]].forEach(([id,r])=>{
+    const b=$(id); if(!b) return;
+    b.classList.toggle('active', Math.abs(dictRate-r)<0.01);
+    b.onclick=()=>{ dictRate=r; paintSpeedBtns(); };
+  });
+}
+function nextDict(){
+  if(dictIdx>=dictQueue.length){
+    const pct=Math.round(100*dictRight/dictQueue.length);
+    if(pct>=DICT_PASS){ setBookProg(pack.book_id,{dictation:true,dictScore:pct}); reportProgress(pack.book_id,'dictation',true,pct); setMode('speak'); }
+    else {
+      reportProgress(pack.book_id,'dictation',false,pct);
+      $('workBody').innerHTML=`<div class="pass">${pct}%</div>
+        <div style="text-align:center">Need 80% on 5 sentences. Try again.</div>
+        <button id="retryD" style="width:100%;margin-top:14px">Try dictation again</button>`;
+      $('retryD').onclick=()=>startDictation();
+    }
+    return;
+  }
+  const item=dictQueue[dictIdx];
+  const targetTokens=dictEasyTokens(item.text);
+  const wordTokens=targetTokens.filter(w=>/[A-Za-z]/.test(w));
+  const hard=(bookProg(pack.book_id).difficulty||'easy')==='hard';
+  dictBuilt=[];
+  let tilesHtml='';
+  if(hard){
+    tilesHtml=`<div class="az">${'abcdefghijklmnopqrstuvwxyz'.split('').map(t=>`<button class="tile" data-ch="${t}">${t}</button>`).join('')}<button class="tile" data-ch="del">⌫</button></div>`;
+  } else {
+    const tiles=shuffle([
+      ...wordTokens.map((w,i)=>({id:'t'+i,word:w})),
+      ...fillerWords(wordTokens).map((w,i)=>({id:'f'+i,word:w}))
+    ]);
+    tilesHtml=`<div class="tiles">${tiles.map(t=>`<button class="tile" data-id="${t.id}" data-word="${encodeURIComponent(t.word)}">${t.word.replace(/</g,'&lt;')}</button>`).join('')}</div>`;
+  }
+  $('workBody').innerHTML=`
+    <div class="dict-layout">
+      <div class="dict-side">
+        ${dictSpeaker()}
+        <div class="choice"><button id="pickEasy" class="${hard?'':'active'}">Easy</button><button id="pickHard" class="${hard?'active':''}">Hard</button></div>
+      </div>
+      <div class="dict-main">
+        <div class="g-lbl">Dictation ${dictIdx+1} / ${dictQueue.length} · ${hard?'Hard · letters':'Easy · words'}</div>
+        <div class="tpl" id="built">${hard?renderDictTpl(item.text,[]):renderEasyTpl(item.text,[])}</div>
+        ${tilesHtml}
+        <div class="repeat spd">
+          <button id="spd100" type="button">100%</button>
+          <button id="spd80" type="button">80%</button>
+          <button id="spd50" type="button">50%</button>
+          <button id="hear1x" type="button">1x</button>
+          <button id="hear3x" type="button">3x</button>
+          <button id="hear5x" type="button">5x</button>
+        </div>
+        <button id="clearWord">Clear</button>
+        <div class="status" id="dictStatus">Need 4 of 5. Right so far: ${dictRight}</div>
+      </div>
+    </div>`;
+  const hearN=n=>playTimes(item.audio, n, dictRate);
+  paintSpeedBtns();
+  const pe=$('pickEasy'), ph=$('pickHard');
+  if(pe) pe.onclick=()=>chooseDiff('easy');
+  if(ph) ph.onclick=()=>chooseDiff('hard');
+  $('hear1x').onclick=()=>hearN(1);
+  $('hear3x').onclick=()=>hearN(3);
+  $('hear5x').onclick=()=>hearN(5);
+  $('clearWord').onclick=()=>{
+    dictBuilt=[];
+    if(hard) $('built').innerHTML=renderDictTpl(item.text,[]);
+    else { $('built').innerHTML=renderEasyTpl(item.text,[]); document.querySelectorAll('.tile').forEach(b=>b.classList.remove('used')); }
+  };
+  if(hard){
+    const need=dictLettersOf(item.text);
+    document.querySelectorAll('.az .tile, .tile').forEach(b=>b.onclick=()=>{
+      const ch=b.dataset.ch;
+      if(!ch) return;
+      if(ch==='del') dictBuilt.pop();
+      else if(dictBuilt.length<need.length) dictBuilt.push(ch);
+      $('built').innerHTML=renderDictTpl(item.text, dictBuilt);
+      if(dictBuilt.length>=need.length){
+        const ok=dictBuilt.join('').toLowerCase()===need.join('').toLowerCase();
+        markDict(ok);
+      }
+    });
+  } else {
+    document.querySelectorAll('.tiles .tile').forEach(b=>b.onclick=()=>{
+      if(b.classList.contains('used')) return;
+      b.classList.add('used');
+      dictBuilt.push(tileWord(b));
+      $('built').innerHTML=renderEasyTpl(item.text, dictBuilt);
+      if(dictBuilt.length>=wordTokens.length){
+        const ok=dictBuilt.map(w=>w.toLowerCase()).join(' ')===wordTokens.map(w=>w.toLowerCase()).join(' ');
+        markDict(ok);
+      }
+    });
+  }
+  hearN(1);
+}
+
+function gradeUrl(){
+  if(location.protocol==='https:') return GRADE_PATH;
+  return 'https://'+location.hostname+':8768'+GRADE_PATH;
+}
+function isSecureCtx(){
+  return window.isSecureContext || location.protocol==='https:' || location.hostname==='127.0.0.1' || location.hostname==='localhost';
+}
+function unlockMic(){
+  const C=window.AudioContext||window.webkitAudioContext;
+  if(!C) return null;
+  if(!micCtx || micCtx.state==='closed') micCtx=new C();
+  if(micCtx.state==='suspended') micCtx.resume().catch(()=>{});
+  return micCtx;
+}
+let pronounceLoaded=false, gradeBarTimer=null;
+function loadbarLabel(stage){
+  if(stage==='session') return 'Starting scorer…';
+  if(stage==='grade') return 'Checking your speaking…';
+  if(stage==='done') return 'Ready';
+  return 'Loading scorer…';
+}
+function setLoadbar({stage,pct}){
+  const bar=$('loadbar'), fill=$('loadbarFill'), lbl=$('loadbarLbl');
+  if(!bar||!fill||!lbl) return;
+  bar.classList.remove('hidden');
+  fill.style.width=Math.min(100,Math.max(0,pct))+'%';
+  lbl.textContent=loadbarLabel(stage)+' '+Math.round(pct)+'%';
+}
+function hideLoadbar(){
+  if(gradeBarTimer){ clearInterval(gradeBarTimer); gradeBarTimer=null; }
+  const bar=$('loadbar');
+  if(bar) bar.classList.add('hidden');
+}
+function onPronounceProgress(ev){ setLoadbar(ev); if(ev&&ev.pct>=100) pronounceLoaded=true; }
+function kickPronouncePreload(){
+  if(!window.MRJPronounce || pronounceLoaded) return;
+  MRJPronounce.load(onPronounceProgress).then(()=>{
+    pronounceLoaded=true;
+    hideLoadbar();
+  }).catch(()=>hideLoadbar());
+}
+function startGradeBarAnim(from){
+  const bar=$('loadbar');
+  if(!bar) return;
+  bar.classList.remove('hidden');
+  let pct=from||40;
+  if(gradeBarTimer) clearInterval(gradeBarTimer);
+  gradeBarTimer=setInterval(()=>{
+    pct=Math.min(96,pct+1.8);
+    setLoadbar({stage:'grade',pct});
+  },100);
+}
+function paintSayChips(text, words){
+  const parts=String(text||'').split(/(\s+)/);
+  let wi=0;
+  const scored=(words||[]).filter(w=>w && w.word);
+  $('sayLineText').innerHTML=parts.map(tok=>{
+    if(!tok.trim()) return tok;
+    const lemma=tok.replace(/[^A-Za-z']/g,'').toLowerCase();
+    if(!lemma) return tok.replace(/</g,'&lt;');
+    const w=scored[wi];
+    wi++;
+    if(!w){
+      return `<span class="word-chip pending">${tok.replace(/</g,'&lt;')}<span class="wsub">·</span></span>`;
+    }
+    const ws=Math.round(100*(w.score||0));
+    const b=ws>=80?'good':(ws>=65?'ok':'needs_work');
+    return `<span class="word-chip ${b}">${tok.replace(/</g,'&lt;')}<span class="wsub">${ws}%</span></span>`;
+  }).join('');
+}
+function sayWho(){
+  try{ if(typeof studentName==='function') return studentName()||'_'; }catch(e){}
+  return '_';
+}
+function saySlot(){
+  return 'mrj_say5_'+sayWho()+'_'+((pack&&pack.book_id)||'')+'_'+sayPage;
+}
+function sayTriesLoad(){
+  sayBest=0;
+  try{
+    const raw=JSON.parse(localStorage.getItem(saySlot())||'null');
+    if(!raw) return 0;
+    sayBest=+raw.best||0;
+    return +raw.tries||0;
+  }catch(e){ return 0; }
+}
+function sayTriesSave(){
+  try{ localStorage.setItem(saySlot(), JSON.stringify({tries:sayTries, best:sayBest})); }catch(e){}
+}
+function sayTriesClear(){
+  try{ localStorage.removeItem(saySlot()); }catch(e){}
+}
+function armSayAdvance(bestNow){
+  const pageNow=sayPage;
+  if(sayAdvanceTimer) clearTimeout(sayAdvanceTimer);
+  sayAdvanceTimer=setTimeout(()=>{
+    sayAdvanceTimer=0;
+    if(mode==='speak' && sayPage===pageNow) finishSayPage(bestNow, false);
+  }, 900);
+}
+function startSpeak(){
+  const bp=bookProg(pack.book_id);
+  sayPage = Object.keys(bp.speakPages||{}).length;
+  if(sayPage>=pack.pages.length){
+    if(!bp.speak){
+      setBookProg(pack.book_id,{speak:true});
+      reportProgress(pack.book_id,'speak',true,speakScorePct());
+    }
+    setMode('pass');
+    return;
+  }
+  renderSay();
+}
+function renderSay(){
+  if(sayAdvanceTimer){ clearTimeout(sayAdvanceTimer); sayAdvanceTimer=0; }
+  sayTries=sayTriesLoad();
+  if(sayTries>=SAY_MAX_TRIES){
+    const best=sayBest;
+    sayTriesClear();
+    finishSayPage(best, false);
+    return;
+  }
+  const p=pack.pages[sayPage];
+  const sayText=sayTarget(p.text);
+  const triple=sayText!==p.text;
+  const sayTr=(i18n.books[pack.book_id]&&i18n.books[pack.book_id].l1&&i18n.books[pack.book_id].l1[lang]&&i18n.books[pack.book_id].l1[lang][sayPage])||'';
+  $('workBody').innerHTML=`
+    <div class="g-lbl">Say the page · ${sayPage+1} / ${pack.pages.length}</div>
+    <div class="g-en" id="sayLineText"></div>
+    <div class="langline">${showLang? sayTr : ''}</div>
+    <div class="loadbar hidden" id="loadbar"><div class="loadbar-track"><div id="loadbarFill"></div></div><div id="loadbarLbl"></div></div>
+    <div class="status" id="speakStatus">${triple? 'One word. Say it 3 times, with a little pause. Pass is '+SPEAK_DEFAULT+'%. You get '+SAY_MAX_TRIES+' tries.' : 'Listen, then tap the mic and say it. Pass is '+SPEAK_DEFAULT+'%. You get '+SAY_MAX_TRIES+' tries.'}</div>
+    <div class="say-controls">
+      <button id="hearLine" type="button" title="Listen" aria-label="Listen">🔊</button>
+      <button id="sayLine" class="btn-rec" type="button" title="Speak" aria-label="Speak">🎙️</button>
+      <button id="sayStop" class="btn-stop hidden" type="button" title="Stop" aria-label="Stop">⏹️</button>
+    </div>
+    <div class="rec-bars hidden" id="recBars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div id="wordScores"></div>
+    <div class="status" id="speakHeard"></div>
+    <button id="sayNext" class="hidden" type="button" style="width:100%;margin-top:12px;background:linear-gradient(135deg,#4d7dff,#7a5cff)">Next</button>`;
+  paintSayChips(sayText, null);
+  $('hearLine').onclick=()=> triple ? playTimes(p.audio, 3, LISTEN_RATE) : playPath(p.audio, null, LISTEN_RATE);
+  wireRecorder(sayText);
+  kickPronouncePreload();
+}
+function wireRecorder(line){
+  const btn=$('sayLine');
+  const stopBtn=$('sayStop');
+  const bars=$('recBars');
+  let rec=null, chunks=[], stream=null, watch=null, analyser=null;
+  const hideLive=()=>{
+    stopBtn.classList.add('hidden');
+    bars.classList.add('hidden');
+    if(watch){ clearInterval(watch); watch=null; }
+  };
+  const stop=()=>{
+    if(rec && rec.state!=='inactive') rec.stop();
+  };
+  const start=async ()=>{
+    unlockMic();
+    const nx=$('sayNext'); if(nx) nx.classList.add('hidden');
+    $('speakStatus').textContent='Listening… speak now';
+    $('speakHeard').textContent='';
+    $('wordScores').innerHTML='';
+    chunks=[];
+    stream=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true}});
+    rec=new MediaRecorder(stream);
+    rec.ondataavailable=e=>{ if(e.data && e.data.size) chunks.push(e.data); };
+    rec.onstop=async ()=>{
+      hideLive();
+      stream.getTracks().forEach(t=>t.stop());
+      const blob=new Blob(chunks, {type: rec.mimeType||'audio/webm'});
+      lastYouBlob=blob;
+      await gradeBlob(line, blob);
+    };
+    rec.start();
+    stopBtn.classList.remove('hidden');
+    bars.classList.remove('hidden');
+    const ctx=unlockMic();
+    if(ctx){
+      const src=ctx.createMediaStreamSource(stream);
+      analyser=ctx.createAnalyser();
+      analyser.fftSize=512;
+      const silent=ctx.createGain(); silent.gain.value=0;
+      src.connect(analyser); analyser.connect(silent); silent.connect(ctx.destination);
+      const data=new Uint8Array(analyser.fftSize);
+      let quiet=0, heard=false;
+      watch=setInterval(()=>{
+        analyser.getByteTimeDomainData(data);
+        let sum=0; for(let i=0;i<data.length;i++){ const v=(data[i]-128)/128; sum+=v*v; }
+        const rms=Math.sqrt(sum/data.length);
+        const kids=[...bars.querySelectorAll('i')];
+        kids.forEach((el,i)=>{ el.style.height=Math.max(6, Math.min(28, rms*140 + (i%3)*3))+'px'; });
+        if(rms>0.04){ heard=true; quiet=0; $('speakStatus').textContent='Hearing you…'; }
+        else if(heard){ quiet++; if(quiet>10) stop(); }
+      }, 120);
+    }
+  };
+  btn.onclick=async ev=>{
+    ev.preventDefault();
+    if(rec && rec.state==='recording') return;
+    try{ await start(); }
+    catch(e){ $('speakStatus').textContent='Mic blocked. Allow the microphone, then tap 🎙️ again.'; }
+  };
+  stopBtn.onclick=ev=>{ ev.preventDefault(); stop(); };
+}
+async function gradeBlob(line, blob){
+  const nx=$('sayNext'); if(nx) nx.classList.add('hidden');
+  $('speakStatus').textContent='Checking your speaking…';
+  if(!window.MRJPronounce){
+    hideLoadbar();
+    $('speakStatus').textContent='Scoring engine missing. Reload the page.';
+    return;
+  }
+  let j;
+  try{
+    if(!pronounceLoaded) setLoadbar({stage:'download',pct:5});
+    await MRJPronounce.load(onPronounceProgress);
+    $('speakStatus').textContent='Checking your speaking…';
+    startGradeBarAnim(pronounceLoaded?55:30);
+    j=await MRJPronounce.grade(blob, line);
+  }catch(e){
+    hideLoadbar();
+    $('speakStatus').textContent='Scoring failed. Tap 🎙️ again. '+(e && e.message ? e.message : '');
+    return;
+  }
+  hideLoadbar();
+  if(j.meta && String(j.meta.scoring_mode||'').startsWith('stub')){
+    $('speakStatus').textContent='Grader came back stub. Real model did not load.';
+    return;
+  }
+  const sc=Math.round(100*(j.overall&&j.overall.score||0));
+  const band=(j.overall&&j.overall.band)||'';
+  $('speakHeard').textContent=sc+'% · '+band+' · '+(j.model_id||'');
+  paintSayChips(line, j.words||[]);
+  $('wordScores').innerHTML='';
+  if(sc>=SPEAK_DEFAULT){
+    $('speakStatus').textContent=sc+'% — you passed! Tap Next.';
+    const nextBtn=$('sayNext');
+    if(nextBtn){
+      nextBtn.classList.remove('hidden');
+      nextBtn.onclick=()=>finishSayPage(sc);
+    }
+  }else{
+    sayTries++;
+    if(sc>sayBest) sayBest=sc;
+    sayTriesSave();
+    if(sayTries>=SAY_MAX_TRIES){
+      $('speakStatus').textContent=sc+'% — 5 tries. Next page.';
+      const mic=$('sayLine'); if(mic) mic.disabled=true;
+      armSayAdvance(sayBest);
+    }else $('speakStatus').textContent=sc+'% — try '+sayTries+' of '+SAY_MAX_TRIES+'. Say it again.';
+  }
+}
+function finishSayPage(score){
+  sayTriesClear();
+  const sp=Object.assign({}, bookProg(pack.book_id).speakPages||{});
+  sp[sayPage]=score; setBookProg(pack.book_id,{speakPages:sp});
+  sayPage++;
+  if(sayPage>=pack.pages.length){
+    setBookProg(pack.book_id,{speak:true});
+    reportProgress(pack.book_id,'speak',true,speakScorePct());
+    setMode('pass');
+  }
+  else renderSay();
+}
+function renderPass(){
+  const bp=bookProg(pack.book_id);
+  const firstPass=!bp.passed;
+  setBookProg(pack.book_id,{passed:true,listen:true,song:true,read:true,dictation:true,speak:true});
+  if(firstPass) reportProgress(pack.book_id,'passed',true);
+  const order=bookOrder(); const i=order.indexOf(pack.book_id); const nxt=order[i+1];
+  $('workBody').innerHTML=`<div class="pass">✅ ${pack.title} passed</div>
+    <div style="text-align:center;color:var(--muted)">Listen → button → Song → tap every word → 5 sentences (80%) → say every page.</div>
+    <div style="text-align:center;margin-top:8px">Dictation ${bp.dictScore||''}%</div>
+    <button id="backLib" style="width:100%;margin-top:16px">📚 Books</button>
+    ${nxt?`<button id="nextBook" style="width:100%;margin-top:8px;background:linear-gradient(135deg,#4d7dff,#7a5cff)">Next book</button>`:''}`;
+  $('backLib').onclick=()=>showLib();
+  if(nxt) $('nextBook').onclick=()=>openBook(nxt);
+}
+function testGo(d){
+  if(!TEST) return;
+  if(mode==='library' || !pack){
+    if(d>0){
+      const id=(lastTestBook && bookOrder().includes(lastTestBook)) ? lastTestBook : bookOrder()[0];
+      if(id) openBook(id);
+    }
+    return;
+  }
+  if(mode==='intro'){
+    if(d<0){ testBackIntro(); return; }
+    introAdvance();
+    return;
+  }
+  if(mode==='listen' || mode==='song' || mode==='read'){
+    const nxt=pageIndex+d;
+    if(nxt<0){
+      if(mode==='listen'){
+        introStep=(pack.law_breaker||[]).length ? 'chase' : 'famous';
+        showIntro();
+        return;
+      }
+      if(mode==='song'){ setMode('listen-end'); return; }
+      pageIndex=pack.pages.length-1; setMode('song'); return;
+    }
+    if(nxt>=pack.pages.length){
+      if(mode==='listen'){ setMode('listen-end'); return; }
+      if(mode==='song'){ pageIndex=0; setMode('read'); return; }
+      if(needsSheriff()){ showSheriff(); return; }
+      jumpDict(0); return;
+    }
+    pageIndex=nxt; clipDone=true; renderPage();
+    return;
+  }
+  if(mode==='sheriff'){
+    if(d<0){ pageIndex=pack.pages.length-1; setMode('read'); return; }
+    return;
+  }
+  if(mode==='nervous'){
+    if(d<0){ sheriffOk=false; showSheriff(); return; }
+    playJailVideo(); return;
+  }
+  if(mode==='jail'){
+    if(d<0){ sheriffOk=false; showSheriff(); return; }
+    setMode('dictation'); return;
+  }
+  if(mode==='listen-end'){
+    if(d<0){ pageIndex=pack.pages.length-1; setMode('listen'); return; }
+    pageIndex=0; setMode('song'); return;
+  }
+  if(mode==='dictation'){
+    if($('pickEasy') && !$('hear1x')){
+      if(d<0){ pageIndex=pack.pages.length-1; setMode('read'); return; }
+      setBookProg(pack.book_id,{difficulty:'easy'});
+      jumpDict(0); return;
+    }
+    if(d<0){
+      if(dictIdx>0){ jumpDict(dictIdx-1); return; }
+      pageIndex=pack.pages.length-1; setMode('read'); return;
+    }
+    if(dictIdx<dictQueue.length-1){ jumpDict(dictIdx+1); return; }
+    sayPage=0; setMode('speak'); return;
+  }
+  if(mode==='speak'){
+    if(d<0){
+      if(sayPage>0){ sayPage--; renderSay(); return; }
+      jumpDict(Math.max(0, (dictItems().length||1)-1)); return;
+    }
+    if(sayPage<pack.pages.length-1){ sayPage++; renderSay(); return; }
+    setMode('pass'); return;
+  }
+  if(mode==='pass'){
+    if(d<0){ sayPage=pack.pages.length-1; setMode('speak'); return; }
+    const order=bookOrder();
+    const i=order.indexOf(pack.book_id);
+    if(order[i+1]) openBook(order[i+1]);
+    else showLib();
+  }
+}
+function testBackIntro(){
+  const letters=cousinLetters();
+  if(introStep==='cousin'){
+    if(cousinIdx>0){ cousinIdx--; showIntro(); return; }
+    showLib(); return;
+  }
+  if(introStep==='famous-card'){
+    if(letters.length){ introStep='cousin'; cousinIdx=letters.length-1; showIntro(); return; }
+    showLib(); return;
+  }
+  if(introStep==='famous'){ introStep='famous-card'; showIntro(); return; }
+  if(introStep==='chase' || introStep==='jail'){ introStep='famous'; showIntro(); return; }
+  showLib();
+}
+function jumpDict(idx){
+  setBookProg(pack.book_id,{difficulty: bookProg(pack.book_id).difficulty || 'easy'});
+  dictQueue=dictItems();
+  dictIdx=Math.max(0, Math.min(idx, Math.max(0, dictQueue.length-1)));
+  dictRight=0;
+  mode='dictation'; stopA(); listenGen++; hideAll(); clipDone=false;
+  $('modeBadge').textContent='dictation · '+(soundLine(pack.book_id)||pack.sound||'');
+  $('mListen').classList.remove('active');
+  $('mSong').classList.remove('active');
+  $('mRead').classList.remove('active');
+  $('mDict').classList.add('active');
+  $('mSay').classList.remove('active');
+  $('workStage').classList.remove('hidden');
+  nextDict();
+}
+boot();
+</script>
+</body>
+</html>

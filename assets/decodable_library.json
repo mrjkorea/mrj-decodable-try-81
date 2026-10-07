@@ -1,0 +1,165 @@
+{
+  "product": "decodable",
+  "books": [
+    {
+      "id": "mlr_dec_081",
+      "title": "A Castle Often Wins",
+      "level": "DEC 081",
+      "sound": "silent t",
+      "align": "align_mlr_dec_081.json",
+      "cover": "books/mlr_dec_081/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_082",
+      "title": "Why a Circus Is a Circle",
+      "level": "DEC 082",
+      "sound": "soft c",
+      "align": "align_mlr_dec_082.json",
+      "cover": "books/mlr_dec_082/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_083",
+      "title": "The Gentle Giant",
+      "level": "DEC 083",
+      "sound": "soft g",
+      "align": "align_mlr_dec_083.json",
+      "cover": "books/mlr_dec_083/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_084",
+      "title": "The Hidden K",
+      "level": "DEC 084",
+      "sound": "ch /k/",
+      "align": "align_mlr_dec_084.json",
+      "cover": "books/mlr_dec_084/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_085",
+      "title": "Onion Pie for Mother",
+      "level": "DEC 085",
+      "sound": "o /uh/",
+      "align": "align_mlr_dec_085.json",
+      "cover": "books/mlr_dec_085/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_086",
+      "title": "Nothing Moves for Free",
+      "level": "DEC 086",
+      "sound": "-tion",
+      "align": "align_mlr_dec_086.json",
+      "cover": "books/mlr_dec_086/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_087",
+      "title": "Television Is Dots. Vision Does the Rest.",
+      "level": "DEC 087",
+      "sound": "-sion",
+      "align": "align_mlr_dec_087.json",
+      "cover": "books/mlr_dec_087/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_088",
+      "title": "A Trap for Pictures, Not for Creatures",
+      "level": "DEC 088",
+      "sound": "-ture",
+      "align": "align_mlr_dec_088.json",
+      "cover": "books/mlr_dec_088/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_089",
+      "title": "A Field Is a Flat Piece of Land",
+      "level": "DEC 089",
+      "sound": "ie field",
+      "align": "align_mlr_dec_089.json",
+      "cover": "books/mlr_dec_089/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_090",
+      "title": "Zara, the Pie and the Magpie",
+      "level": "DEC 090",
+      "sound": "ie pie",
+      "align": "align_mlr_dec_090.json",
+      "cover": "books/mlr_dec_090/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_091",
+      "title": "Fruit Is Mostly Juice",
+      "level": "DEC 091",
+      "sound": "ui",
+      "align": "align_mlr_dec_091.json",
+      "cover": "books/mlr_dec_091/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_092",
+      "title": "The Gnat Cloud Knows Us",
+      "level": "DEC 092",
+      "sound": "gn",
+      "align": "align_mlr_dec_092.json",
+      "cover": "books/mlr_dec_092/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_093",
+      "title": "The Ghost Letter",
+      "level": "DEC 093",
+      "sound": "silent h",
+      "align": "align_mlr_dec_093.json",
+      "cover": "books/mlr_dec_093/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_094",
+      "title": "Scent: The Bit of You That Floats",
+      "level": "DEC 094",
+      "sound": "sc /s/",
+      "align": "align_mlr_dec_094.json",
+      "cover": "books/mlr_dec_094/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_095",
+      "title": "Rosa's Ancient Drum Needs No Plug",
+      "level": "DEC 095",
+      "sound": "ti / ci",
+      "align": "align_mlr_dec_095.json",
+      "cover": "books/mlr_dec_095/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_096",
+      "title": "Every Package Has a Trip",
+      "level": "DEC 096",
+      "sound": "-age",
+      "align": "align_mlr_dec_096.json",
+      "cover": "books/mlr_dec_096/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_097",
+      "title": "Enormous Is Not Dangerous",
+      "level": "DEC 097",
+      "sound": "-ous",
+      "align": "align_mlr_dec_097.json",
+      "cover": "books/mlr_dec_097/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_098",
+      "title": "The y That Says i Is a Greek Word Wearing a Hat",
+      "level": "DEC 098",
+      "sound": "y gym",
+      "align": "align_mlr_dec_098.json",
+      "cover": "books/mlr_dec_098/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_099",
+      "title": "A Laugh Is Rough Air",
+      "level": "DEC 099",
+      "sound": "gh /f/",
+      "align": "align_mlr_dec_099.json",
+      "cover": "books/mlr_dec_099/pages/p01.webp"
+    },
+    {
+      "id": "mlr_dec_100",
+      "title": "Eight Boxes, One Sleigh, and What Chen Really Weighs",
+      "level": "DEC 100",
+      "sound": "eigh",
+      "align": "align_mlr_dec_100.json",
+      "cover": "books/mlr_dec_100/pages/p01.webp"
+    }
+  ]
+}

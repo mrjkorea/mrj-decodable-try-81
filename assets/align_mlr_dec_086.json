@@ -1,0 +1,196 @@
+{
+  "book_id": "mlr_dec_086",
+  "product": "decodable",
+  "title": "Nothing Moves for Free",
+  "level": "DEC 086",
+  "sound": "-tion = /sh\u0259n/ (action, nation, station, section, motion, friction \u2014 the ending is one chunk, and the letters do NOT say /t/ + /i/ + /o/ + /n/)",
+  "famous": [
+    "fruit"
+  ],
+  "pages": [
+    {
+      "page_id": "p01",
+      "text": "Motion is one position turning to a new position. No motion starts on its own.",
+      "image": "books/mlr_dec_086/pages/p01.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p01.mp3",
+      "duration_ms": 6608,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p01.mp3",
+      "song_duration_ms": 8411
+    },
+    {
+      "page_id": "p02",
+      "text": "Motion starts with an action: a push, a pull, a kick. No action, no motion.",
+      "image": "books/mlr_dec_086/pages/p02.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p02.mp3",
+      "duration_ms": 7679,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p02.mp3",
+      "song_duration_ms": 8228
+    },
+    {
+      "page_id": "p03",
+      "text": "Every action gets a reaction. Push a wall, and the reaction pushes you back.",
+      "image": "books/mlr_dec_086/pages/p03.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p03.mp3",
+      "duration_ms": 6295,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p03.mp3",
+      "song_duration_ms": 8829
+    },
+    {
+      "page_id": "p04",
+      "text": "Friction is the reason motion stops. Rub two hands: friction turns that action to heat.",
+      "image": "books/mlr_dec_086/pages/p04.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p04.mp3",
+      "duration_ms": 8045,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p04.mp3",
+      "song_duration_ms": 8750
+    },
+    {
+      "page_id": "p05",
+      "text": "Traction is grip. A boot has traction. Wet ice has none, so the action skids.",
+      "image": "books/mlr_dec_086/pages/p05.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p05.mp3",
+      "duration_ms": 8515,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p05.mp3",
+      "song_duration_ms": 7915
+    },
+    {
+      "page_id": "p06",
+      "text": "A wheel is rotation \u2014 motion that stays in one position. No invention beats it.",
+      "image": "books/mlr_dec_086/pages/p06.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p06.mp3",
+      "duration_ms": 7679,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p06.mp3",
+      "song_duration_ms": 8333
+    },
+    {
+      "page_id": "p07",
+      "text": "Motion has a direction. A kick turns the direction of a ball with no extra action.",
+      "image": "books/mlr_dec_086/pages/p07.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p07.mp3",
+      "duration_ms": 7079,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p07.mp3",
+      "song_duration_ms": 10057
+    },
+    {
+      "page_id": "p08",
+      "text": "Let a fruit go. Gravity is the action. That action drops every fruit in every nation, for free.",
+      "image": "books/mlr_dec_086/pages/p08.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p08.mp3",
+      "duration_ms": 8933,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p08.mp3",
+      "song_duration_ms": 10475
+    },
+    {
+      "page_id": "p09",
+      "text": "Sit still. That position is a trick: the rotation of the planet drags every nation with it.",
+      "image": "books/mlr_dec_086/pages/p09.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p09.mp3",
+      "duration_ms": 7836,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": false,
+      "song_audio": "books/mlr_dec_086/audio/song/p09.mp3",
+      "song_duration_ms": 10318
+    },
+    {
+      "page_id": "p10",
+      "text": "Motion is not the hard bit. Stopping motion is. Friction does that job in every nation, and friction never gets a mention.",
+      "image": "books/mlr_dec_086/pages/p10.webp",
+      "audio": "books/mlr_dec_086/audio/pages/p10.mp3",
+      "duration_ms": 10527,
+      "voice": "57785406027844b29b63a772a8477bc2",
+      "has_video": true,
+      "song_audio": "books/mlr_dec_086/audio/song/p10.mp3",
+      "song_duration_ms": 13766,
+      "video": "books/mlr_dec_086/video/p10.mp4"
+    }
+  ],
+  "voices": {
+    "listen": "57785406027844b29b63a772a8477bc2",
+    "words": "851d4a3a36814f8faef50db1884e1ef6",
+    "read_taps": "clear_american_male",
+    "song": "02019f80d2604688a746fbb5d2a0a0f8",
+    "song_label": "Youthful Nursery Singer #4",
+    "emotion": "podcast_host2_expressive",
+    "dictation": "b70214e5a3644d748956c81677e09ecc",
+    "dictation_label": "Pirate",
+    "listen_label": "Friendly Podcast Host #2"
+  },
+  "listen_speed": 0.8,
+  "jay_finish": "2026-09-08-listen-song-read-no-dictation",
+  "dictation": {
+    "n": 10,
+    "pass_pct": 80,
+    "speaker": "Pirate",
+    "voice": "b70214e5a3644d748956c81677e09ecc",
+    "items": [
+      {
+        "page_id": "p01",
+        "text": "Motion is one position turning to a new position. No motion starts on its own.",
+        "audio": "books/mlr_dec_086/audio/dictation/p01.mp3"
+      },
+      {
+        "page_id": "p02",
+        "text": "Motion starts with an action: a push, a pull, a kick. No action, no motion.",
+        "audio": "books/mlr_dec_086/audio/dictation/p02.mp3"
+      },
+      {
+        "page_id": "p03",
+        "text": "Every action gets a reaction. Push a wall, and the reaction pushes you back.",
+        "audio": "books/mlr_dec_086/audio/dictation/p03.mp3"
+      },
+      {
+        "page_id": "p04",
+        "text": "Friction is the reason motion stops. Rub two hands: friction turns that action to heat.",
+        "audio": "books/mlr_dec_086/audio/dictation/p04.mp3"
+      },
+      {
+        "page_id": "p05",
+        "text": "Traction is grip. A boot has traction. Wet ice has none, so the action skids.",
+        "audio": "books/mlr_dec_086/audio/dictation/p05.mp3"
+      },
+      {
+        "page_id": "p06",
+        "text": "A wheel is rotation \u2014 motion that stays in one position. No invention beats it.",
+        "audio": "books/mlr_dec_086/audio/dictation/p06.mp3"
+      },
+      {
+        "page_id": "p07",
+        "text": "Motion has a direction. A kick turns the direction of a ball with no extra action.",
+        "audio": "books/mlr_dec_086/audio/dictation/p07.mp3"
+      },
+      {
+        "page_id": "p08",
+        "text": "Let a fruit go. Gravity is the action. That action drops every fruit in every nation, for free.",
+        "audio": "books/mlr_dec_086/audio/dictation/p08.mp3"
+      },
+      {
+        "page_id": "p09",
+        "text": "Sit still. That position is a trick: the rotation of the planet drags every nation with it.",
+        "audio": "books/mlr_dec_086/audio/dictation/p09.mp3"
+      },
+      {
+        "page_id": "p10",
+        "text": "Motion is not the hard bit. Stopping motion is. Friction does that job in every nation, and friction never gets a mention.",
+        "audio": "books/mlr_dec_086/audio/dictation/p10.mp3"
+      }
+    ],
+    "note": "Exact printed page sentences. Easy=tiles. Hard=A-Z pad. Punctuation given on hard."
+  },
+  "jay_finish_listen": "2026-09-09-listen-podcast-host2"
+}

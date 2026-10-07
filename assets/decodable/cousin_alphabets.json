@@ -1,0 +1,41 @@
+{
+  "rule": "Cousin only if the official alphabet contains the exact same Latin letter glyph. Never a similar sound (Korean ㅍ is not F).",
+  "no_latin_script": ["ko", "ja", "zh-Hans", "hi", "ar"],
+  "latin_letters": {
+    "vi": "aăâbcdđeêghiklmnoôơpqrstuưvxy",
+    "es": "abcdefghijklmnñopqrstuvwxyz",
+    "pt-BR": "abcdefghijklmnopqrstuvwxyz",
+    "fr": "abcdefghijklmnopqrstuvwxyz",
+    "de": "abcdefghijklmnopqrstuvwxyzäöüß",
+    "id": "abcdefghijklmnopqrstuvwxyz",
+    "tr": "abcçdefgğhıijklmnoöprsştuüvyz",
+    "it": "abcdefghijklmnopqrstuvwxyz",
+    "pl": "aąbcćdeęfghijklłmnńoóprsśtuwyzźż"
+  },
+  "notes": {
+    "vi": "Chữ Quốc ngữ has 29 letters. F J W Z are not in the alphabet.",
+    "ko": "Hangul. No Latin letters.",
+    "ja": "Kana/kanji. No Latin letters.",
+    "zh-Hans": "Hanzi. No Latin letters.",
+    "hi": "Devanagari. No Latin letters.",
+    "ar": "Arabic script. No Latin letters.",
+    "pl": "No q v x as native letters. f and c exist.",
+    "tr": "No q w x. English i cousins dotted i, not ı."
+  },
+  "sources": {
+    "vi": "https://en.wikipedia.org/wiki/Vietnamese_alphabet",
+    "es": "https://en.wikipedia.org/wiki/Spanish_orthography",
+    "pt-BR": "https://en.wikipedia.org/wiki/Portuguese_orthography",
+    "fr": "https://en.wikipedia.org/wiki/French_orthography",
+    "de": "https://en.wikipedia.org/wiki/German_orthography",
+    "id": "https://en.wikipedia.org/wiki/Indonesian_orthography",
+    "tr": "https://en.wikipedia.org/wiki/Turkish_alphabet",
+    "it": "https://en.wikipedia.org/wiki/Italian_orthography",
+    "pl": "https://en.wikipedia.org/wiki/Polish_alphabet",
+    "ko": "https://en.wikipedia.org/wiki/Hangul",
+    "ja": "https://en.wikipedia.org/wiki/Japanese_writing_system",
+    "zh-Hans": "https://en.wikipedia.org/wiki/Chinese_characters",
+    "hi": "https://en.wikipedia.org/wiki/Devanagari",
+    "ar": "https://en.wikipedia.org/wiki/Arabic_alphabet"
+  }
+}
