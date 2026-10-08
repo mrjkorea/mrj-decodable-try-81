@@ -180,6 +180,50 @@
     return JSON.stringify(mergedBooks || {}) !== JSON.stringify(serverNorm);
   }
 
+  /** Whether library UI may open (assets loaded + signed-in student). */
+  function createLibraryBootCoordinator() {
+    var assetsReady = false;
+    var signedIn = false;
+    var opened = false;
+    return {
+      markAssetsReady: function () {
+        assetsReady = true;
+        return this.consumeOpen();
+      },
+      onAuthReady: function (hasStudent) {
+        signedIn = !!hasStudent;
+        if (!signedIn) {
+          opened = false;
+          return false;
+        }
+        return this.consumeOpen();
+      },
+      onSignOut: function () {
+        signedIn = false;
+        opened = false;
+        return false;
+      },
+      consumeOpen: function () {
+        if (!signedIn || !assetsReady || opened) return false;
+        opened = true;
+        return true;
+      },
+      shouldShowLibrary: function () {
+        return signedIn && assetsReady;
+      },
+    };
+  }
+
+  /** Metrics item_id for decodable section scores (book-prefixed). */
+  function decodableScoreItemId(bookId, section) {
+    bookId = String(bookId == null ? "" : bookId).trim();
+    section = String(section == null ? "" : section).trim();
+    if (!bookId || !section) return section || bookId || "";
+    var prefix = bookId + ":";
+    if (section.indexOf(prefix) === 0) return section;
+    return prefix + section;
+  }
+
   return {
     LEGACY_DEVICE_SAVE_KEY: LEGACY_DEVICE_SAVE_KEY,
     studentIdKeyFromName: studentIdKeyFromName,
@@ -193,5 +237,7 @@
     mergeDecodableBooks: mergeDecodableBooks,
     parseProgressJson: parseProgressJson,
     needsSaveAfterMerge: needsSaveAfterMerge,
+    createLibraryBootCoordinator: createLibraryBootCoordinator,
+    decodableScoreItemId: decodableScoreItemId,
   };
 });

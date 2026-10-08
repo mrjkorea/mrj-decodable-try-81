@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-marker="dec20260930intro1">
+<html lang="en" data-marker="dec20261008band20namepill1">
 <head>
 <meta charset="UTF-8" />
-<meta name="mrj-build" content="dec71-20261007-merge" />
+<meta name="mrj-build" content="dec81-20261008-band20namepill1" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>MRJ Decodables — Books 71–100</title>
+<title>MRJ Decodables — Books 81-100</title>
 <style>
 :root{--bg:#070d18;--card:#101a2e;--text:#f4f7ff;--muted:#a9b7d6;--hl:#ffd84a;--ok:#3ecf8e}
 *{box-sizing:border-box}
@@ -13,6 +13,61 @@ body{margin:0;font-family:ui-rounded,"Nunito","Avenir Next",system-ui,sans-serif
 body.student-desk{display:flex;flex-direction:column;height:100vh;height:100dvh;max-height:100dvh}
 .app{width:100%;max-width:none;margin:0;padding:8px 16px 0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column;overflow:hidden}
 header{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex:0 0 auto}
+.hdr-brand{min-width:0;flex:1 1 auto}
+#langPick{margin:0;flex:0 1 auto;max-width:42%}
+header .hdr-actions{display:flex;align-items:center;gap:6px;flex:0 1 auto;min-width:0}
+.student-pill{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  padding:8px 10px;
+  font-size:.82rem;
+  font-weight:800;
+  line-height:1.1;
+  background:#1b2740;
+  color:var(--text);
+  border-radius:14px;
+  flex:0 1 auto;
+  min-width:0;
+  max-width:150px;
+}
+@media (max-width:479px){
+  header{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"brand lang" "actions actions";
+    column-gap:8px;
+    row-gap:6px;
+    align-items:center;
+  }
+  .hdr-brand{grid-area:brand}
+  #langPick{
+    grid-area:lang;
+    width:4.6rem;
+    max-width:4.6rem!important;
+    min-width:4.6rem;
+    padding:8px 4px;
+    font-size:.72rem;
+  }
+  header .hdr-actions{
+    grid-area:actions;
+    width:100%;
+    max-width:100%;
+    flex:1 1 100%;
+  }
+  #btnLibrary{padding:9px 10px;font-size:.85rem;flex:0 0 auto}
+  #btnSwitch{padding:9px 11px;font-size:.85rem;flex:0 0 auto}
+  .student-pill{
+    flex:1 1 auto;
+    min-width:7.5ch;
+    max-width:none;
+    font-size:.8rem;
+    padding:8px 8px;
+  }
+}
+@media (min-width:480px){
+  .student-pill{max-width:min(110px,22vw);font-size:.88rem}
+}
 .app>.stage{flex:1 1 auto;min-height:0}
 #libStage,#introStage,#workStage,#signStage{overflow:auto}
 h1{font-size:1rem;margin:0}
@@ -179,13 +234,16 @@ body.student-desk #bookStage #play{
 <!-- ORDER-LISTEN-READ-SONG-20260930 -->
 <div class="app">
   <header>
-    <div>
+    <div class="hdr-brand">
       <h1 id="bookTitle">MRJ Decodables</h1>
-      <div id="modeBadge" style="font-size:.75rem;color:var(--muted)">Library</div>
+      <div id="modeBadge" style="font-size:.75rem;color:var(--muted)">Books 81-100</div>
     </div>
-    <select id="langPick" style="max-width:42%;margin:0 6px"></select>
+    <select id="langPick" aria-label="Language"></select>
+    <div class="hdr-actions">
     <button id="btnLibrary">📚 Books</button>
+    <button type="button" class="student-pill hidden" data-mrj-name-pill></button>
     <button id="btnSwitch" type="button">Switch</button>
+    </div>
   </header>
   <div id="signStage" hidden></div>
   <div id="libStage" class="stage panel hidden">
@@ -226,11 +284,12 @@ body.student-desk #bookStage #play{
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
-<script src="decodable-progress.js?v=dec71-20261007-merge"></script>
+<script src="decodable-progress.js?v=dec81-20261008-band20namepill1"></script>
 <script>
 const TEST=false;
-const MRJ_BUILD='dec71-20261007-merge';
-const ASSET_V='dec20261008split';
+const MERGE=window.MRJDecodableProgress;
+const MRJ_BUILD='dec81-20261008-band20namepill1';
+const ASSET_V='dec20261008band20namepill1';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -381,8 +440,59 @@ let clipDone=false, showLang=true, lang='ko';
 let dictBuilt=[], dictQueue=[], dictIdx=0, dictRight=0, dictRate=0.8;
 let speakRec=null, sayPage=0, micCtx=null, lastYouBlob=null, lastTestBook=null;
 let sayTries=0, sayBest=0, sayAdvanceTimer=0;
+const LIB_BOOT=MERGE && MERGE.createLibraryBootCoordinator ? MERGE.createLibraryBootCoordinator() : null;
 
-function blankProg(){ return (window.MRJDecodableProgress && MRJDecodableProgress.blankProg) ? MRJDecodableProgress.blankProg() : {passed:false,listen:false,song:false,read:false,dictation:false,speak:false,readPages:{},difficulty:null,dictScore:null,speakPages:{}}; }
+function scoreItemId(bookId, section){
+  if(MERGE && MERGE.decodableScoreItemId) return MERGE.decodableScoreItemId(bookId, section);
+  return bookId && section ? (bookId+':'+section) : (section||bookId||'');
+}
+function studentNamePillEl(){
+  return document.querySelector('[data-mrj-name-pill]');
+}
+function syncStudentNamePill(){
+  const el=studentNamePillEl();
+  if(!el) return;
+  const id=studentName();
+  if(!id){
+    el.classList.add('hidden');
+    el.textContent='';
+    el.removeAttribute('title');
+    return;
+  }
+  el.classList.remove('hidden');
+  const compact=(window.innerWidth||800)<480;
+  const display=compact && id.length>7 ? id.slice(0,7)+'\u2026' : id;
+  if(el.textContent!==display) el.textContent=display;
+  const fullTitle='My scores for '+id;
+  if(compact && id.length>10){
+    if(el.title!==id) el.title=id;
+  } else if(el.title) el.removeAttribute('title');
+  if(el.getAttribute('aria-label')!==fullTitle) el.setAttribute('aria-label', fullTitle);
+}
+function openLibraryAfterAuth(){
+  runPackLoad();
+  showLib();
+}
+function onAuthSessionReady(id){
+  const trimmed=String(id||'').trim();
+  syncStudentNamePill();
+  if(!trimmed){
+    if(LIB_BOOT) LIB_BOOT.onSignOut();
+    return;
+  }
+  localStorage.setItem(STUDENT_KEY, trimmed);
+  syncStudentNamePill();
+  if(LIB_BOOT && LIB_BOOT.onAuthReady(true)) openLibraryAfterAuth();
+}
+window.addEventListener('mrj-auth-ready', function(ev){
+  const id=(ev.detail && ev.detail.id) || studentName();
+  onAuthSessionReady(id);
+});
+if(window.MRJ_AUTH && MRJ_AUTH.student()){
+  onAuthSessionReady(String(MRJ_AUTH.student()).trim());
+}
+
+function blankProg(){ return MERGE ? MERGE.blankProg() : {passed:false,listen:false,song:false,read:false,dictation:false,speak:false,readPages:{},difficulty:null,dictScore:null,speakPages:{}}; }
 function studentIdKey(){
   const name=studentName();
   if(window.MRJDecodableProgress && MRJDecodableProgress.studentIdKeyFromName){
@@ -561,17 +671,19 @@ function runPackLoad(){
 function reportProgress(bookId, itemId, completed, scorePct){
   const name=studentName();
   if(!name || !bookId || !itemId) return;
+  const sectionId=String(itemId);
+  const metricsItemId=scoreItemId(bookId, sectionId);
   const event={
-    event_id:'dec-'+bookId+'-'+itemId+'-'+Date.now().toString(36),
+    event_id:'dec-'+metricsItemId+'-'+Date.now().toString(36),
     event_kind:'decodable_progress',
     source:'decodable',
     app_name:'MRJ Decodables',
     curriculum_program:'decodable',
     book_title:bookId,
-    item_id:itemId,
+    item_id:metricsItemId,
     item_type:'section',
     completed:completed===true,
-    metadata_json:JSON.stringify({student:name, section:itemId})
+    metadata_json:JSON.stringify({student:name, section:sectionId, book_id:bookId})
   };
   if(scorePct!=null && isFinite(+scorePct)) event.score_pct=Math.round(+scorePct);
   sheetPost(SCORE_URL, {
@@ -681,6 +793,8 @@ async function boot(){
   $('btnLibrary').onclick=()=>{ if(studentName()) showLib(); };
   $('btnSwitch').onclick=()=>{
     localStorage.removeItem(STUDENT_KEY);
+    if(LIB_BOOT) LIB_BOOT.onSignOut();
+    syncStudentNamePill();
     if (window.MRJ_AUTH && MRJ_AUTH.signOut) MRJ_AUTH.signOut();
   };
   $('mListen').onclick=()=>setMode('listen');
@@ -699,12 +813,9 @@ async function boot(){
   $('play').onclick=()=>playPage(true);
   $('introGo').onclick=()=>introAdvance();
   window.addEventListener('pagehide', function(){ flushRemoteSave(true); });
-  window.addEventListener('mrj-auth-ready', function(ev){
-    const id=(ev.detail && ev.detail.id) || studentName();
-    if(!id) return;
-    localStorage.setItem(STUDENT_KEY, id);
-    runPackLoad();
-  });
+  window.addEventListener('resize', syncStudentNamePill);
+  syncStudentNamePill();
+  if(LIB_BOOT && LIB_BOOT.markAssetsReady()) openLibraryAfterAuth();
 }
 function hideAll(){ ['signStage','libStage','introStage','bookStage','workStage'].forEach(id=>$(id).classList.add('hidden')); }
 function showLib(){
