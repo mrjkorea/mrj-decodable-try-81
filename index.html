@@ -280,7 +280,7 @@ body.student-desk #bookStage #play{
 <script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/ort/ort.all.min.js"></script>
 <script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/engine.js"></script>
 <script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/audio.js"></script>
-<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/grade-browser.js"></script>
+<script src="https://mrjkorea.github.io/mrj-decodable-try/pronounce/grade-browser.js?v=20261010-saycitrinet"></script>
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
@@ -289,7 +289,7 @@ body.student-desk #bookStage #play{
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
 const MRJ_BUILD='dec81-20261008-band20namepill1';
-const ASSET_V='dec20261008band20namepill1';
+const ASSET_V='dec20261010saycitrinet';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -322,7 +322,7 @@ let loadRetryTimer=0;
 let loadRetryMs=5000;
 let packUsedAuthApi=false;
 const MAX_BOOKS=20;
-const SPEAK_DEFAULT=50;
+const SPEAK_DEFAULT=60;
 const SAY_MAX_TRIES=5;
 const DICT_N=5;
 const DICT_PASS=80;
@@ -1560,8 +1560,10 @@ function paintSayChips(text, words){
       return `<span class="word-chip pending">${tok.replace(/</g,'&lt;')}<span class="wsub">·</span></span>`;
     }
     const ws=Math.round(100*(w.score||0));
-    const b=ws>=80?'good':(ws>=65?'ok':'needs_work');
-    return `<span class="word-chip ${b}">${tok.replace(/</g,'&lt;')}<span class="wsub">${ws}%</span></span>`;
+    const b=ws>=60?'good':'needs_work';
+    const hint=(b==='needs_work' && typeof w.hint==='string' && w.hint.trim())
+      ? `<span class="wsub">${w.hint.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>` : '';
+    return `<span class="word-chip ${b}">${tok.replace(/</g,'&lt;')}<span class="wsub">${ws}%</span>${hint}</span>`;
   }).join('');
 }
 function sayWho(){
@@ -1724,6 +1726,11 @@ async function gradeBlob(line, blob){
   hideLoadbar();
   if(j.meta && String(j.meta.scoring_mode||'').startsWith('stub')){
     $('speakStatus').textContent='Grader came back stub. Real model did not load.';
+    return;
+  }
+  if(j.doorFail){
+    hideLoadbar();
+    $('speakStatus').textContent=j.reason||'';
     return;
   }
   const sc=Math.round(100*(j.overall&&j.overall.score||0));
