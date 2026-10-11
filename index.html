@@ -2,7 +2,7 @@
 <html lang="en" data-marker="dec20261008band20namepill1">
 <head>
 <meta charset="UTF-8" />
-<meta name="mrj-build" content="dec81-20261008-band20namepill1" />
+<meta name="mrj-build" content="dec81-20261011-savefix" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MRJ Decodables — Books 81-100</title>
 <style>
@@ -284,11 +284,11 @@ body.student-desk #bookStage #play{
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
-<script src="decodable-progress.js?v=dec81-20261008-band20namepill1"></script>
+<script src="decodable-progress.js?v=dec81-20261011-savefix"></script>
 <script>
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
-const MRJ_BUILD='dec81-20261008-band20namepill1';
+const MRJ_BUILD='dec81-20261011-savefix';
 const ASSET_V='dec20261010saycitrinet';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
@@ -668,31 +668,51 @@ function runPackLoad(){
     if(studentName()) showLib();
   });
 }
-function reportProgress(bookId, itemId, completed, scorePct){
-  const name=studentName();
-  if(!name || !bookId || !itemId) return;
-  const sectionId=String(itemId);
-  const metricsItemId=scoreItemId(bookId, sectionId);
-  const event={
-    event_id:'dec-'+metricsItemId+'-'+Date.now().toString(36),
-    event_kind:'decodable_progress',
-    source:'decodable',
-    app_name:'MRJ Decodables',
-    curriculum_program:'decodable',
-    book_title:bookId,
-    item_id:metricsItemId,
-    item_type:'section',
-    completed:completed===true,
-    metadata_json:JSON.stringify({student:name, section:sectionId, book_id:bookId})
-  };
-  if(scorePct!=null && isFinite(+scorePct)) event.score_pct=Math.round(+scorePct);
-  sheetPost(SCORE_URL, {
-    student_email:'unknown',
-    student_name:name,
-    session_id:'decodable-'+name,
-    events:[event]
-  });
+function reportingStudent(){
+  try{
+    if(window.MRJ_AUTH && MRJ_AUTH.student()) return String(MRJ_AUTH.student()).trim();
+  }catch(e){}
+  return '';
+}
+function reportScore(bookId, section, raw, max, extra){
+  const student=reportingStudent();
+  if(!student || !bookId || !section) return;
+  extra=extra||{};
+  const rawN=+raw, maxN=+max;
+  const isCompletion=maxN===1 && rawN===1 && !extra.itemType;
+  const built=(MERGE && MERGE.buildDecodableScoreReport)
+    ? MERGE.buildDecodableScoreReport({
+        student:student,
+        bookId:bookId,
+        section:String(section),
+        raw:rawN,
+        max:maxN,
+        when:Date.now(),
+        program:PROGRAM,
+        itemType:extra.itemType||(isCompletion?'completion':'section'),
+        completed:extra.completed!==false,
+        skipNoteScore:!!extra.skipNoteScore,
+        omitScores:!!extra.omitScores,
+        metadata:extra.metadata
+      })
+    : null;
+  if(!built) return;
+  sheetPost(SCORE_URL, built.body);
+  if(built.noteScore && window.MRJ_AUTH && typeof MRJ_AUTH.noteScore==='function'){
+    MRJ_AUTH.noteScore(built.noteScore);
+  }
   saveSheetProgress();
+}
+function reportSpeakAggregate(bookId, speakPages, pageCount){
+  const agg=(MERGE && MERGE.speakAggregateScores)
+    ? MERGE.speakAggregateScores(speakPages, pageCount)
+    : {raw:0, max:0};
+  if(!agg.max) return;
+  reportScore(bookId, 'speak', agg.raw, agg.max, {metadata:{pages:pageCount}});
+}
+function speakPageSectionId(pageIndex){
+  if(MERGE && MERGE.speakPageSection) return MERGE.speakPageSection(pageIndex);
+  return 'speak-p'+String((+pageIndex||0)+1).padStart(2,'0');
 }
 function speakScorePct(){
   const sp=bookProg(pack.book_id).speakPages||{};
@@ -1102,9 +1122,9 @@ function go(d){
   listenGen++;
   stopA();
   if(nxt>=pack.pages.length){
-    if(mode==='listen'){ setBookProg(pack.book_id,{listen:true}); reportProgress(pack.book_id,'listen',true); pageIndex=0; setMode('read'); return; }
-    if(mode==='read'){ setBookProg(pack.book_id,{read:true}); reportProgress(pack.book_id,'read',true); pageIndex=0; setMode('song'); return; }
-    if(mode==='song'){ setBookProg(pack.book_id,{song:true}); reportProgress(pack.book_id,'song',true); setMode('dictation'); return; }
+    if(mode==='listen'){ setBookProg(pack.book_id,{listen:true}); reportScore(pack.book_id,'listen',1,1); pageIndex=0; setMode('read'); return; }
+    if(mode==='read'){ setBookProg(pack.book_id,{read:true}); reportScore(pack.book_id,'read',1,1); pageIndex=0; setMode('song'); return; }
+    if(mode==='song'){ setBookProg(pack.book_id,{song:true}); reportScore(pack.book_id,'song',1,1); setMode('dictation'); return; }
     return;
   }
   pageIndex=nxt; clipDone=false; renderPage();
@@ -1406,9 +1426,10 @@ function paintSpeedBtns(){
 function nextDict(){
   if(dictIdx>=dictQueue.length){
     const pct=Math.round(100*dictRight/dictQueue.length);
-    if(pct>=DICT_PASS){ setBookProg(pack.book_id,{dictation:true,dictScore:pct}); reportProgress(pack.book_id,'dictation',true,pct); setMode('speak'); }
+    const dictMeta={misses:dictQueue.length-dictRight, dict_right:dictRight, dict_total:dictQueue.length};
+    if(pct>=DICT_PASS){ setBookProg(pack.book_id,{dictation:true,dictScore:pct}); reportScore(pack.book_id,'dictation',dictRight,dictQueue.length,{completed:true, metadata:dictMeta}); setMode('speak'); }
     else {
-      reportProgress(pack.book_id,'dictation',false,pct);
+      reportScore(pack.book_id,'dictation',dictRight,dictQueue.length,{completed:false, metadata:dictMeta});
       $('workBody').innerHTML=`<div class="pass">${pct}%</div>
         <div style="text-align:center">Need 80% on 5 sentences. Try again.</div>
         <button id="retryD" style="width:100%;margin-top:14px">Try dictation again</button>`;
@@ -1602,7 +1623,7 @@ function startSpeak(){
   if(sayPage>=pack.pages.length){
     if(!bp.speak){
       setBookProg(pack.book_id,{speak:true});
-      reportProgress(pack.book_id,'speak',true,speakScorePct());
+      reportSpeakAggregate(pack.book_id, bp.speakPages, pack.pages.length);
     }
     setMode('pass');
     return;
@@ -1746,6 +1767,7 @@ async function gradeBlob(line, blob){
       nextBtn.onclick=()=>finishSayPage(sc);
     }
   }else{
+    reportScore(pack.book_id, speakPageSectionId(sayPage), sc, 100, {skipNoteScore:true, itemType:'attempt', completed:false});
     sayTries++;
     if(sc>sayBest) sayBest=sc;
     sayTriesSave();
@@ -1758,12 +1780,14 @@ async function gradeBlob(line, blob){
 }
 function finishSayPage(score){
   sayTriesClear();
+  const pageNow=sayPage;
   const sp=Object.assign({}, bookProg(pack.book_id).speakPages||{});
-  sp[sayPage]=score; setBookProg(pack.book_id,{speakPages:sp});
+  sp[pageNow]=score; setBookProg(pack.book_id,{speakPages:sp});
+  reportScore(pack.book_id, speakPageSectionId(pageNow), score, 100);
   sayPage++;
   if(sayPage>=pack.pages.length){
     setBookProg(pack.book_id,{speak:true});
-    reportProgress(pack.book_id,'speak',true,speakScorePct());
+    reportSpeakAggregate(pack.book_id, sp, pack.pages.length);
     setMode('pass');
   }
   else renderSay();
@@ -1772,7 +1796,7 @@ function renderPass(){
   const bp=bookProg(pack.book_id);
   const firstPass=!bp.passed;
   setBookProg(pack.book_id,{passed:true,listen:true,song:true,read:true,dictation:true,speak:true});
-  if(firstPass) reportProgress(pack.book_id,'passed',true);
+  if(firstPass) reportScore(pack.book_id,'passed',1,1);
   const order=bookOrder(); const i=order.indexOf(pack.book_id); const nxt=order[i+1];
   $('workBody').innerHTML=`<div class="pass">✅ ${pack.title} passed</div>
     <div style="text-align:center;color:var(--muted)">Listen → button → Song → tap every word → 5 sentences (80%) → say every page.</div>

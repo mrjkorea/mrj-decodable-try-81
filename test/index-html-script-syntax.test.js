@@ -31,6 +31,19 @@ function extractAllInlineScripts(source) {
   return scripts;
 }
 
+(function testCacheBustMatchesBuild() {
+  const buildMatch = html.match(/<meta name="mrj-build" content="([^"]+)"/);
+  assert.ok(buildMatch, 'mrj-build meta required');
+  const build = buildMatch[1];
+  assert.ok(
+    html.includes('decodable-progress.js?v=' + build),
+    'decodable-progress.js cache bust must match mrj-build'
+  );
+  const inlineBuild = html.match(/const MRJ_BUILD='([^']+)'/);
+  assert.ok(inlineBuild, 'MRJ_BUILD constant required');
+  assert.strictEqual(inlineBuild[1], build, 'MRJ_BUILD must match mrj-build meta');
+})();
+
 (function testAllInlineScriptsParse() {
   const scripts = extractAllInlineScripts(html);
   assert.ok(scripts.length >= 1, 'expected at least one inline script in index.html');
