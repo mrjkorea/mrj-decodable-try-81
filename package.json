@@ -2,6 +2,6 @@
   "name": "mrj-decodable-try-81",
   "private": true,
   "scripts": {
-    "test": "node test/decodable-progress.test.js && node test/index-html-script-syntax.test.js"
+    "test": "node test/decodable-progress.test.js && node test/score-report.test.js && node test/index-html-script-syntax.test.js"
   }
 }

@@ -224,6 +224,105 @@
     return prefix + section;
   }
 
+  function localDate(when) {
+    var d = when ? new Date(when) : new Date();
+    var y = d.getFullYear();
+    var m = String(d.getMonth() + 1).padStart(2, "0");
+    var day = String(d.getDate()).padStart(2, "0");
+    return y + "-" + m + "-" + day;
+  }
+
+  function scorePctFromRaw(raw, max) {
+    var maxN = +max;
+    if (!isFinite(maxN) || maxN <= 0) return 0;
+    return Math.round(100 * (+raw) / maxN);
+  }
+
+  function speakPageSection(pageIndex) {
+    var n = +pageIndex;
+    if (!isFinite(n) || n < 0) n = 0;
+    return "speak-p" + String(n + 1).padStart(2, "0");
+  }
+
+  function speakAggregateScores(speakPages, pageCount) {
+    var sp = speakPages || {};
+    var sum = 0;
+    Object.keys(sp).forEach(function (k) {
+      var n = +sp[k];
+      if (isFinite(n)) sum += n;
+    });
+    var pages = pageCount != null ? +pageCount : Object.keys(sp).length;
+    if (!isFinite(pages) || pages <= 0) pages = Object.keys(sp).length || 0;
+    return { raw: Math.round(sum), max: 100 * pages };
+  }
+
+  /**
+   * ClassroomMetrics event + optional SSI noteScore payload for decodable reporting.
+   */
+  function buildDecodableScoreReport(opts) {
+    opts = opts || {};
+    var student = String(opts.student == null ? "" : opts.student).trim();
+    if (!student) return null;
+    var bookId = String(opts.bookId == null ? "" : opts.bookId).trim();
+    var section = String(opts.section == null ? "" : opts.section).trim();
+    if (!bookId || !section) return null;
+    var when = opts.when != null ? opts.when : Date.now();
+    var ld = localDate(when);
+    var key = studentIdKeyFromName(student);
+    var itemId = decodableScoreItemId(bookId, section);
+    var skipNote = !!opts.skipNoteScore;
+    var itemType = opts.itemType || "section";
+    var completed = opts.completed !== false;
+    var includeScores = !opts.omitScores;
+    var rawN = +opts.raw;
+    var maxN = +opts.max;
+    if (includeScores && (!isFinite(maxN) || maxN <= 0)) return null;
+    var scorePct = includeScores ? scorePctFromRaw(rawN, maxN) : null;
+    var meta = Object.assign(
+      { student: student, section: section, book_id: bookId },
+      opts.metadata || {}
+    );
+    var event = {
+      event_id: "dec-" + itemId + "-" + when.toString(36),
+      event_kind: "decodable_progress",
+      source: "decodable",
+      app_name: "MRJ Decodables",
+      curriculum_program: opts.program || "decodable",
+      book_title: bookId,
+      item_id: itemId,
+      item_type: itemType,
+      completed: completed,
+      identity_method: "mrj_signin",
+      identity_confidence: "high",
+      local_date: ld,
+      metadata_json: JSON.stringify(meta),
+    };
+    if (includeScores) {
+      event.score_value = rawN;
+      event.score_max = maxN;
+      event.score_pct = scorePct;
+    }
+    var sessionPrefix = opts.sessionPrefix || "decodable";
+    var body = {
+      student_email: student.indexOf("@") > 0 ? student : key,
+      student_name: student,
+      session_id: sessionPrefix + "-" + key + "-" + ld,
+      events: [event],
+    };
+    var noteScore = null;
+    if (!skipNote && includeScores) {
+      noteScore = {
+        program: opts.program || "decodable",
+        itemId: itemId,
+        scoreValue: rawN,
+        scoreMax: maxN,
+        scorePct: scorePct,
+        localDate: ld,
+      };
+    }
+    return { body: body, noteScore: noteScore, itemId: itemId, localDate: ld };
+  }
+
   return {
     LEGACY_DEVICE_SAVE_KEY: LEGACY_DEVICE_SAVE_KEY,
     studentIdKeyFromName: studentIdKeyFromName,
@@ -239,5 +338,10 @@
     needsSaveAfterMerge: needsSaveAfterMerge,
     createLibraryBootCoordinator: createLibraryBootCoordinator,
     decodableScoreItemId: decodableScoreItemId,
+    localDate: localDate,
+    scorePctFromRaw: scorePctFromRaw,
+    speakPageSection: speakPageSection,
+    speakAggregateScores: speakAggregateScores,
+    buildDecodableScoreReport: buildDecodableScoreReport,
   };
 });
