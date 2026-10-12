@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-marker="dec20261008band20namepill1">
 <head>
+<!-- READ-TAP-GATE-20261012 -->
 <meta charset="UTF-8" />
 <meta name="mrj-build" content="dec81-20261011-savefix" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -289,7 +290,7 @@ body.student-desk #bookStage #play{
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
 const MRJ_BUILD='dec81-20261011-savefix';
-const ASSET_V='dec20261010saycitrinet';
+const ASSET_V='dec20261012readtap';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -738,7 +739,19 @@ function sayTarget(text){
   }
   return text;
 }
-function tokens(s){ return String(s||'').toLowerCase().replace(/[^a-z'\\s]/g,' ').split(/\s+/).filter(Boolean); }
+function escText(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function readUnits(text){
+  const units=[];
+  const re=/[A-Za-z']+|[^A-Za-z']+/g;
+  let m; const src=String(text||'');
+  while((m=re.exec(src))){
+    const tok=m[0];
+    if(/[A-Za-z']/.test(tok)) units.push({kind:'word', show:tok, lemma:tok.toLowerCase()});
+    else units.push({kind:'mark', show:tok});
+  }
+  return units;
+}
+function tokens(s){ return readUnits(s).filter(u=>u.kind==='word').map(u=>u.lemma); }
 function page(){ return pack.pages[pageIndex]; }
 function pageTr(){ const b=i18n.books[pack.book_id]; return (b && b.l1[lang] && b.l1[lang][pageIndex]) || ''; }
 
@@ -1141,15 +1154,16 @@ function renderPage(){
   $('art').innerHTML=vid
     ? `<video src="${asset(p.video)}" poster="${asset(p.image)}" autoplay muted loop playsinline></video>`
     : `<img src="${asset(p.image)}" alt="">`;
-  const parts=p.text.split(/(\s+)/);
+  const units=readUnits(p.text);
   let wi=0;
-  $('sentence').innerHTML=parts.map(w=>{
-    if(!w.trim()) return w;
-    const lemma=w.replace(/[^A-Za-z']/g,'').toLowerCase();
+  $('sentence').innerHTML=units.map(u=>{
+    if(u.kind!=='word') return escText(u.show);
+    const lemma=u.lemma;
     const done=mode==='read' && (tapped.has(pageIndex+':'+wi) || (bookProg(pack.book_id).readPages||{})[pageIndex]);
-    const html=`<span class="w${done?' done':''}" data-lem="${lemma}" data-i="${wi}">${w}</span>`;
+    const html=`<span class="w${done?' done':''}" data-lem="${lemma}" data-i="${wi}">${escText(u.show)}</span>`;
     wi++; return html;
   }).join('');
+
   $('sentence').querySelectorAll('.w').forEach(el=>el.onclick=()=>onWordTap(el));
   $('langLine').textContent = showLang ? pageTr() : '';
   $('langLine').classList.toggle('hidden', !showLang || !pageTr());
