@@ -2,6 +2,10 @@
   "name": "mrj-decodable-try-81",
   "private": true,
   "scripts": {
-    "test": "node test/decodable-progress.test.js && node test/score-report.test.js && node test/index-html-script-syntax.test.js"
+    "test": "node test/decodable-progress.test.js && node test/score-report.test.js && node test/index-html-script-syntax.test.js && node test/citrinet-only.test.js",
+    "bench:speak": "node test/bench-speak.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
   }
 }
