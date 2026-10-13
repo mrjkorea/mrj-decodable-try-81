@@ -290,7 +290,7 @@ body.student-desk #bookStage #play{
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
 const MRJ_BUILD='dec81-20261011-savefix';
-const ASSET_V='dec20261012readtap';
+const ASSET_V='dec20261013famousgate';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -435,6 +435,8 @@ let lib=null, i18n=null, pack=null, pageIndex=0, mode='library', audio=null, lis
 let introStep='mode', cousinIdx=0;
 let introDone=false;      // sound + famous + any pre-video finished -> Listen opens
 let preVideoDone=false;   // this book's start video (lawbreaker chase) played through
+let famousVidEnded=false;
+let famousAudEnded=false;
 let tapped=new Set(), heardListen=new Set(), heardSong=new Set();
 let sheriffOk=false;
 let clipDone=false, showLang=true, lang='ko';
@@ -898,6 +900,21 @@ async function openBook(id){
   showIntro();
 }
 
+function syncFamousGate(){
+  const go=$('introGo');
+  if(!go || introStep!=='famous') return;
+  go.disabled=!(famousVidEnded && famousAudEnded);
+}
+function markFamousVid(){ famousVidEnded=true; syncFamousGate(); }
+function markFamousAud(){ famousAudEnded=true; syncFamousGate(); }
+function stopFamousMedia(){
+  const v=$('carpetVid');
+  if(v){ try{v.pause();}catch(e){} v.ontimeupdate=null; v.onended=null; v.onclick=null; }
+  const scene=$('famousScene');
+  if(scene) scene.onclick=null;
+  stopA();
+}
+
 function cousinLetters(){ return NEW_LETTERS[pack.book_id]||[]; }
 function cousinGlyph(letter){
   const L=String(letter||'').toLowerCase();
@@ -911,6 +928,7 @@ function showIntro(){
   mode='intro'; stopA(); hideAll();
   $('introStage').classList.remove('hidden');
   $('introGo').classList.remove('hidden');
+  $('introGo').disabled=false;
   syncModeLocks();
   const famous=(pack.famous||[])[0]||'';
   if(introStep==='cousin'){
@@ -977,7 +995,14 @@ function showIntro(){
     </div>
     <div class="g-lbl">Famous word</div>
     <div style="color:var(--muted);font-weight:800">The crowd shouts <b>${label}</b>. Tap to hear it again.</div>`;
-    const scream=()=>{ if(crowds[word]) playPath(crowds[word], null, 1); };
+    famousVidEnded=false;
+    famousAudEnded=false;
+    const scream=()=>{
+      famousAudEnded=false;
+      syncFamousGate();
+      if(crowds[word]) playPath(crowds[word], markFamousAud, 1);
+      else { famousAudEnded=true; syncFamousGate(); }
+    };
     const v=$('carpetVid');
     if(v){
       v.muted=true;
@@ -986,11 +1011,14 @@ function showIntro(){
       v.onloadedmetadata=kick;
       kick();
       v.ontimeupdate=()=>{ if(v.currentTime>=6.2 && !v._yelled){ v._yelled=true; scream(); } };
+      v.onended=()=>{ if(v.currentTime>0.5) markFamousVid(); };
       v.onclick=()=>{ v.currentTime=6.3; kick(); scream(); };
-    }
+    } else { famousVidEnded=true; }
     const scene=$('famousScene');
     if(scene) scene.onclick=()=>{ if(v){ v.currentTime=6.3; v.play().catch(()=>{}); } scream(); };
     $('introGo').textContent='Next';
+    $('introGo').disabled=true;
+    if($('status')) $('status').textContent='Listen to the famous word first.';
     return;
   }
   if(introStep==='chase'){
@@ -1026,9 +1054,16 @@ function introAdvance(){
     introStep='chase'; showIntro(); return;   // no famous word in this book -> go on, never skip to Listen
   }
   if(introStep==='famous'){
+    if(!famousVidEnded || !famousAudEnded){
+      syncFamousGate();
+      if($('status')) $('status').textContent='Listen to the famous word first.';
+      return;
+    }
+    stopFamousMedia();
     if((pack.law_breaker||[]).length){ introStep='chase'; showIntro(); return; }
-    introDone=true;   // no start video in this book -> the start is finished
-    setMode('listen'); return;
+    introDone=true;
+    setMode('listen');
+    return;
   }
   if(introStep==='chase'){
     const v=$('chaseVid');
