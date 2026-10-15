@@ -126,7 +126,7 @@ try {
           reason: 'Say the sentence again, please. Say each word clearly.',
           overall: { score: 0, band: 'fail' },
           words: [],
-          meta: { scoring_mode: 'citrinet-only' },
+          meta: { scoring_mode: 'hubert-phoneme' },
         }),
       };
     },
@@ -151,7 +151,7 @@ try {
           overall: { score: 0.22, band: 'fail' },
           words: [],
           scorePct: 22,
-          meta: { scoring_mode: 'citrinet-only' },
+          meta: { scoring_mode: 'hubert-phoneme' },
         }),
       };
     },

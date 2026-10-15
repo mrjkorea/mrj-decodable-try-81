@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-marker="dec20261014citrinetonly">
+<html lang="en" data-marker="dec20261016hubert">
 <head>
 <!-- READ-TAP-GATE-20261012 -->
 <meta charset="UTF-8" />
-<meta name="mrj-build" content="dec81-20261014-citrinetonly" />
+<meta name="mrj-build" content="dec81-20261016-hubert" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MRJ Decodables — Books 81-100</title>
 <style>
@@ -278,17 +278,16 @@ body.student-desk #bookStage #play{
     <button id="mSay">Say</button>
   </div>
 </div>
-<script src="pronounce/audio.js?v=dec81-20261014-citrinetonly"></script>
-<script src="pronounce/grade-browser.js?v=dec81-20261014-citrinetonly"></script>
+<script src="pronounce/grade-browser.js?v=20261016-hubert"></script>
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
-<script src="decodable-progress.js?v=dec81-20261014-citrinetonly"></script>
+<script src="decodable-progress.js?v=dec81-20261016-hubert"></script>
 <script>
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
-const MRJ_BUILD='dec81-20261014-citrinetonly';
-const ASSET_V='dec20261014citrinetonly';
+const MRJ_BUILD='dec81-20261016-hubert';
+const ASSET_V='dec20261016hubert';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -321,7 +320,7 @@ let loadRetryTimer=0;
 let loadRetryMs=5000;
 let packUsedAuthApi=false;
 const MAX_BOOKS=20;
-const SPEAK_DEFAULT=60;
+const SPEAK_DEFAULT=60; // PASS = line average >= 60 (shared MRJ rule)
 const SAY_MAX_TRIES=5;
 const DICT_N=5;
 const DICT_PASS=80;
@@ -1628,7 +1627,7 @@ function paintSayChips(text, words){
       return `<span class="word-chip pending">${tok.replace(/</g,'&lt;')}<span class="wsub">·</span></span>`;
     }
     const ws=Math.round(100*(w.score||0));
-    const b=ws>=60?'good':'needs_work';
+    const b=ws>=75?'good':(ws>=50?'ok':'needs_work');
     const hint=(b==='needs_work' && typeof w.hint==='string' && w.hint.trim())
       ? `<span class="wsub">${w.hint.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}</span>` : '';
     return `<span class="word-chip ${b}">${tok.replace(/</g,'&lt;')}<span class="wsub">${ws}%</span>${hint}</span>`;

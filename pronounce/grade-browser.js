@@ -1,39 +1,16 @@
-/* MRJ Decodable — Citrinet-only in-page grader (int8 ONNX + onnxruntime-web WASM). */
+/* MRJ Decodable — shared MRJ HuBERT phoneme checker.
+ * Loads https://mrjkorea.github.io/pronounce/src/shared.js (model: pronounce/models/hubert/manifest.json,
+ * ron-jo/hubert-base-phoneme-en-onnx int8) so the model is cached once per browser for all MRJ apps.
+ * Colours: green 75+, yellow 50-74, red under 50. PASS = line average >= 60.
+ */
 (function (global) {
-  const MODEL_ORIGIN = 'https://mrjkorea.github.io/pronounce/';
-  const ORT_SRC = MODEL_ORIGIN + 'vendor/ort/ort.wasm.min.js';
-  const WASM_PATHS = MODEL_ORIGIN + 'vendor/ort/';
-  const CITRINET_PATHS = [
-    MODEL_ORIGIN + 'models/citrinet/model.int8.onnx',
-    MODEL_ORIGIN + 'models/citrinet/sp_pieces.json',
-  ];
-  const PASS_AT = 60;
-  const CACHE_TAG = '20261014-citrinet-only';
+  const SHARED_URL = 'https://mrjkorea.github.io/pronounce/src/shared.js';
+  const APP_ID = 'decodables';
+  const THRESHOLDS = { green: 75, yellow: 50 };
+  const PASS_PCT = 60;
 
-  let assetBase = '';
   let booted = null;
-  let trialApi = null;
-
-  function resolvePronounceBase() {
-    const scripts = document.getElementsByTagName('script');
-    for (let i = scripts.length - 1; i >= 0; i--) {
-      const src = scripts[i].src || '';
-      if (src.indexOf('grade-browser.js') >= 0) {
-        return src.replace(/grade-browser\.js.*$/, '');
-      }
-    }
-    const p = location.pathname.replace(/[^/]*$/, '');
-    return location.origin + p + 'pronounce/';
-  }
-
-  function setBase(url) {
-    assetBase = url ? String(url) : resolvePronounceBase();
-  }
-
-  function trialModuleUrl() {
-    const base = assetBase || resolvePronounceBase();
-    return base + 'src/trial.js?v=' + CACHE_TAG;
-  }
+  let api = null;
 
   function emitProgress(onProgress, stage, pct) {
     if (typeof onProgress === 'function') {
@@ -41,50 +18,34 @@
     }
   }
 
-  function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-      const nodes = document.getElementsByTagName('script');
-      for (let i = 0; i < nodes.length; i++) {
-        if (nodes[i].src === src && nodes[i].dataset.mrjReady === '1') {
-          resolve();
-          return;
-        }
-      }
-      const s = document.createElement('script');
-      s.src = src;
-      s.onload = function () { s.dataset.mrjReady = '1'; resolve(); };
-      s.onerror = function () { reject(new Error('failed to load ' + src)); };
-      document.head.appendChild(s);
-    });
+  function bandFor(pct) {
+    return pct >= THRESHOLDS.green ? 'green' : (pct >= THRESHOLDS.yellow ? 'yellow' : 'red');
   }
 
   function pageResult(result) {
     const doorFail = !!(result && result.doorFail);
     const rawWords = doorFail ? [] : ((result && result.words) || []);
     const words = rawWords.map(function (w) {
-      return {
-        word: w.word,
-        score: (Number(w.score) || 0) / 100,
-        hint: typeof w.hint === 'string' ? w.hint : '',
-      };
+      const pct = Number(w.score) || 0;
+      return { word: w.word, score: pct / 100, band: w.band || bandFor(pct), hint: typeof w.hint === 'string' ? w.hint : '' };
     });
-    const score = doorFail ? 0 : (Number(result && result.score) || 0);
-    const pass = doorFail ? false : !!(result && result.pass);
-    const scorePct = doorFail ? 0 : Math.round(Number(result && result.scorePct) || score * 100);
+    const scorePct = doorFail ? 0 : Math.round(Number(result && result.scorePct) || 0);
+    const pass = !doorFail && scorePct >= PASS_PCT;
     return Object.assign({}, result, {
       words: words,
-      overall: { score: score, band: pass ? 'pass' : 'fail' },
+      overall: { score: scorePct / 100, band: bandFor(scorePct) },
       scorePct: scorePct,
       pass: pass,
       doorFail: doorFail,
       reason: (result && result.reason) || '',
-      model_id: 'citrinet-only',
-      meta: { scoring_mode: 'citrinet-only' },
+      model_id: 'hubert-phoneme',
+      meta: { scoring_mode: 'hubert-phoneme' },
     });
   }
 
+  function setBase() { /* kept for old pages; the shared engine always loads from the pronounce site */ }
+
   async function load(onProgress) {
-    if (!assetBase) setBase('');
     if (booted) {
       const done = await booted;
       emitProgress(onProgress, 'done', 100);
@@ -92,21 +53,16 @@
     }
     booted = (async function () {
       emitProgress(onProgress, 'download', 8);
-      await loadScript(ORT_SRC);
-      emitProgress(onProgress, 'download', 22);
-      trialApi = await import(trialModuleUrl());
-      emitProgress(onProgress, 'session', 40);
-      await trialApi.bootTrialInPage({
-        mode: 'citrinet-only',
-        loadHints: false,
-        wasmPaths: WASM_PATHS,
-        paths: CITRINET_PATHS,
+      api = await import(SHARED_URL);
+      emitProgress(onProgress, 'session', 20);
+      await api.bootShared({
+        onProgress: function (f) { emitProgress(onProgress, 'download', Math.round(20 + 75 * (Number(f) || 0))); },
       });
       emitProgress(onProgress, 'done', 100);
       return true;
     })().catch(function (e) {
       booted = null;
-      trialApi = null;
+      api = null;
       throw e;
     });
     return booted;
@@ -114,13 +70,10 @@
 
   async function grade(blob, text) {
     await load();
-    if (typeof global.decodeAudioToMono !== 'function') {
-      throw new Error('decodeAudioToMono is not on the page');
-    }
-    const samples = await global.decodeAudioToMono(blob, 16000);
-    const graded = await trialApi.gradeTrialSamples(samples, text, PASS_AT);
+    const samples = await api.audio.decodeAudioToMono(blob, 16000);
+    const graded = await api.gradeTrialSamples(samples, text, PASS_PCT, null, { appId: APP_ID });
     return pageResult(graded.result);
   }
 
-  global.MRJPronounce = { setBase: setBase, load: load, grade: grade };
+  global.MRJPronounce = { setBase: setBase, load: load, grade: grade, thresholds: THRESHOLDS, passPct: PASS_PCT };
 })(window);
