@@ -3,7 +3,7 @@
 <head>
 <!-- READ-TAP-GATE-20261012 -->
 <meta charset="UTF-8" />
-<meta name="mrj-build" content="dec81-20261016-hubert" />
+<meta name="mrj-build" content="dec81-20261016-cm510-hubert" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MRJ Decodables — Books 81-100</title>
 <style>
@@ -282,11 +282,12 @@ body.student-desk #bookStage #play{
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
-<script src="decodable-progress.js?v=dec81-20261016-hubert"></script>
+<script src="mrj-scores.js?v=dec81-20261016-cm510-hubert"></script>
+<script src="decodable-progress.js?v=dec81-20261016-cm510-hubert"></script>
 <script>
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
-const MRJ_BUILD='dec81-20261016-hubert';
+const MRJ_BUILD='dec81-20261016-cm510-hubert';
 const ASSET_V='dec20261016hubert';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
@@ -674,6 +675,44 @@ function reportingStudent(){
   }catch(e){}
   return '';
 }
+
+function postClassroomMetricsBody(body){
+  body=body||{};
+  const ev=(body.events&&body.events[0])||{};
+  let meta={};
+  try{ meta=JSON.parse(ev.metadata_json||'{}'); }catch(e){ meta={}; }
+  if(window.MRJ_SCORES && typeof MRJ_SCORES.post==='function'){
+    const opts={
+      student: body.student_name||'',
+      program: ev.curriculum_program||'decodable',
+      appName: ev.app_name||'MRJ Decodables',
+      source: ev.source||'decodable',
+      bookTitle: ev.book_title||'',
+      itemId: ev.item_id,
+      itemType: ev.item_type||'activity',
+      completed: ev.completed!==false,
+      metadata: meta
+    };
+    if(ev.event_id) opts.eventId=ev.event_id;
+    if(typeof ev.score_value==='number') opts.scoreValue=ev.score_value;
+    if(typeof ev.score_max==='number') opts.scoreMax=ev.score_max;
+    if(typeof ev.score_pct==='number') opts.scorePct=ev.score_pct;
+    return MRJ_SCORES.post(opts);
+  }
+  return sheetPost(SCORE_URL, body);
+}
+function reportIntroStep(section, extra){
+  if(!pack || !section) return;
+  const bookId=pack.book_id;
+  const bp=bookProg(bookId);
+  const itemId=section;
+  if(bp[section] || (bp.reported||[]).indexOf(itemId)>=0) return;
+  const patch={reported:[itemId]};
+  patch[section]=true;
+  setBookProg(bookId, patch);
+  const meta=Object.assign({sound: (typeof soundLine==='function'?soundLine(bookId):'')||(pack.sound||'')}, extra||{});
+  reportScore(bookId, section, 1, 1, {itemType:'completion', metadata:meta, completed:true});
+}
 function reportScore(bookId, section, raw, max, extra){
   const student=reportingStudent();
   if(!student || !bookId || !section) return;
@@ -697,7 +736,7 @@ function reportScore(bookId, section, raw, max, extra){
       })
     : null;
   if(!built) return;
-  sheetPost(SCORE_URL, built.body);
+  postClassroomMetricsBody(built.body);
   if(built.noteScore && window.MRJ_AUTH && typeof MRJ_AUTH.noteScore==='function'){
     MRJ_AUTH.noteScore(built.noteScore);
   }
@@ -945,7 +984,7 @@ function showIntro(){
       $('introGo').textContent='Next';
       return;
     }
-    if(!letters.length){ introStep='famous-card'; showIntro(); return; }
+    if(!letters.length){ reportIntroStep('sound'); introStep='famous-card'; showIntro(); return; }
     const L=letters[cousinIdx];
     const cu=cousinGlyph(L);
     $('modeBadge').textContent=letterTitle(L);
