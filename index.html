@@ -135,6 +135,12 @@ select{width:100%;padding:10px;border-radius:12px;border:0;background:#1b2740;co
 .speaker{width:100%;aspect-ratio:3/4;border-radius:20px;background:#0b1220;display:flex;align-items:flex-end;justify-content:center;position:relative;overflow:hidden}
 .speaker img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
 .speaker .label{position:absolute;bottom:12px;font-weight:900;text-shadow:0 2px 8px #000}
+.speaker.dict-face .speaker-base{position:absolute;inset:0}
+.speaker-jaw{position:absolute;left:calc(var(--mx)*1%);top:calc(var(--my)*1%);width:calc(var(--mw)*1%);height:calc(var(--mh)*1%);overflow:hidden;transform-origin:50% 0%;pointer-events:none;opacity:0}
+.speaker.dict-talk .speaker-jaw{opacity:1;animation:dictJaw .15s ease-in-out infinite alternate}
+@keyframes dictJaw{from{transform:scaleY(1)}to{transform:scaleY(1.14) translateY(3%)}}
+.speaker-jaw img{position:absolute;width:calc(100%*100/var(--mw));height:calc(100%*100/var(--mh));max-width:none;left:calc(-1*var(--mx)/var(--mw)*100%);top:calc(-1*var(--my)/var(--mh)*100%);object-fit:cover}
+.speaker-fallback{min-height:120px;align-items:center;justify-content:center}
 .repeat{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:10px 0}
 .repeat button{font-size:1.15rem}
 .carpetVid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#000}
@@ -172,11 +178,11 @@ select{width:100%;padding:10px;border-radius:12px;border:0;background:#1b2740;co
 .sign-err{min-height:1.2em;color:#ffb4b4;font-weight:800}
 #workStage.dict-fit{overflow:hidden;padding:8px 12px;height:100%}
 #workStage.dict-fit #workBody{height:100%;min-height:0}
-.dict-layout{display:grid;grid-template-columns:minmax(150px,210px) minmax(0,1fr);gap:14px;height:100%;min-height:0;align-items:center}
+.dict-layout{display:grid;grid-template-columns:minmax(168px,280px) minmax(0,1fr);gap:14px;height:100%;min-height:0;align-items:stretch}
+.dict-side{display:flex;flex-direction:column;gap:8px;min-height:0;justify-content:center}
 .dict-main{min-height:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
-#workStage.dict-fit .speaker{width:100%;height:min(26vh,200px);aspect-ratio:auto;border-radius:16px}
+#workStage.dict-fit .speaker{width:100%;height:auto;max-height:min(40vh,300px);aspect-ratio:3/4;border-radius:16px;flex-shrink:0}
 #workStage.dict-fit .speaker img{object-fit:cover;object-position:top center}
-#workStage.dict-fit .speaker .label{font-size:.8rem;bottom:6px}
 #workStage.dict-fit .tpl{font-size:clamp(1.05rem,2.3vh,1.55rem);line-height:1.25;padding:2px}
 #workStage.dict-fit .az{grid-template-columns:repeat(14,minmax(0,1fr));gap:4px;margin:4px 0}
 #workStage.dict-fit .az button{padding:5px 0;font-size:clamp(.8rem,1.5vh,1rem)}
@@ -288,7 +294,7 @@ body.student-desk #bookStage #play{
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
 const MRJ_BUILD='dec81-20261022-teacher-mode';
-const ASSET_V='dec20261022i18n100';
+const ASSET_V='dec20261022dict1';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -325,6 +331,31 @@ const SPEAK_DEFAULT=60; // PASS = line average >= 60 (shared MRJ rule)
 const SAY_MAX_TRIES=5;
 const DICT_N=5;
 const DICT_PASS=80;
+const DICT_SPEAKER_IMG={
+  Harper:'decodable/harper.png',Coach:'decodable/coach.png',Grandma:'decodable/grandma.png',Grandpa:'decodable/grandpa.png',
+  Maya:'decodable/maya.png',Leo:'decodable/leo.png',Cowboy:'decodable/cowboy.png',
+  Nia:'decodable/nia.png',Pirate:'decodable/pirate.png',Car:'decodable/car.png'
+};
+const DICT_MOUTH={
+  Harper:{x:50,y:60,w:16,h:9},Coach:{x:50,y:57,w:17,h:9},Grandma:{x:50,y:62,w:15,h:8},Grandpa:{x:50,y:64,w:16,h:9},
+  Maya:{x:50,y:66,w:14,h:8},Leo:{x:51,y:59,w:16,h:9},Cowboy:{x:50,y:67,w:18,h:10},
+  Nia:{x:50,y:65,w:15,h:9},Pirate:{x:50,y:63,w:17,h:9},Car:{x:50,y:70,w:20,h:8}
+};
+let dictTalkTimer=null;
+function dictTalk(on){
+  clearInterval(dictTalkTimer); dictTalkTimer=null;
+  const sp=document.querySelector('.speaker.dict-face');
+  if(sp) sp.classList.remove('dict-talk');
+  if(!on||!sp) return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  dictTalkTimer=setInterval(()=>sp.classList.toggle('dict-talk'),150);
+}
+function wireDictAudio(a){
+  if(mode!=='dictation'||!a) return;
+  const stop=()=>dictTalk(false);
+  ['ended','pause','error'].forEach(ev=>a.addEventListener(ev,stop));
+  a.addEventListener('playing',()=>dictTalk(true));
+}
 const COUSIN_META={no_latin_script:['ko','ja','zh-Hans','hi','ar'],latin_letters:{vi:'aăâbcdđeêghiklmnoôơpqrstuưvxy',es:'abcdefghijklmnñopqrstuvwxyz','pt-BR':'abcdefghijklmnopqrstuvwxyz',fr:'abcdefghijklmnopqrstuvwxyz',de:'abcdefghijklmnopqrstuvwxyzäöüß',id:'abcdefghijklmnopqrstuvwxyz',tr:'abcçdefgğhıijklmnoöprsştuüvyz',it:'abcdefghijklmnopqrstuvwxyz',pl:'aąbcćdeęfghijklłmnńoóprsśtuwyzźż'}};
 const SOUND_HINT={a:'/æ/ · sat',m:'/m/ · mat',s:'/s/ · sat',t:'/t/ · sat',p:'/p/ · tap',i:'/ɪ/ · pit',n:'/n/ · ant',f:'/f/ · fan',o:'/ɑ/ · pot',d:'/d/ · dad',c:'/k/ · cat',u:'/ʌ/ · sun',g:'/g/ · dog',v:'/v/ · van',b:'/b/ · bug',e:'/ɛ/ · bed',k:'/k/ · kid',h:'/h/ · hot',r:'/r/ · rat',l:'/l/ · log',w:'/w/ · web',j:'/dʒ/ · jam',y:'/j/ · yes',x:'/ks/ · fox'};
 const LETTER_KIND={a:'short_vowel',e:'short_vowel',i:'short_vowel',o:'short_vowel',u:'short_vowel',c:'hard_consonant'};
@@ -841,6 +872,7 @@ function syncWordHighlight(a, gen){
 }
 function stopA(){
   stopWordHighlight();
+  dictTalk(false);
   if(audio){ try{audio.pause();}catch(e){} audio.onended=null; audio.ontimeupdate=null; audio.onloadedmetadata=null; audio=null; }
 }
 function playPath(path, onend, rate){
@@ -854,6 +886,7 @@ function playPath(path, onend, rate){
   a.playbackRate = (rate==null?1:rate);
   a.onended=()=>{ if(audio===a && onend) onend(); };
   if(mode==='listen' || mode==='song') syncWordHighlight(a, listenGen);
+  if(mode==='dictation') wireDictAudio(a);
   a.play().catch(()=>{});
 }
 function playTimes(path, n, rate){
@@ -1371,22 +1404,15 @@ function dictSpeaker(){
   const raw=((pack.voices||{}).dictation_label)||'Harper';
   const names={Harper:'Miss Harper',Coach:'Coach Ray',Grandma:'Grandma June',Grandpa:'Grandpa Walt',Maya:'Maya',Leo:'Leo',Cowboy:'Cowboy',Nia:'Nia',Pirate:'Pirate',Car:'the Car'};
   const name=names[raw]||raw;
-  const face=raw==='Harper'
-    ? `<img src="${asset('decodable/harper.png')}" alt="Miss Harper">`
-    : raw==='Coach'
-    ? `<img src="${asset('decodable/coach.png')}" alt="Coach Ray">`
-    : raw==='Grandma'
-    ? `<img src="${asset('decodable/grandma.png')}" alt="Grandma June">`
-    : raw==='Grandpa'
-    ? `<img src="${asset('decodable/grandpa.png')}" alt="Grandpa Walt">`
-    : raw==='Nia'
-    ? `<img src="${asset('decodable/nia.png')}" alt="Nia">`
-    : raw==='Car'
-    ? `<img src="${asset('decodable/car.png')}" alt="the Car">`
-    : raw==='Pirate'
-    ? `<img src="${asset('decodable/pirate.png')}" alt="Pirate">`
-    : `<div class="label" style="font-size:2rem;margin-bottom:6px">${name}</div>`;
-  return `<div class="speaker">${face}<div class="label">${name} · says the sentence</div></div>`;
+  const rel=DICT_SPEAKER_IMG[raw];
+  if(!rel) return `<div class="speaker speaker-fallback"><div class="label" style="font-size:2rem">${name}</div></div>`;
+  const mouth=DICT_MOUTH[raw]||{x:50,y:62,w:16,h:9};
+  const url=asset(rel);
+  const style=`--mx:${mouth.x};--my:${mouth.y};--mw:${mouth.w};--mh:${mouth.h}`;
+  return `<div class="speaker dict-face" data-speaker="${raw}" style="${style}">
+    <img class="speaker-base" src="${url}" alt="${name}">
+    <div class="speaker-jaw" aria-hidden="true"><img src="${url}" alt=""></div>
+  </div>`;
 }
 function dictItems(){
   const locked=(pack.dictation&&pack.dictation.items)||[];
