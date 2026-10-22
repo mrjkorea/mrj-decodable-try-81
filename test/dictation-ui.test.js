@@ -7,7 +7,7 @@ const path = require('path');
 const root = path.join(__dirname, '..');
 const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
 
-const ASSET_V = 'dec20261022dict1';
+const ASSET_V = 'dec20261022dict2';
 assert.ok(html.includes(`const ASSET_V='${ASSET_V}'`), `ASSET_V must be ${ASSET_V}`);
 
 assert.ok(!html.includes('says the sentence'), 'dictation caption must be removed');
