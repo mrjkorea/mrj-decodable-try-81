@@ -288,7 +288,7 @@ body.student-desk #bookStage #play{
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
 const MRJ_BUILD='dec81-20261016-cm510-hubert';
-const ASSET_V='dec20261022pages81100';
+const ASSET_V='dec20261022i18n100';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
 const STUDENT_KEY='mrj-dec-student';
@@ -791,7 +791,12 @@ function readUnits(text){
 }
 function tokens(s){ return readUnits(s).filter(u=>u.kind==='word').map(u=>u.lemma); }
 function page(){ return pack.pages[pageIndex]; }
-function pageTr(){ const b=i18n.books[pack.book_id]; return (b && b.l1[lang] && b.l1[lang][pageIndex]) || ''; }
+function pageTr(){
+  const b=i18n.books[pack.book_id];
+  const t=(b && b.l1[lang] && b.l1[lang][pageIndex]) || '';
+  if(showLang && pack && !t) console.warn('decodable i18n missing', pack.book_id, lang, 'page', pageIndex);
+  return t;
+}
 
 function stopWordHighlight(){ if(hlRaf){ cancelAnimationFrame(hlRaf); hlRaf=0; } }
 function syncWordHighlight(a, gen){
@@ -1756,6 +1761,7 @@ function renderSay(){
   const sayText=sayTarget(p.text);
   const triple=sayText!==p.text;
   const sayTr=(i18n.books[pack.book_id]&&i18n.books[pack.book_id].l1&&i18n.books[pack.book_id].l1[lang]&&i18n.books[pack.book_id].l1[lang][sayPage])||'';
+  if(showLang && pack && !sayTr) console.warn('decodable i18n missing', pack.book_id, lang, 'say', sayPage);
   $('workBody').innerHTML=`
     <div class="g-lbl">Say the page · ${sayPage+1} / ${pack.pages.length}</div>
     <div class="g-en" id="sayLineText"></div>
