@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "A Trap for Pictures, Not for Creatures",
   "level": "DEC 088",
-  "sound": "-ture = /ch\u0259r/ (picture, creature, nature, future, capture, feature, mixture, vulture \u2014 the ending is one chunk and the `t` never says /t/)",
+  "sound": "-ture = /chər/ (picture, creature, nature, future, capture, feature, mixture, vulture — the ending is one chunk and the `t` never says /t/)",
   "famous": [
     "ghost"
   ],
@@ -15,9 +15,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p01.mp3",
       "duration_ms": 8359,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p01.mp3",
-      "song_duration_ms": 10553
+      "song_duration_ms": 10553,
+      "video": "books/mlr_dec_088/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p02.mp3",
       "duration_ms": 6295,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p02.mp3",
-      "song_duration_ms": 7993
+      "song_duration_ms": 7993,
+      "video": "books/mlr_dec_088/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p03.mp3",
       "duration_ms": 6922,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p03.mp3",
-      "song_duration_ms": 9064
+      "song_duration_ms": 9064,
+      "video": "books/mlr_dec_088/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p04.mp3",
       "duration_ms": 8359,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p04.mp3",
-      "song_duration_ms": 9064
+      "song_duration_ms": 9064,
+      "video": "books/mlr_dec_088/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p05.mp3",
       "duration_ms": 8463,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p05.mp3",
-      "song_duration_ms": 9952
+      "song_duration_ms": 9952,
+      "video": "books/mlr_dec_088/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p06.mp3",
       "duration_ms": 8254,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p06.mp3",
-      "song_duration_ms": 9351
+      "song_duration_ms": 9351,
+      "video": "books/mlr_dec_088/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p07.mp3",
       "duration_ms": 8829,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p07.mp3",
-      "song_duration_ms": 10840
+      "song_duration_ms": 10840,
+      "video": "books/mlr_dec_088/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p08.mp3",
       "duration_ms": 7679,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p08.mp3",
-      "song_duration_ms": 9064
+      "song_duration_ms": 9064,
+      "video": "books/mlr_dec_088/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_088/audio/pages/p09.mp3",
       "duration_ms": 6765,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_088/audio/song/p09.mp3",
-      "song_duration_ms": 7915
+      "song_duration_ms": 7915,
+      "video": "books/mlr_dec_088/video/p09.mp4"
     },
     {
       "page_id": "p10",

@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "Enormous Is Not Dangerous",
   "level": "DEC 097",
-  "sound": "-ous = /\u0259s/ (famous, dangerous, enormous, venomous, poisonous, nervous, curious \u2014 the quiet ending that turns a thing into a description of a thing)",
+  "sound": "-ous = /əs/ (famous, dangerous, enormous, venomous, poisonous, nervous, curious — the quiet ending that turns a thing into a description of a thing)",
   "famous": [
     "myth"
   ],
@@ -15,20 +15,22 @@
       "audio": "books/mlr_dec_097/audio/pages/p01.mp3",
       "duration_ms": 9299,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p01.mp3",
-      "song_duration_ms": 11128
+      "song_duration_ms": 11128,
+      "video": "books/mlr_dec_097/video/p01.mp4"
     },
     {
       "page_id": "p02",
-      "text": "The enormous whale is harmless. The venomous jellyfish is little. Enormous is not dangerous \u2014 venomous is.",
+      "text": "The enormous whale is harmless. The venomous jellyfish is little. Enormous is not dangerous — venomous is.",
       "image": "books/mlr_dec_097/pages/p02.webp",
       "audio": "books/mlr_dec_097/audio/pages/p02.mp3",
       "duration_ms": 9508,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p02.mp3",
-      "song_duration_ms": 11310
+      "song_duration_ms": 11310,
+      "video": "books/mlr_dec_097/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p03.mp3",
       "duration_ms": 10422,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p03.mp3",
-      "song_duration_ms": 11075
+      "song_duration_ms": 11075,
+      "video": "books/mlr_dec_097/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p04.mp3",
       "duration_ms": 8150,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p04.mp3",
-      "song_duration_ms": 9351
+      "song_duration_ms": 9351,
+      "video": "books/mlr_dec_097/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p05.mp3",
       "duration_ms": 9142,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p05.mp3",
-      "song_duration_ms": 12329
+      "song_duration_ms": 12329,
+      "video": "books/mlr_dec_097/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p06.mp3",
       "duration_ms": 10057,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p06.mp3",
-      "song_duration_ms": 11964
+      "song_duration_ms": 11964,
+      "video": "books/mlr_dec_097/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p07.mp3",
       "duration_ms": 10057,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p07.mp3",
-      "song_duration_ms": 10788
+      "song_duration_ms": 10788,
+      "video": "books/mlr_dec_097/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p08.mp3",
       "duration_ms": 9142,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p08.mp3",
-      "song_duration_ms": 11128
+      "song_duration_ms": 11128,
+      "video": "books/mlr_dec_097/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_097/audio/pages/p09.mp3",
       "duration_ms": 9247,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_097/audio/song/p09.mp3",
-      "song_duration_ms": 13688
+      "song_duration_ms": 13688,
+      "video": "books/mlr_dec_097/video/p09.mp4"
     },
     {
       "page_id": "p10",
@@ -146,7 +155,7 @@
       },
       {
         "page_id": "p02",
-        "text": "The enormous whale is harmless. The venomous jellyfish is little. Enormous is not dangerous \u2014 venomous is.",
+        "text": "The enormous whale is harmless. The venomous jellyfish is little. Enormous is not dangerous — venomous is.",
         "audio": "books/mlr_dec_097/audio/dictation/p02.mp3"
       },
       {

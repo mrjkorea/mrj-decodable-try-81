@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "A Field Is a Flat Piece of Land",
   "level": "DEC 089",
-  "sound": "ie = /\u0113/ (field, chief, piece, thief \u2014 two letters, one long E)",
+  "sound": "ie = /ē/ (field, chief, piece, thief — two letters, one long E)",
   "famous": [
     "science"
   ],
@@ -15,9 +15,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p01.mp3",
       "duration_ms": 7418,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p01.mp3",
-      "song_duration_ms": 7262
+      "song_duration_ms": 7262,
+      "video": "books/mlr_dec_089/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p02.mp3",
       "duration_ms": 8620,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p02.mp3",
-      "song_duration_ms": 8097
+      "song_duration_ms": 8097,
+      "video": "books/mlr_dec_089/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p03.mp3",
       "duration_ms": 6608,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p03.mp3",
-      "song_duration_ms": 7497
+      "song_duration_ms": 7497,
+      "video": "books/mlr_dec_089/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p04.mp3",
       "duration_ms": 6922,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p04.mp3",
-      "song_duration_ms": 7810
+      "song_duration_ms": 7810,
+      "video": "books/mlr_dec_089/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p05.mp3",
       "duration_ms": 7836,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p05.mp3",
-      "song_duration_ms": 8829
+      "song_duration_ms": 8829,
+      "video": "books/mlr_dec_089/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p06.mp3",
       "duration_ms": 8306,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p06.mp3",
-      "song_duration_ms": 8829
+      "song_duration_ms": 8829,
+      "video": "books/mlr_dec_089/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p07.mp3",
       "duration_ms": 8724,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p07.mp3",
-      "song_duration_ms": 10057
+      "song_duration_ms": 10057,
+      "video": "books/mlr_dec_089/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p08.mp3",
       "duration_ms": 7209,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p08.mp3",
-      "song_duration_ms": 8646
+      "song_duration_ms": 8646,
+      "video": "books/mlr_dec_089/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_089/audio/pages/p09.mp3",
       "duration_ms": 6765,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_089/audio/song/p09.mp3",
-      "song_duration_ms": 8150
+      "song_duration_ms": 8150,
+      "video": "books/mlr_dec_089/video/p09.mp4"
     },
     {
       "page_id": "p10",

@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "Fruit Is Mostly Juice",
   "level": "DEC 091",
-  "sound": "ui = /oo/ (fruit, juice, suit, bruise, cruise \u2014 two vowel letters that say one long oo)",
+  "sound": "ui = /oo/ (fruit, juice, suit, bruise, cruise — two vowel letters that say one long oo)",
   "famous": [
     "village"
   ],
@@ -15,9 +15,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p01.mp3",
       "duration_ms": 6295,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p01.mp3",
-      "song_duration_ms": 8045
+      "song_duration_ms": 8045,
+      "video": "books/mlr_dec_091/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p02.mp3",
       "duration_ms": 6817,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p02.mp3",
-      "song_duration_ms": 8411
+      "song_duration_ms": 8411,
+      "video": "books/mlr_dec_091/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p03.mp3",
       "duration_ms": 6399,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p03.mp3",
-      "song_duration_ms": 7209
+      "song_duration_ms": 7209,
+      "video": "books/mlr_dec_091/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p04.mp3",
       "duration_ms": 8045,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p04.mp3",
-      "song_duration_ms": 9586
+      "song_duration_ms": 9586,
+      "video": "books/mlr_dec_091/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p05.mp3",
       "duration_ms": 5407,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p05.mp3",
-      "song_duration_ms": 6426
+      "song_duration_ms": 6426,
+      "video": "books/mlr_dec_091/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p06.mp3",
       "duration_ms": 7732,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p06.mp3",
-      "song_duration_ms": 8411
+      "song_duration_ms": 8411,
+      "video": "books/mlr_dec_091/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p07.mp3",
       "duration_ms": 6556,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p07.mp3",
-      "song_duration_ms": 8411
+      "song_duration_ms": 8411,
+      "video": "books/mlr_dec_091/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p08.mp3",
       "duration_ms": 6713,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p08.mp3",
-      "song_duration_ms": 7392
+      "song_duration_ms": 7392,
+      "video": "books/mlr_dec_091/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_091/audio/pages/p09.mp3",
       "duration_ms": 7079,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_091/audio/song/p09.mp3",
-      "song_duration_ms": 8986
+      "song_duration_ms": 8986,
+      "video": "books/mlr_dec_091/video/p09.mp4"
     },
     {
       "page_id": "p10",

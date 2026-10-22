@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "Eight Boxes, One Sleigh, and What Chen Really Weighs",
   "level": "DEC 100",
-  "sound": "eigh = /\u0101/ (eight, weigh, weight, sleigh, freight, neighbour, neigh)",
+  "sound": "eigh = /ā/ (eight, weigh, weight, sleigh, freight, neighbour, neigh)",
   "famous": [],
   "pages": [
     {
@@ -13,9 +13,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p01.mp3",
       "duration_ms": 7836,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p01.mp3",
-      "song_duration_ms": 8646
+      "song_duration_ms": 8646,
+      "video": "books/mlr_dec_100/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -24,9 +25,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p02.mp3",
       "duration_ms": 7470,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p02.mp3",
-      "song_duration_ms": 9586
+      "song_duration_ms": 9586,
+      "video": "books/mlr_dec_100/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -35,9 +37,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p03.mp3",
       "duration_ms": 5825,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p03.mp3",
-      "song_duration_ms": 7627
+      "song_duration_ms": 7627,
+      "video": "books/mlr_dec_100/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -46,9 +49,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p04.mp3",
       "duration_ms": 8202,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p04.mp3",
-      "song_duration_ms": 9064
+      "song_duration_ms": 9064,
+      "video": "books/mlr_dec_100/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -57,9 +61,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p05.mp3",
       "duration_ms": 7470,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p05.mp3",
-      "song_duration_ms": 9247
+      "song_duration_ms": 9247,
+      "video": "books/mlr_dec_100/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -68,9 +73,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p06.mp3",
       "duration_ms": 7575,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p06.mp3",
-      "song_duration_ms": 10710
+      "song_duration_ms": 10710,
+      "video": "books/mlr_dec_100/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -79,9 +85,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p07.mp3",
       "duration_ms": 7079,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p07.mp3",
-      "song_duration_ms": 7810
+      "song_duration_ms": 7810,
+      "video": "books/mlr_dec_100/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -90,9 +97,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p08.mp3",
       "duration_ms": 6399,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p08.mp3",
-      "song_duration_ms": 7392
+      "song_duration_ms": 7392,
+      "video": "books/mlr_dec_100/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -101,9 +109,10 @@
       "audio": "books/mlr_dec_100/audio/pages/p09.mp3",
       "duration_ms": 8515,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_100/audio/song/p09.mp3",
-      "song_duration_ms": 10475
+      "song_duration_ms": 10475,
+      "video": "books/mlr_dec_100/video/p09.mp4"
     },
     {
       "page_id": "p10",

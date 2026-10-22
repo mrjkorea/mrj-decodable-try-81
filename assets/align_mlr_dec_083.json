@@ -3,21 +3,22 @@
   "product": "decodable",
   "title": "The Gentle Giant",
   "level": "DEC 083",
-  "sound": "soft g = /j/ before i and y (giant, giraffe, ginger, gigantic, magic, energy) \u2014 `ge` was Book 50, so `gi` and `gy` are the new half of the law",
+  "sound": "soft g = /j/ before i and y (giant, giraffe, ginger, gigantic, magic, energy) — `ge` was Book 50, so `gi` and `gy` are the new half of the law",
   "famous": [
     "nature"
   ],
   "pages": [
     {
       "page_id": "p01",
-      "text": "A giraffe is a giant. In nature, no animal on land is taller \u2014 and no giant is as gentle.",
+      "text": "A giraffe is a giant. In nature, no animal on land is taller — and no giant is as gentle.",
       "image": "books/mlr_dec_083/pages/p01.webp",
       "audio": "books/mlr_dec_083/audio/pages/p01.mp3",
       "duration_ms": 8672,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p01.mp3",
-      "song_duration_ms": 10318
+      "song_duration_ms": 10318,
+      "video": "books/mlr_dec_083/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p02.mp3",
       "duration_ms": 8777,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p02.mp3",
-      "song_duration_ms": 10057
+      "song_duration_ms": 10057,
+      "video": "books/mlr_dec_083/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p03.mp3",
       "duration_ms": 8724,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p03.mp3",
-      "song_duration_ms": 10840
+      "song_duration_ms": 10840,
+      "video": "books/mlr_dec_083/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p04.mp3",
       "duration_ms": 8359,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p04.mp3",
-      "song_duration_ms": 9299
+      "song_duration_ms": 9299,
+      "video": "books/mlr_dec_083/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p05.mp3",
       "duration_ms": 7836,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p05.mp3",
-      "song_duration_ms": 8411
+      "song_duration_ms": 8411,
+      "video": "books/mlr_dec_083/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p06.mp3",
       "duration_ms": 6974,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p06.mp3",
-      "song_duration_ms": 8829
+      "song_duration_ms": 8829,
+      "video": "books/mlr_dec_083/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p07.mp3",
       "duration_ms": 7836,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p07.mp3",
-      "song_duration_ms": 10187
+      "song_duration_ms": 10187,
+      "video": "books/mlr_dec_083/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p08.mp3",
       "duration_ms": 7888,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p08.mp3",
-      "song_duration_ms": 9116
+      "song_duration_ms": 9116,
+      "video": "books/mlr_dec_083/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_083/audio/pages/p09.mp3",
       "duration_ms": 9299,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_083/audio/song/p09.mp3",
-      "song_duration_ms": 10710
+      "song_duration_ms": 10710,
+      "video": "books/mlr_dec_083/video/p09.mp4"
     },
     {
       "page_id": "p10",
@@ -141,7 +150,7 @@
     "items": [
       {
         "page_id": "p01",
-        "text": "A giraffe is a giant. In nature, no animal on land is taller \u2014 and no giant is as gentle.",
+        "text": "A giraffe is a giant. In nature, no animal on land is taller — and no giant is as gentle.",
         "audio": "books/mlr_dec_083/audio/dictation/p01.mp3"
       },
       {

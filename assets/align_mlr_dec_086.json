@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "Nothing Moves for Free",
   "level": "DEC 086",
-  "sound": "-tion = /sh\u0259n/ (action, nation, station, section, motion, friction \u2014 the ending is one chunk, and the letters do NOT say /t/ + /i/ + /o/ + /n/)",
+  "sound": "-tion = /shən/ (action, nation, station, section, motion, friction — the ending is one chunk, and the letters do NOT say /t/ + /i/ + /o/ + /n/)",
   "famous": [
     "fruit"
   ],
@@ -15,9 +15,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p01.mp3",
       "duration_ms": 6608,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p01.mp3",
-      "song_duration_ms": 8411
+      "song_duration_ms": 8411,
+      "video": "books/mlr_dec_086/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p02.mp3",
       "duration_ms": 7679,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p02.mp3",
-      "song_duration_ms": 8228
+      "song_duration_ms": 8228,
+      "video": "books/mlr_dec_086/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p03.mp3",
       "duration_ms": 6295,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p03.mp3",
-      "song_duration_ms": 8829
+      "song_duration_ms": 8829,
+      "video": "books/mlr_dec_086/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p04.mp3",
       "duration_ms": 8045,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p04.mp3",
-      "song_duration_ms": 8750
+      "song_duration_ms": 8750,
+      "video": "books/mlr_dec_086/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,20 +63,22 @@
       "audio": "books/mlr_dec_086/audio/pages/p05.mp3",
       "duration_ms": 8515,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p05.mp3",
-      "song_duration_ms": 7915
+      "song_duration_ms": 7915,
+      "video": "books/mlr_dec_086/video/p05.mp4"
     },
     {
       "page_id": "p06",
-      "text": "A wheel is rotation \u2014 motion that stays in one position. No invention beats it.",
+      "text": "A wheel is rotation — motion that stays in one position. No invention beats it.",
       "image": "books/mlr_dec_086/pages/p06.webp",
       "audio": "books/mlr_dec_086/audio/pages/p06.mp3",
       "duration_ms": 7679,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p06.mp3",
-      "song_duration_ms": 8333
+      "song_duration_ms": 8333,
+      "video": "books/mlr_dec_086/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p07.mp3",
       "duration_ms": 7079,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p07.mp3",
-      "song_duration_ms": 10057
+      "song_duration_ms": 10057,
+      "video": "books/mlr_dec_086/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p08.mp3",
       "duration_ms": 8933,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p08.mp3",
-      "song_duration_ms": 10475
+      "song_duration_ms": 10475,
+      "video": "books/mlr_dec_086/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,9 +111,10 @@
       "audio": "books/mlr_dec_086/audio/pages/p09.mp3",
       "duration_ms": 7836,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_086/audio/song/p09.mp3",
-      "song_duration_ms": 10318
+      "song_duration_ms": 10318,
+      "video": "books/mlr_dec_086/video/p09.mp4"
     },
     {
       "page_id": "p10",
@@ -166,7 +175,7 @@
       },
       {
         "page_id": "p06",
-        "text": "A wheel is rotation \u2014 motion that stays in one position. No invention beats it.",
+        "text": "A wheel is rotation — motion that stays in one position. No invention beats it.",
         "audio": "books/mlr_dec_086/audio/dictation/p06.mp3"
       },
       {

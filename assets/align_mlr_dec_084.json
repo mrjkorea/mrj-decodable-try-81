@@ -3,7 +3,7 @@
   "product": "decodable",
   "title": "The Hidden K",
   "level": "DEC 084",
-  "sound": "ch = /k/ (school, chorus, echo, chord, stomach, ache, anchor, character, monarch, chemist, orchestra) \u2014 `ch` = /ch/ was Book 33, so the /k/ job is the new half of the law",
+  "sound": "ch = /k/ (school, chorus, echo, chord, stomach, ache, anchor, character, monarch, chemist, orchestra) — `ch` = /ch/ was Book 33, so the /k/ job is the new half of the law",
   "famous": [
     "field"
   ],
@@ -15,9 +15,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p01.mp3",
       "duration_ms": 7732,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p01.mp3",
-      "song_duration_ms": 7810
+      "song_duration_ms": 7810,
+      "video": "books/mlr_dec_084/video/p01.mp4"
     },
     {
       "page_id": "p02",
@@ -26,9 +27,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p02.mp3",
       "duration_ms": 8306,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p02.mp3",
-      "song_duration_ms": 9404
+      "song_duration_ms": 9404,
+      "video": "books/mlr_dec_084/video/p02.mp4"
     },
     {
       "page_id": "p03",
@@ -37,9 +39,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p03.mp3",
       "duration_ms": 6661,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p03.mp3",
-      "song_duration_ms": 9064
+      "song_duration_ms": 9064,
+      "video": "books/mlr_dec_084/video/p03.mp4"
     },
     {
       "page_id": "p04",
@@ -48,9 +51,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p04.mp3",
       "duration_ms": 8672,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p04.mp3",
-      "song_duration_ms": 10187
+      "song_duration_ms": 10187,
+      "video": "books/mlr_dec_084/video/p04.mp4"
     },
     {
       "page_id": "p05",
@@ -59,9 +63,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p05.mp3",
       "duration_ms": 6190,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p05.mp3",
-      "song_duration_ms": 8228
+      "song_duration_ms": 8228,
+      "video": "books/mlr_dec_084/video/p05.mp4"
     },
     {
       "page_id": "p06",
@@ -70,9 +75,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p06.mp3",
       "duration_ms": 7131,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p06.mp3",
-      "song_duration_ms": 9639
+      "song_duration_ms": 9639,
+      "video": "books/mlr_dec_084/video/p06.mp4"
     },
     {
       "page_id": "p07",
@@ -81,9 +87,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p07.mp3",
       "duration_ms": 6661,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p07.mp3",
-      "song_duration_ms": 7679
+      "song_duration_ms": 7679,
+      "video": "books/mlr_dec_084/video/p07.mp4"
     },
     {
       "page_id": "p08",
@@ -92,9 +99,10 @@
       "audio": "books/mlr_dec_084/audio/pages/p08.mp3",
       "duration_ms": 10266,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p08.mp3",
-      "song_duration_ms": 11310
+      "song_duration_ms": 11310,
+      "video": "books/mlr_dec_084/video/p08.mp4"
     },
     {
       "page_id": "p09",
@@ -103,13 +111,14 @@
       "audio": "books/mlr_dec_084/audio/pages/p09.mp3",
       "duration_ms": 8777,
       "voice": "57785406027844b29b63a772a8477bc2",
-      "has_video": false,
+      "has_video": true,
       "song_audio": "books/mlr_dec_084/audio/song/p09.mp3",
-      "song_duration_ms": 9168
+      "song_duration_ms": 9168,
+      "video": "books/mlr_dec_084/video/p09.mp4"
     },
     {
       "page_id": "p10",
-      "text": "If ch sounds daft, say /k/ \u2014 and you can spot Greek on sight: character, monarch, echo, school.",
+      "text": "If ch sounds daft, say /k/ — and you can spot Greek on sight: character, monarch, echo, school.",
       "image": "books/mlr_dec_084/pages/p10.webp",
       "audio": "books/mlr_dec_084/audio/pages/p10.mp3",
       "duration_ms": 10945,
@@ -186,7 +195,7 @@
       },
       {
         "page_id": "p10",
-        "text": "If ch sounds daft, say /k/ \u2014 and you can spot Greek on sight: character, monarch, echo, school.",
+        "text": "If ch sounds daft, say /k/ — and you can spot Greek on sight: character, monarch, echo, school.",
         "audio": "books/mlr_dec_084/audio/dictation/p10.mp3"
       }
     ],
