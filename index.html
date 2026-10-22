@@ -3,7 +3,7 @@
 <head>
 <!-- READ-TAP-GATE-20261012 -->
 <meta charset="UTF-8" />
-<meta name="mrj-build" content="dec81-20261016-cm510-hubert" />
+<meta name="mrj-build" content="dec81-20261022-teacher-mode" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>MRJ Decodables — Books 81-100</title>
 <style>
@@ -282,12 +282,12 @@ body.student-desk #bookStage #play{
 <link rel="stylesheet" href="https://mrjkorea.github.io/mrj-signin/mrj-auth.css">
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth.js"></script>
 <script src="https://mrjkorea.github.io/mrj-signin/mrj-auth-boot.js" data-mrj-app="mrj-decodable-try-81"></script>
-<script src="mrj-scores.js?v=dec81-20261016-cm510-hubert"></script>
-<script src="decodable-progress.js?v=dec81-20261016-cm510-hubert"></script>
+<script src="mrj-scores.js?v=dec81-20261022-teacher-mode"></script>
+<script src="decodable-progress.js?v=dec81-20261022-teacher-mode"></script>
 <script>
 const TEST=false;
 const MERGE=window.MRJDecodableProgress;
-const MRJ_BUILD='dec81-20261016-cm510-hubert';
+const MRJ_BUILD='dec81-20261022-teacher-mode';
 const ASSET_V='dec20261022i18n100';
 const PROGRAM='decodable';
 const SAVE_THROTTLE_MS=17000;
@@ -489,6 +489,11 @@ window.addEventListener('mrj-auth-ready', function(ev){
   const id=(ev.detail && ev.detail.id) || studentName();
   onAuthSessionReady(id);
 });
+document.addEventListener('mrj-teacher', function(){
+  if(!studentName()) return;
+  if(mode==='library' || !pack) showLib();
+  else { syncModeLocks(); syncArrows(); }
+});
 if(window.MRJ_AUTH && MRJ_AUTH.student()){
   onAuthSessionReady(String(MRJ_AUTH.student()).trim());
 }
@@ -540,6 +545,12 @@ function setBookProg(id, patch){
 function settings(){ return Object.assign({parentLock:false,showLang:true,lang:'ko'}, loadAll()._settings||{}); }
 function setSettings(patch){ const all=loadAll(); all._settings=Object.assign(settings(), patch); saveAll(all); }
 function bookOrder(){ return (lib.books||[]).slice(0, MAX_BOOKS).map(b=>b.id); }
+function mrjTeacher(){
+  try{
+    var api=window.MRJSignin||window.MRJ_AUTH;
+    return !!(api&&typeof api.isTeacher==='function'&&api.isTeacher());
+  }catch(e){return false;}
+}
 function unlocked(id){ return bookOrder().includes(id); }
 function studentName(){
   try {
@@ -760,6 +771,10 @@ function speakScorePct(){
   return Math.round(vals.reduce((a,b)=>a+b,0)/vals.length);
 }
 function syncModeLocks(){
+  if(mrjTeacher()){
+    ['mListen','mRead','mSong','mDict','mSay'].forEach(id=>{ const el=$(id); if(el) el.disabled=false; });
+    return;
+  }
   const bp=pack?bookProg(pack.book_id):null;
   $('mListen').disabled=!(bp && introDone);   // Listen stays dead until the start is done
   $('mRead').disabled=!(bp && bp.listen);
@@ -1137,7 +1152,7 @@ function setMode(m){
   if(!pack) return;
   if(m!=='intro' && m!=='mode'){
     // Listen (and everything after it) stays shut until the start is finished.
-    if(!introDone){
+    if(!mrjTeacher() && !introDone){
       $('status').textContent='Finish the sound and the famous word first.';
       showIntro();
       return;
@@ -1178,6 +1193,7 @@ function allTapped(){
   return n>0;
 }
 function arrowsFree(){
+  if(mrjTeacher()) return true;
   if(!pack) return false;
   if(mode!=='listen' && mode!=='song' && mode!=='read') return false;
   const bp=bookProg(pack.book_id);
@@ -1193,6 +1209,7 @@ function syncArrows(){
   next.disabled=nextLocked();
 }
 function nextLocked(){
+  if(mrjTeacher()) return false;
   if(arrowsFree()) return false;
   if(mode==='read') return !allTapped();
   if(mode==='listen') return !(clipDone || heardListen.has(pageIndex));
