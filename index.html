@@ -1070,7 +1070,12 @@ function showIntro(){
     return;
   }
   if(introStep==='famous'){
-    if(!famous){ setMode('listen'); return; }
+    if(!famous){
+      if((pack.law_breaker||[]).length){ introStep='chase'; showIntro(); return; }
+      introDone=true;
+      setMode('listen');
+      return;
+    }
     $('modeBadge').textContent='Famous word';
     const word=String(famous).toLowerCase();
     const clips={};
