@@ -748,8 +748,13 @@ function reportIntroStep(section, extra){
   const bookId=pack.book_id;
   const bp=bookProg(bookId);
   const itemId=section;
-  if(bp[section] || (bp.reported||[]).indexOf(itemId)>=0) return;
-  const patch={reported:[itemId]};
+  // mergeBookProgress keeps `reported` only as a flag map; an array comes back as {0:true}.
+  const reported=Array.isArray(bp.reported)
+    ? Object.fromEntries(bp.reported.map(k=>[k,true]))
+    : Object.assign({}, bp.reported);
+  if(bp[section] || reported[itemId]) return;
+  reported[itemId]=true;
+  const patch={reported:reported};
   patch[section]=true;
   setBookProg(bookId, patch);
   const meta=Object.assign({sound: (typeof soundLine==='function'?soundLine(bookId):'')||(pack.sound||'')}, extra||{});
