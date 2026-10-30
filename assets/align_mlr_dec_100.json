@@ -5,6 +5,9 @@
   "level": "DEC 100",
   "sound": "eigh = /ā/ (eight, weigh, weight, sleigh, freight, neighbour, neigh)",
   "famous": [],
+  "letter_intros": [
+    "eigh_letter_intro.mp4"
+  ],
   "pages": [
     {
       "page_id": "p01",

@@ -2,7 +2,7 @@
   "name": "mrj-decodable-try-81",
   "private": true,
   "scripts": {
-    "test": "node test/decodable-progress.test.js && node test/score-report.test.js && node test/dictation-ui.test.js && node test/index-html-script-syntax.test.js && node test/hubert-shared.test.js && node test/say-max-tries.mjs && node test/decodable-i18n.test.js"
+    "test": "node test/decodable-progress.test.js && node test/score-report.test.js && node test/dictation-ui.test.js && node test/index-html-script-syntax.test.js && node test/hubert-shared.test.js && node test/say-max-tries.mjs && node test/decodable-i18n.test.js && node test/letter-intro.test.js && node test/letter-intro-flow.mjs"
   },
   "devDependencies": {
     "playwright": "^1.49.0"
