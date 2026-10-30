@@ -930,7 +930,7 @@ function playTimes(path, n, rate){
   once();
 }
 function playWord(lem, onend){
-  playPath('books/'+pack.book_id+'/audio/words/'+lem+'.mp3', onend, 1);
+  playPath('books/'+pack.book_id+'/audio/words/'+encodeURIComponent(lem)+'.mp3', onend, 1);
 }
 
 async function boot(){
