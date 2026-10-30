@@ -10,10 +10,7 @@ The video fills the intro stage edge to edge. **Next** unlocks when the video en
 
 ## Files
 
-The 20 mp4s are **not in git yet**. They arrive in a follow-up tar.gz. Until then this README is the only
-file here. Do not commit placeholder or fake mp4s.
-
-Put each file straight into this folder (no sub-folders) with exactly this name:
+The 20 mp4s live in this folder (release `letter-intros-wire-20261030`). Do not rename or re-encode them.
 
 | Book | File | Sound |
 |---|---|---|
@@ -46,15 +43,8 @@ Put each file straight into this folder (no sub-folders) with exactly this name:
 - Each name is loaded with `asset('decodable/letter_intro/<file>')`, which gives
   `assets/decodable/letter_intro/<file>?v=<ASSET_V>`.
 
-If a file is missing or will not play, the app skips to the famous word. Books keep working before the
-upload.
+If a file is missing or will not play, the app skips to the famous word.
 
-## When the tar.gz lands
-
-1. Extract it and move the 20 mp4s into this folder.
-2. Run `npm test`. `test/letter-intro.test.js` checks that every mp4 here is on the list above and is a
-   real MP4 file.
-3. Optional: bump `ASSET_V` in `index.html` and `test/dictation-ui.test.js`, so a browser that cached a
-   404 asks again.
-4. After deploy, open a book from 81–100 and tap Next on the sound card. The video should play full screen
-   width and Next should unlock at the end.
+After deploy, open a book from 81–100 and tap Next on the sound card. The video should play full screen
+width and Next should unlock at the end. `test/letter-intro.test.js` checks that every mp4 here is on
+the list above and is a real MP4 file.
