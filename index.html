@@ -1006,7 +1006,7 @@ function showLib(){
   $('libList').innerHTML=bookOrder().map(id=>{
     const b=lib.books.find(x=>x.id===id);
     const open=unlocked(b.id), done=!!bookProg(b.id).passed;
-    const flag=done?'<span class="passed-mark">✓</span>':(b.id===nextId?'Next':'🔒 Pass the book before this');
+    const flag=done?'<span class="passed-mark">✓</span>':(b.id===nextId?'Next':(open?'':'🔒 Pass the book before this'));
     return `<button class="card${open?'':' lock'}${done?' is-passed':''}" data-id="${b.id}" ${open?'':'disabled'}>
       <img src="${asset(b.cover)}" alt="">
       <div><b>${b.title}</b>
@@ -1173,10 +1173,14 @@ function showIntro(){
     <div style="color:var(--muted);font-weight:800">The crowd shouts <b>${label}</b>. Tap to hear it again.</div>`;
     famousVidEnded=false;
     famousAudEnded=false;
+    const skipMissingWord=()=>{
+      if($('status')) $('status').textContent='The word clip is not ready yet. Tap Next.';
+      famousVidEnded=true; famousAudEnded=true; syncFamousGate();
+    };
     const scream=()=>{
       famousAudEnded=false;
       syncFamousGate();
-      if(crowds[word]) playPath(crowds[word], markFamousAud, 1);
+      if(crowds[word]){ playPath(crowds[word], markFamousAud, 1); if(audio) audio.onerror=()=>{ famousAudEnded=true; syncFamousGate(); }; }
       else { famousAudEnded=true; syncFamousGate(); }
     };
     const v=$('carpetVid');
@@ -1185,10 +1189,12 @@ function showIntro(){
       v.volume=0;
       const kick=()=>v.play().catch(()=>{});
       v.onloadedmetadata=kick;
+      v.onerror=skipMissingWord;
       kick();
       v.ontimeupdate=()=>{ if(v.currentTime>=6.2 && !v._yelled){ v._yelled=true; scream(); } };
       v.onended=()=>{ if(v.currentTime>0.5) markFamousVid(); };
-      v.onclick=()=>{ v.currentTime=6.3; kick(); scream(); };
+      v.onclick=()=>{ if(v.error){ skipMissingWord(); return; } v.currentTime=6.3; kick(); scream(); };
+      setTimeout(()=>{ if(v.error) skipMissingWord(); }, 1500);
     } else { famousVidEnded=true; }
     const scene=$('famousScene');
     if(scene) scene.onclick=()=>{ if(v){ v.currentTime=6.3; v.play().catch(()=>{}); } scream(); };
